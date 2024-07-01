@@ -1,0 +1,6 @@
+framework module relasebird_ios_sdk {
+  umbrella header "relasebird-ios-sdk-umbrella.h"
+
+  export *
+  module * { export * }
+}

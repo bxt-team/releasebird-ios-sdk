@@ -1,0 +1,16 @@
+PODS:
+  - relasebird-ios-sdk (0.1.0)
+
+DEPENDENCIES:
+  - relasebird-ios-sdk (from `../`)
+
+EXTERNAL SOURCES:
+  relasebird-ios-sdk:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  relasebird-ios-sdk: 5d710c9d4246d68812d0a9bd5c4913e95ee5fefd
+
+PODFILE CHECKSUM: 10c0ba046972635e5a3d23802aeba78f74bdb051
+
+COCOAPODS: 1.15.2

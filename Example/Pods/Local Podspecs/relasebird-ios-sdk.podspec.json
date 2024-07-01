@@ -1,0 +1,22 @@
+{
+  "name": "relasebird-ios-sdk",
+  "version": "0.1.0",
+  "summary": "A short description of relasebird-ios-sdk.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/czillmann/relasebird-ios-sdk",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "czillmann": "christian.zillmann"
+  },
+  "source": {
+    "git": "https://github.com/bxt-team/releasebird-ios-sdk.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source_files": "relasebird-ios-sdk/Classes/**/*"
+}
