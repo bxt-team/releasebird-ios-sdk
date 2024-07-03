@@ -68,15 +68,9 @@
             self.rbirdWidget.modalPresentationStyle = UIModalPresentationFormSheet;
         }
         
-       
-    
-    
-        // Show on top of all viewcontrollers.
         UIViewController *topMostViewController = [ReleasebirdUtils getTopMostViewController];
         if (topMostViewController != nil) {
-            [topMostViewController presentViewController:self.rbirdWidget animated:true completion:^{
-                NSLog(@"callback");
-            }];
+            [topMostViewController presentViewController:self.rbirdWidget animated:true completion:^{}];
         }
     });
 }

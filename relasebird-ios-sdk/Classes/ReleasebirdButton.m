@@ -117,7 +117,6 @@ const float kNotificationBadgeDimension = 22.0;
         return;
     }
     
-    
     if (self.safeAreaConstraint == nil || self.edgeConstraint == nil) {
         return;
     }
@@ -126,7 +125,6 @@ const float kNotificationBadgeDimension = 22.0;
     bool shouldActivateEdgeConstraint = NO;
     
     @try {
-        // Always pin iPad to edge.
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             shouldActivateSafeAreaConstraint = NO;
             shouldActivateEdgeConstraint = YES;

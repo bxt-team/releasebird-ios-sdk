@@ -41,6 +41,9 @@ static id ObjectOrNull(id object)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        self.preferredContentSize = CGSizeMake(400, 700);
+    }
     
     self.view.userInteractionEnabled = YES;
     [self createWebView];
@@ -247,46 +250,6 @@ static id ObjectOrNull(id object)
     }
     
     return decisionHandler(WKNavigationActionPolicyAllow);
-}
-
-- (void)pinEdgesFrom:(UIView *)subView to:(UIView *)parent {
-    NSLayoutConstraint *trailing = [NSLayoutConstraint
-                                    constraintWithItem: subView
-                                    attribute: NSLayoutAttributeTrailing
-                                    relatedBy: NSLayoutRelationEqual
-                                    toItem: parent
-                                    attribute: NSLayoutAttributeTrailing
-                                    multiplier: 1.0f
-                                    constant: 0.f];
-    NSLayoutConstraint *leading = [NSLayoutConstraint
-                                       constraintWithItem: subView
-                                       attribute: NSLayoutAttributeLeading
-                                       relatedBy: NSLayoutRelationEqual
-                                       toItem: parent
-                                       attribute: NSLayoutAttributeLeading
-                                       multiplier: 1.0f
-                                       constant: 0.f];
-    [parent addConstraint: leading];
-    [parent addConstraint: trailing];
-    
-    NSLayoutConstraint *bottom =[NSLayoutConstraint
-                                 constraintWithItem: subView
-                                 attribute: NSLayoutAttributeBottom
-                                 relatedBy: NSLayoutRelationEqual
-                                 toItem: parent
-                                 attribute: NSLayoutAttributeBottom
-                                 multiplier: 1.0f
-                                 constant: 0.f];
-    NSLayoutConstraint *top =[NSLayoutConstraint
-                              constraintWithItem: subView
-                              attribute: NSLayoutAttributeTop
-                              relatedBy: NSLayoutRelationEqual
-                              toItem: parent
-                              attribute: NSLayoutAttributeTop
-                              multiplier: 1.0f
-                              constant: 0.f];
-    [parent addConstraint: top];
-    [parent addConstraint: bottom];
 }
 
 - (void)sendSessionUpdate {
