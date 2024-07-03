@@ -59,7 +59,16 @@
       
         self.rbirdWidget = [[ReleasebirdFrameViewController alloc] initWithFormat: @""];
         self.rbirdWidget.view.hidden = false;
-        self.rbirdWidget.modalPresentationStyle = UIModalPresentationFullScreen;
+        
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+            // App is running on iphone
+            self.rbirdWidget.modalPresentationStyle = UIModalPresentationFullScreen;
+        } else if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+            // App is running on ipad
+            self.rbirdWidget.modalPresentationStyle = UIModalPresentationFormSheet;
+        }
+        
+       
     
     
         // Show on top of all viewcontrollers.
