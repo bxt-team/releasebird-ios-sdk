@@ -10,6 +10,13 @@
 #endif
 #endif
 
+#import "ReleasebirdButton.h"
+#import "ReleasebirdFrameViewController.h"
+#import "ReleawbirdUtils.h"
+#import "ReleasebirdOverlayUtils.h"
+#import "ReleasebirdOverlayViewController.h"
+#import "ReleasebirdWindowUtils.h"
+#import "Releasebird.h"
 
 FOUNDATION_EXPORT double relasebird_ios_sdkVersionNumber;
 FOUNDATION_EXPORT const unsigned char relasebird_ios_sdkVersionString[];

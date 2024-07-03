@@ -32,11 +32,11 @@ TODO: Add long description of the pod here.
 
   s.source_files = 'relasebird-ios-sdk/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'relasebird-ios-sdk' => ['relasebird-ios-sdk/Assets/*.png']
-  # }
+  s.resource_bundles = {
+    'relasebird-ios-sdk' => ['relasebird-ios-sdk/Assets/*.png']
+  }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
+  s.public_header_files = 'Pod/Classes/**/*.h'
+  s.frameworks = 'UIKit'
   # s.dependency 'AFNetworking', '~> 2.3'
 end

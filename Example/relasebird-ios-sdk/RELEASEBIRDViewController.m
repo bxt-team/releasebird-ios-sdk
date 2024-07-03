@@ -7,6 +7,8 @@
 //
 
 #import "RELEASEBIRDViewController.h"
+#import "RELEASEBIRDViewController.h"
+#import "Releasebird.h"
 
 @interface RELEASEBIRDViewController ()
 
@@ -16,13 +18,16 @@
 
 - (void)viewDidLoad
 {
+    //[[Releasebird sharedInstance] hello];
+    // [[Releasebird sharedInstance] showButton];
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    [[Releasebird sharedInstance] showButton];
 }
-
+    
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+   
     // Dispose of any resources that can be recreated.
 }
 

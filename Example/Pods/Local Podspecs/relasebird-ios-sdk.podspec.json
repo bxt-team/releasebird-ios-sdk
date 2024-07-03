@@ -12,11 +12,18 @@
     "czillmann": "christian.zillmann"
   },
   "source": {
-    "git": "https://github.com/bxt-team/releasebird-ios-sdk.git",
+    "git": "https://github.com/czillmann/relasebird-ios-sdk.git",
     "tag": "0.1.0"
   },
   "platforms": {
     "ios": "10.0"
   },
-  "source_files": "relasebird-ios-sdk/Classes/**/*"
+  "source_files": "relasebird-ios-sdk/Classes/**/*",
+  "resource_bundles": {
+    "relasebird-ios-sdk": [
+      "relasebird-ios-sdk/Assets/*.png"
+    ]
+  },
+  "public_header_files": "Pod/Classes/**/*.h",
+  "frameworks": "UIKit"
 }

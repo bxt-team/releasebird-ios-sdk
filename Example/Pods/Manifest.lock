@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  relasebird-ios-sdk: 5d710c9d4246d68812d0a9bd5c4913e95ee5fefd
+  relasebird-ios-sdk: 97535cf5bd50bfcbf5d4df3265a5b20a9fca3fe7
 
 PODFILE CHECKSUM: 10c0ba046972635e5a3d23802aeba78f74bdb051
 
