@@ -66,6 +66,8 @@
         } else if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
             // App is running on ipad
             self.rbirdWidget.modalPresentationStyle = UIModalPresentationFormSheet;
+    
+            
         }
         
         UIViewController *topMostViewController = [ReleasebirdUtils getTopMostViewController];
@@ -74,6 +76,9 @@
         }
     });
 }
+
+
+
 
 - (void)updateUIPositions {
     [self bringViewToFront: self.feedbackButton];

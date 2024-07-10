@@ -87,7 +87,7 @@ const float kNotificationBadgeDimension = 22.0;
 }
 
 
-- (void)orientationDidChange:(NSNotification *)notification {
+- (void)handleOrientationChange:(NSNotification *)notification {
     [self adjustConstraintsForOrientation];
 }
 

@@ -63,6 +63,7 @@ static id ObjectOrNull(id object)
 
 - (void)viewWillDisappear:(BOOL)animated {
     [self invalidateTimeout];
+    [ReleasebirdOverlayUtils showFeedbackButton: true];
 }
 
 - (void)closeWidget: (void (^)(void))completion {
@@ -142,21 +143,28 @@ static id ObjectOrNull(id object)
     [self.view addSubview:self.webView];
     self.webView.translatesAutoresizingMaskIntoConstraints = NO;
     self.webView.backgroundColor = [UIColor colorWithRed: 0.0 green: 0.0 blue: 0.0 alpha: 0.0];
-    
+
     // URL laden
     NSURL *url = [NSURL URLWithString:@"http://localhost:4001/widget?apiKey=1cad2c1b6d7842fd937469ce3ac42ba2&ai=97f15296f2474fd8ad696c50722f6bc6&people=66294b84d8860667fa46431b&tab=HOME&people=66294b84d8860667fa46431b&hash=null&people=66294b84d8860667fa46431b&hash=null&people=66294b84d8860667fa46431b&hash=null&people=66294b84d8860667fa46431b&hash=null&people=66294b84d8860667fa46431b&hash=null&people=66294b84d8860667fa46431b&hash=null&people=66294b84d8860667fa46431b&hash=null&people=66294b84d8860667fa46431b&hash=null&people=66294b84d8860667fa46431b&hash=null"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     [ReleasebirdOverlayUtils showFeedbackButton: false];
-    // Constraints setzen
-    [NSLayoutConstraint activateConstraints:@[
-        [self.webView.leadingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.leadingAnchor],
-        [self.webView.trailingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.trailingAnchor],
-        [self.webView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor],
-        [self.webView.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor]
-    ]];
+    if (@available(iOS 11.0, *)) {
+        // Constraints setzen
+        [NSLayoutConstraint activateConstraints:@[
+            [self.webView.leadingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.leadingAnchor],
+            [self.webView.trailingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.trailingAnchor],
+            [self.webView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor],
+            [self.webView.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor]
+        ]];
+    }
     
     [self.webView loadRequest: request];
+}
+
+// Wird aufgerufen, wenn der Webinhalt-Prozess beendet wird
+- (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView {
+    NSLog(@"WKWebView Webinhalt-Prozess wurde beendet");
 }
 
 -(void)userContentController:(WKUserContentController*)userContentController didReceiveScriptMessage:(WKScriptMessage*)message
@@ -170,8 +178,20 @@ static id ObjectOrNull(id object)
     
 }
 
+
+
+// Wird aufgerufen, nachdem der ViewController aus einem Container-ViewController entfernt wurde
+- (void)didMoveToParentViewController:(UIViewController *)parent {
+    [super didMoveToParentViewController:parent];
+    if (!parent) {
+        NSLog(@"didMoveToParentViewController: ViewController wurde aus dem Container entfernt");
+    }
+}
+
+
 // WKNavigationDelegate method to inject the viewport meta tag
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+    NSLog(@"Geladen");
     NSString *js = @"var meta = document.createElement('meta');"
                    "meta.name = 'viewport';"
                    "meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';"

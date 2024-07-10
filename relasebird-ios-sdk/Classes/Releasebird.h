@@ -9,8 +9,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)sharedInstance;
 
-- (void)hello;
-
 - (void)showButton;
 
 @property (strong, nonatomic) NSLayoutConstraint *edgeConstraint;

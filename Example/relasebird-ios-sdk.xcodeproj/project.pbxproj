@@ -39,7 +39,7 @@
 /* Begin PBXFileReference section */
 		02899BC5C59485AD9C294F24 /* Pods-relasebird-ios-sdk_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-relasebird-ios-sdk_Example.release.xcconfig"; path = "Target Support Files/Pods-relasebird-ios-sdk_Example/Pods-relasebird-ios-sdk_Example.release.xcconfig"; sourceTree = "<group>"; };
 		11B08BD9E6DC1AE348B76DCB /* Pods_relasebird_ios_sdk_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_relasebird_ios_sdk_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		14ABC923722A5F4645C46249 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		14ABC923722A5F4645C46249 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		5D3BB78FFF146775F9FE0B5F /* Pods-relasebird-ios-sdk_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-relasebird-ios-sdk_Tests.debug.xcconfig"; path = "Target Support Files/Pods-relasebird-ios-sdk_Tests/Pods-relasebird-ios-sdk_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* relasebird-ios-sdk_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "relasebird-ios-sdk_Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -60,13 +60,13 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
-		65DEEC1CA9BFC9662CCD4A4A /* relasebird-ios-sdk.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = "relasebird-ios-sdk.podspec"; path = "../relasebird-ios-sdk.podspec"; sourceTree = "<group>"; };
+		65DEEC1CA9BFC9662CCD4A4A /* relasebird-ios-sdk.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = "relasebird-ios-sdk.podspec"; path = "../relasebird-ios-sdk.podspec"; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		99A3300EC6ED99D9C4B19C23 /* Pods-relasebird-ios-sdk_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-relasebird-ios-sdk_Tests.release.xcconfig"; path = "Target Support Files/Pods-relasebird-ios-sdk_Tests/Pods-relasebird-ios-sdk_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		A9568DBADFC1C616A42387BA /* Pods_relasebird_ios_sdk_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_relasebird_ios_sdk_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7078ED9EA065E1FD7670862 /* Pods-relasebird-ios-sdk_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-relasebird-ios-sdk_Example.debug.xcconfig"; path = "Target Support Files/Pods-relasebird-ios-sdk_Example/Pods-relasebird-ios-sdk_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		F533AD77EE6A2306E6EF537E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		F533AD77EE6A2306E6EF537E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +103,6 @@
 				5D3BB78FFF146775F9FE0B5F /* Pods-relasebird-ios-sdk_Tests.debug.xcconfig */,
 				99A3300EC6ED99D9C4B19C23 /* Pods-relasebird-ios-sdk_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -258,6 +257,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -497,6 +497,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "relasebird-ios-sdk/relasebird-ios-sdk-Prefix.pch";
 				INFOPLIST_FILE = "relasebird-ios-sdk/relasebird-ios-sdk-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -513,6 +514,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "relasebird-ios-sdk/relasebird-ios-sdk-Prefix.pch";
 				INFOPLIST_FILE = "relasebird-ios-sdk/relasebird-ios-sdk-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
