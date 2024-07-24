@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)showButton:(NSString *)key;
 
+- (void)identify:(NSObject *)identifyJson;
+
 @property (strong, nonatomic) NSLayoutConstraint *edgeConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *safeAreaConstraint;
 

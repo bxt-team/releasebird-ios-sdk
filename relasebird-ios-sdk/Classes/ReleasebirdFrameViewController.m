@@ -5,6 +5,7 @@
 #import "Releasebird.h"
 #import "ReleasebirdOverlayUtils.h"
 #import "ReleasebirdCore.h"
+#import "Config.h"
 
 @interface ReleasebirdFrameViewController ()
 
@@ -90,9 +91,6 @@ static id ObjectOrNull(id object)
 }
 
 - (void)executeRepeatingTask {
-    
-    
-    
     NSLog(@"executeRepeatingTask called");
 }
 
@@ -109,6 +107,51 @@ static id ObjectOrNull(id object)
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
     return nil;
+}
+
+- (void)sendPingRequest:(NSString *)API withApiKey:(NSString *)apiKey andStateIdentify:(NSDictionary *)stateIdentify {
+    // Erstelle die URL
+    NSString *urlString = [NSString stringWithFormat:@"%@/ewidget/ping", API];
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    // Erstelle die URLRequest
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:apiKey forHTTPHeaderField:@"apiKey"];
+    
+    // Konvertiere stateIdentify in JSON-Daten
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:stateIdentify options:0 error:&error];
+    if (!jsonData) {
+        NSLog(@"Error serializing JSON: %@", error.localizedDescription);
+        return;
+    }
+    [request setHTTPBody:jsonData];
+    
+    // Erstelle die URLSession
+    NSURLSession *session = [NSURLSession sharedSession];
+    
+    // Erstelle den Daten-Task
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error) {
+            NSLog(@"Error: %@", error.localizedDescription);
+            return;
+        }
+        
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        if (httpResponse.statusCode == 200) {
+            NSLog(@"Request was successful.");
+            // Verarbeite die Antwortdaten hier
+            NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            NSLog(@"Response Data: %@", responseDict);
+        } else {
+            NSLog(@"HTTP Error: %ld", (long)httpResponse.statusCode);
+        }
+    }];
+    
+    // Starte den Task
+    [dataTask resume];
 }
 
 - (void)invalidateTimeout {
@@ -201,9 +244,15 @@ static id ObjectOrNull(id object)
     self.webView.translatesAutoresizingMaskIntoConstraints = NO;
     self.webView.backgroundColor = [UIColor colorWithRed: 0.0 green: 0.0 blue: 0.0 alpha: 0.0];
     
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *aiString = [defaults objectForKey:@"releasebird_ai"];
+    NSString *contentUrl = [Config contentUrl];
+    
     // URL laden
     NSString *urlWithParameters;
-    urlWithParameters = [NSString stringWithFormat:@"http://localhost:4001/widget?apiKey=%@&ai=97f15296f2474fd8ad696c50722f6bc6&people=66294b84d8860667fa46431b&tab=HOME&hash=null", [ReleasebirdCore sharedInstance].apiKey];
+    urlWithParameters = [NSString stringWithFormat:@"%@/widget?apiKey=%@&ai=%@&people=66294b84d8860667fa46431b&tab=HOME&hash=null", contentUrl, [ReleasebirdCore sharedInstance].apiKey, aiString];
+    
+    NSLog(urlWithParameters);
     
     
     NSURL *url = [NSURL URLWithString:urlWithParameters];
@@ -237,7 +286,6 @@ static id ObjectOrNull(id object)
             [ReleasebirdOverlayUtils showFeedbackButton: true];
         }
     }
-    
 }
 
 

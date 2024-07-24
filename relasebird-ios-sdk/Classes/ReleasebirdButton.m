@@ -18,6 +18,18 @@ const float NOTIFICATION_BADGE_SIZE = 22.0;
     return self;
 }
 
+- (NSString *)generateRandomHexString {
+    int length = 32;
+    NSMutableString *randomString = [NSMutableString stringWithCapacity:length];
+    NSString *letters = @"0123456789abcdef";
+    
+    for (int i = 0; i < length; i++) {
+        [randomString appendFormat:@"%C", [letters characterAtIndex:arc4random_uniform((uint32_t)[letters length])]];
+    }
+    
+    return randomString;
+}
+
 - (void)initialize {
     self.autoresizingMask = UIViewAutoresizingNone;
     self.hidden = YES;
@@ -37,6 +49,13 @@ const float NOTIFICATION_BADGE_SIZE = 22.0;
         _edgeConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1 constant:-12];
 
         [self adjustConstraintsForOrientation];
+    }
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *aiString = [defaults objectForKey:@"releasebird_ai"];
+    if (aiString == nil) {
+        [defaults setObject:[self generateRandomHexString] forKey:@"releasebird_ai"];
+        [defaults synchronize];
     }
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleOrientationChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
@@ -85,7 +104,12 @@ const float NOTIFICATION_BADGE_SIZE = 22.0;
     
 
     self.backgroundColor = [ReleasebirdUtils colorFromHexString: @"#485bff"];
-    
+    NSLog(@"welche umgebung bin ich");
+    #if DEBUG
+    NSLog(@"DEBUG");
+    #elif RELEASE
+    NSLog(@"RELEASE");
+    #endif
     [self createButton];
 }
 
