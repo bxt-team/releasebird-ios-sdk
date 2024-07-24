@@ -9,10 +9,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)sharedInstance;
 
-- (void)showButton;
+- (void)showButton:(NSString *)key;
 
 @property (strong, nonatomic) NSLayoutConstraint *edgeConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *safeAreaConstraint;
+
+@property (nonatomic, assign) NSString *apiKey;
 
 @end
 NS_ASSUME_NONNULL_END

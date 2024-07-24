@@ -21,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) bool isCardSurvey;
 @property (nonatomic, assign) bool connected;
 @property (nonatomic, weak) id <ReleasebirdFrameManagerDelegate> delegate;
+@property (strong, nonatomic) NSTimer *repeatingTimer;
+
 
 @end
 

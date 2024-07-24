@@ -28,6 +28,8 @@
 		ABDA9A7DA375008BBAE94A5084A8E24D /* ReleasebirdUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E50599B9F0D65C9F4586B60E1A0C6 /* ReleasebirdUtils.m */; };
 		C563F9B0F2133E89EA28FF7AEDA47106 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
 		DF2510459BC00D268AD62383449DD1C6 /* Releasebird.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F9B605F6C928E5526E84DF83C7CC7F6 /* Releasebird.m */; };
+		E124541F2C4FE59A002B7AC3 /* ReleasebirdCore.m in Sources */ = {isa = PBXBuildFile; fileRef = E124541E2C4FE59A002B7AC3 /* ReleasebirdCore.m */; };
+		E12454212C4FE5B8002B7AC3 /* ReleasebirdCore.h in Headers */ = {isa = PBXBuildFile; fileRef = E12454202C4FE5B8002B7AC3 /* ReleasebirdCore.h */; };
 		E4C084E540E869B1919C16990FA7D90D /* ReleasebirdFrameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A2F5E55D879921AE7528FDBD90F69E /* ReleasebirdFrameViewController.m */; };
 		E99B9DB48DACCF1E3083FE8122AE6672 /* ReleasebirdWindowUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C64C115B4BBBEE8FE2414700D46077C /* ReleasebirdWindowUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F538BD0495A7A35A0A6C9F381E7E7D3E /* Releasebird.h in Headers */ = {isa = PBXBuildFile; fileRef = FFBF9F47DD906B9679C9D03D2CA06FF5 /* Releasebird.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -102,6 +104,8 @@
 		D245E0514AAC1A2B9A6D5EA2F383E90F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		D75F4DBE4FBEBCD67B5DFA4FDA2DA9E7 /* Pods-relasebird-ios-sdk_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-relasebird-ios-sdk_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		D9B4484EF9ACCCFA10545B9CB07CE50E /* Pods-relasebird-ios-sdk_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-relasebird-ios-sdk_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		E124541E2C4FE59A002B7AC3 /* ReleasebirdCore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReleasebirdCore.m; sourceTree = "<group>"; };
+		E12454202C4FE5B8002B7AC3 /* ReleasebirdCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReleasebirdCore.h; sourceTree = "<group>"; };
 		E5EA421937B0993EA14E2800938F7B73 /* Pods-relasebird-ios-sdk_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-relasebird-ios-sdk_Example-dummy.m"; sourceTree = "<group>"; };
 		EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		EF534EBF985E562E483B5760AC0B7E1D /* relasebird-ios-sdk.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "relasebird-ios-sdk.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -235,6 +239,8 @@
 				9F9B605F6C928E5526E84DF83C7CC7F6 /* Releasebird.m */,
 				DC7B4CA894190E0D8A313E3D836D80A7 /* Pod */,
 				FC932C2D7F4DD4D0B785BA07563B5B23 /* Support Files */,
+				E124541E2C4FE59A002B7AC3 /* ReleasebirdCore.m */,
+				E12454202C4FE5B8002B7AC3 /* ReleasebirdCore.h */,
 			);
 			name = "relasebird-ios-sdk";
 			path = ../..;
@@ -296,6 +302,7 @@
 				59752C2A4F55DB7BEA430D81494CA18A /* ReleasebirdFrameViewController.h in Headers */,
 				0A80001420520A78C9877035EAECBC60 /* ReleasebirdUtils.h in Headers */,
 				21C751349C6789EB4D979C07900BFDE6 /* ReleasebirdOverlayUtils.h in Headers */,
+				E12454212C4FE5B8002B7AC3 /* ReleasebirdCore.h in Headers */,
 				2BBE485951F8BF22AB600C216819860F /* ReleasebirdUIOverlayViewController.h in Headers */,
 				E99B9DB48DACCF1E3083FE8122AE6672 /* ReleasebirdWindowUtils.h in Headers */,
 				3C6FFDD73AF9A7AD06F03B08C7D26E59 /* relasebird-ios-sdk-umbrella.h in Headers */,
@@ -493,6 +500,7 @@
 				AAD92A608A02E1D0C7BF7A196A01501E /* ReleasebirdUIOverlayViewController.m in Sources */,
 				191AC1D733B445537A0C7179A3C90C35 /* ReleasebirdWindowUtils.m in Sources */,
 				684627EFC22B3EF6900770E26EB9B6D1 /* relasebird-ios-sdk-dummy.m in Sources */,
+				E124541F2C4FE59A002B7AC3 /* ReleasebirdCore.m in Sources */,
 				DF2510459BC00D268AD62383449DD1C6 /* Releasebird.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

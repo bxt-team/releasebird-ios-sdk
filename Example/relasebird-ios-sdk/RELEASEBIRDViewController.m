@@ -21,7 +21,7 @@
     //[[Releasebird sharedInstance] hello];
     // [[Releasebird sharedInstance] showButton];
     [super viewDidLoad];
-    [[Releasebird sharedInstance] showButton];
+    [[Releasebird sharedInstance] showButton:[NSString stringWithFormat:@"1cad2c1b6d7842fd937469ce3ac42ba2"]];
 }
     
 - (void)didReceiveMemoryWarning
@@ -30,5 +30,6 @@
    
     // Dispose of any resources that can be recreated.
 }
+
 
 @end

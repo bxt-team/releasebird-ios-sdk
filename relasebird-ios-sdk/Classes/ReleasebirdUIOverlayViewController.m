@@ -35,7 +35,7 @@
             [self.feedbackButton setUserInteractionEnabled: YES];
             UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTapped:)];
             [self.feedbackButton addGestureRecognizer:tapGestureRecognizer];
-        
+    
         }
     });
 }
@@ -53,7 +53,6 @@
 }
 
 - (void)showWidget {
-    
     dispatch_async(dispatch_get_main_queue(), ^{
         // Pre widget open hook.
       
@@ -66,8 +65,6 @@
         } else if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
             // App is running on ipad
             self.rbirdWidget.modalPresentationStyle = UIModalPresentationFormSheet;
-    
-            
         }
         
         UIViewController *topMostViewController = [ReleasebirdUtils getTopMostViewController];
@@ -76,8 +73,6 @@
         }
     });
 }
-
-
 
 
 - (void)updateUIPositions {

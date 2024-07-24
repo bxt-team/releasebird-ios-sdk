@@ -2,6 +2,7 @@
 #import "ReleasebirdOverlayUtils.h"
 #import "ReleasebirdFrameViewController.h"
 #import "ReleasebirdUtils.h"
+#import "ReleasebirdCore.h"
 
 @interface Releasebird ()
 
@@ -35,13 +36,11 @@ static id ObjectOrNull(id object)
     return self;
 }
 
-- (void)showButton {
+- (void)showButton:(NSString *)key {
    
+    [ReleasebirdCore sharedInstance].apiKey = key;
     [ReleasebirdOverlayUtils showFeedbackButton: true];
     //[self showWidget];
-
-   
-  
 }
 
 @end

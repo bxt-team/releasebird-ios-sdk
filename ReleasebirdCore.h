@@ -1,12 +1,12 @@
-//
-//  ReleasebirdCore.h
-//  relasebird-ios-sdk
-//
-//  Created by Christian Zillmann on 23.07.24.
-//
+#import <Foundation/Foundation.h>
 
-#ifndef ReleasebirdCore_h
-#define ReleasebirdCore_h
+NS_ASSUME_NONNULL_BEGIN
 
+@interface ReleasebirdCore : NSObject
 
-#endif /* ReleasebirdCore_h */
++ (instancetype)sharedInstance;
+
+@property (nonatomic, retain) NSString *apiKey;
+
+@end
+NS_ASSUME_NONNULL_END

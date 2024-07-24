@@ -2,7 +2,9 @@
 #import <SafariServices/SafariServices.h>
 #import <math.h>
 #import "ReleasebirdUtils.h"
+#import "Releasebird.h"
 #import "ReleasebirdOverlayUtils.h"
+#import "ReleasebirdCore.h"
 
 @interface ReleasebirdFrameViewController ()
 
@@ -14,21 +16,21 @@
 
 static id ObjectOrNull(id object)
 {
-  return object ?: [NSNull null];
+    return object ?: [NSNull null];
 }
 
 @implementation ReleasebirdFrameViewController
 
 - (id)initWithFormat:(NSString *)format
 {
-   self = [super initWithNibName: nil bundle:nil];
-   if (self != nil)
-   {
-       self.connected = NO;
-       self.view.backgroundColor = [UIColor colorWithRed: 1.0 green: 1.0 blue: 0.0 alpha: 0.0];
-       
-   }
-   return self;
+    self = [super initWithNibName: nil bundle:nil];
+    if (self != nil)
+    {
+        self.connected = NO;
+        self.view.backgroundColor = [UIColor colorWithRed: 1.0 green: 1.0 blue: 0.0 alpha: 0.0];
+        
+    }
+    return self;
 }
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
@@ -47,8 +49,63 @@ static id ObjectOrNull(id object)
     
     self.view.userInteractionEnabled = YES;
     [self createWebView];
-   
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationWillEnterForeground)
+                                                 name:UIApplicationWillEnterForegroundNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationDidEnterBackground)
+                                                 name:UIApplicationDidEnterBackgroundNotification
+                                               object:nil];
+    
+    // Timer starten, wenn die App im Vordergrund ist
+    [self startTimer];
+    
 }
+
+- (void)dealloc {
+    // Benachrichtigungen abmelden
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    // Timer invalidieren
+    [self.repeatingTimer invalidate];
+    self.repeatingTimer = nil;
+}
+
+- (void)startTimer {
+    if (!self.repeatingTimer) {
+        self.repeatingTimer = [NSTimer scheduledTimerWithTimeInterval:30.0
+                                                               target:self
+                                                             selector:@selector(executeRepeatingTask)
+                                                             userInfo:nil
+                                                              repeats:YES];
+    }
+}
+
+- (void)stopTimer {
+    if (self.repeatingTimer) {
+        [self.repeatingTimer invalidate];
+        self.repeatingTimer = nil;
+    }
+}
+
+- (void)executeRepeatingTask {
+    
+    
+    
+    NSLog(@"executeRepeatingTask called");
+}
+
+- (void)applicationWillEnterForeground {
+    NSLog(@"App will enter foreground");
+    [self startTimer];
+}
+
+- (void)applicationDidEnterBackground {
+    NSLog(@"App did enter background");
+    [self stopTimer];
+}
+
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
     return nil;
@@ -100,7 +157,6 @@ static id ObjectOrNull(id object)
     self.webView.alpha = 1.0;
 }
 
-
 - (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler
 {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:message
@@ -109,8 +165,8 @@ static id ObjectOrNull(id object)
     [alertController addAction:[UIAlertAction actionWithTitle:@"OK"
                                                         style:UIAlertActionStyleCancel
                                                       handler:^(UIAlertAction *action) {
-                                                          completionHandler();
-                                                      }]];
+        completionHandler();
+    }]];
     [self presentViewController:alertController animated:YES completion:^{}];
 }
 
@@ -121,8 +177,9 @@ static id ObjectOrNull(id object)
 }
 
 - (void)createWebView {
-   
-
+    if ([ReleasebirdCore sharedInstance].apiKey == nil) {
+        return;
+    }
     WKWebViewConfiguration *webConfiguration = [[WKWebViewConfiguration alloc] init];
     WKUserContentController* userController = [[WKUserContentController alloc] init];
     [userController addScriptMessageHandler: self name: @"rbirdCallback"];
@@ -143,9 +200,13 @@ static id ObjectOrNull(id object)
     [self.view addSubview:self.webView];
     self.webView.translatesAutoresizingMaskIntoConstraints = NO;
     self.webView.backgroundColor = [UIColor colorWithRed: 0.0 green: 0.0 blue: 0.0 alpha: 0.0];
-
+    
     // URL laden
-    NSURL *url = [NSURL URLWithString:@"http://localhost:4001/widget?apiKey=1cad2c1b6d7842fd937469ce3ac42ba2&ai=97f15296f2474fd8ad696c50722f6bc6&people=66294b84d8860667fa46431b&tab=HOME&people=66294b84d8860667fa46431b&hash=null&people=66294b84d8860667fa46431b&hash=null&people=66294b84d8860667fa46431b&hash=null&people=66294b84d8860667fa46431b&hash=null&people=66294b84d8860667fa46431b&hash=null&people=66294b84d8860667fa46431b&hash=null&people=66294b84d8860667fa46431b&hash=null&people=66294b84d8860667fa46431b&hash=null&people=66294b84d8860667fa46431b&hash=null"];
+    NSString *urlWithParameters;
+    urlWithParameters = [NSString stringWithFormat:@"http://localhost:4001/widget?apiKey=%@&ai=97f15296f2474fd8ad696c50722f6bc6&people=66294b84d8860667fa46431b&tab=HOME&hash=null", [ReleasebirdCore sharedInstance].apiKey];
+    
+    
+    NSURL *url = [NSURL URLWithString:urlWithParameters];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     [ReleasebirdOverlayUtils showFeedbackButton: false];
@@ -161,6 +222,7 @@ static id ObjectOrNull(id object)
     
     [self.webView loadRequest: request];
 }
+
 
 // Wird aufgerufen, wenn der Webinhalt-Prozess beendet wird
 - (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView {
@@ -193,9 +255,9 @@ static id ObjectOrNull(id object)
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
     NSLog(@"Geladen");
     NSString *js = @"var meta = document.createElement('meta');"
-                   "meta.name = 'viewport';"
-                   "meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';"
-                   "document.getElementsByTagName('head')[0].appendChild(meta);";
+    "meta.name = 'viewport';"
+    "meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';"
+    "document.getElementsByTagName('head')[0].appendChild(meta);";
     [webView evaluateJavaScript:js completionHandler:nil];
 }
 

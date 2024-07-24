@@ -9,6 +9,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)configure;
 - (void)refreshVisibility;
 
+- (void)showBadge;
+- (void)hideBadge;
+- (void) setBadgeText:(NSString *)value;
+
 @property (nonatomic, assign) bool initialized;
 @property (nonatomic, assign) bool showButton;
 @property (nonatomic, retain) NSString *currentButtonUrl;
@@ -16,6 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSLayoutConstraint *edgeConstraint;
 @property (strong, nonatomic) NSString *feedbackButtonPosition;
 
+
+@property (nonatomic, retain) UIView *notificationBadgeView;
+@property (nonatomic, retain) UILabel *notificationBadgeLabel;
 
 
 @end

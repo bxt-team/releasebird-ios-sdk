@@ -5,6 +5,9 @@
 const double kButtonDimension = 56.0;
 const float kNotificationBadgeDimension = 22.0;
 
+const double BUTTON_SIZE = 56.0;
+const float NOTIFICATION_BADGE_SIZE = 22.0;
+
 @implementation ReleasebirdButton
 
 - (id)initWithFrame:(CGRect)rect {
@@ -269,11 +272,46 @@ const float kNotificationBadgeDimension = 22.0;
         [NSLayoutConstraint activateConstraints:@[yConstraint, widthConstraint, heightConstraint]];
         
         [self adjustConstraintsForOrientation];
+        
+        [self addBadge];
     }
 }
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
+}
+
+-(void)addBadge {
+    self.notificationBadgeView = [[UIView alloc] initWithFrame: CGRectMake(self.frame.size.width - (NOTIFICATION_BADGE_SIZE - 5.0), -5.0, NOTIFICATION_BADGE_SIZE, NOTIFICATION_BADGE_SIZE)];
+        self.notificationBadgeView.backgroundColor = [UIColor redColor];
+        self.notificationBadgeView.layer.cornerRadius = NOTIFICATION_BADGE_SIZE / 2.0;
+        self.notificationBadgeView.translatesAutoresizingMaskIntoConstraints = NO;
+        [self addSubview: self.notificationBadgeView];
+        self.notificationBadgeView.hidden = YES;
+        
+        [_notificationBadgeView.heightAnchor constraintEqualToConstant: NOTIFICATION_BADGE_SIZE].active = YES;
+        [_notificationBadgeView.widthAnchor constraintEqualToConstant: NOTIFICATION_BADGE_SIZE].active = YES;
+        [_notificationBadgeView.trailingAnchor constraintEqualToAnchor: self.trailingAnchor constant: 5.0].active = YES;
+        [_notificationBadgeView.topAnchor constraintEqualToAnchor: self.topAnchor constant: -5.0].active = YES;
+        
+        self.notificationBadgeLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, 0, NOTIFICATION_BADGE_SIZE, NOTIFICATION_BADGE_SIZE)];
+        self.notificationBadgeLabel.font = [UIFont systemFontOfSize: 11 weight: UIFontWeightBold];
+        self.notificationBadgeLabel.textColor = [UIColor whiteColor];
+        self.notificationBadgeLabel.textAlignment = NSTextAlignmentCenter;
+        
+        [self.notificationBadgeView addSubview: self.notificationBadgeLabel];
+}
+
+-(void)showBadge {
+    self.notificationBadgeView.hidden = NO;
+}
+
+-(void)hideBadge {
+    self.notificationBadgeView.hidden = YES;
+}
+
+-(void)setBadgeText:(NSString *)value {
+    self.notificationBadgeLabel.text = value;
 }
 
 @end
