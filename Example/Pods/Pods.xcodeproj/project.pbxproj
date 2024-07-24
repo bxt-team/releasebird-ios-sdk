@@ -32,6 +32,8 @@
 		E12454212C4FE5B8002B7AC3 /* ReleasebirdCore.h in Headers */ = {isa = PBXBuildFile; fileRef = E12454202C4FE5B8002B7AC3 /* ReleasebirdCore.h */; };
 		E12454232C50F976002B7AC3 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = E12454222C50F976002B7AC3 /* Config.m */; };
 		E12454252C50FB3C002B7AC3 /* Config.h in Headers */ = {isa = PBXBuildFile; fileRef = E12454242C50FB3C002B7AC3 /* Config.h */; };
+		E12454272C51310C002B7AC3 /* FullscreenImageViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E12454262C51310B002B7AC3 /* FullscreenImageViewController.h */; };
+		E12454292C513127002B7AC3 /* FulscreenImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E12454282C513127002B7AC3 /* FulscreenImageViewController.m */; };
 		E4C084E540E869B1919C16990FA7D90D /* ReleasebirdFrameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A2F5E55D879921AE7528FDBD90F69E /* ReleasebirdFrameViewController.m */; };
 		E99B9DB48DACCF1E3083FE8122AE6672 /* ReleasebirdWindowUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C64C115B4BBBEE8FE2414700D46077C /* ReleasebirdWindowUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F538BD0495A7A35A0A6C9F381E7E7D3E /* Releasebird.h in Headers */ = {isa = PBXBuildFile; fileRef = FFBF9F47DD906B9679C9D03D2CA06FF5 /* Releasebird.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -110,6 +112,8 @@
 		E12454202C4FE5B8002B7AC3 /* ReleasebirdCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReleasebirdCore.h; sourceTree = "<group>"; };
 		E12454222C50F976002B7AC3 /* Config.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Config.m; sourceTree = "<group>"; };
 		E12454242C50FB3C002B7AC3 /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		E12454262C51310B002B7AC3 /* FullscreenImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FullscreenImageViewController.h; sourceTree = "<group>"; };
+		E12454282C513127002B7AC3 /* FulscreenImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FulscreenImageViewController.m; sourceTree = "<group>"; };
 		E5EA421937B0993EA14E2800938F7B73 /* Pods-relasebird-ios-sdk_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-relasebird-ios-sdk_Example-dummy.m"; sourceTree = "<group>"; };
 		EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		EF534EBF985E562E483B5760AC0B7E1D /* relasebird-ios-sdk.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "relasebird-ios-sdk.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -247,6 +251,8 @@
 				E12454202C4FE5B8002B7AC3 /* ReleasebirdCore.h */,
 				E12454222C50F976002B7AC3 /* Config.m */,
 				E12454242C50FB3C002B7AC3 /* Config.h */,
+				E12454262C51310B002B7AC3 /* FullscreenImageViewController.h */,
+				E12454282C513127002B7AC3 /* FulscreenImageViewController.m */,
 			);
 			name = "relasebird-ios-sdk";
 			path = ../..;
@@ -307,6 +313,7 @@
 				E12454252C50FB3C002B7AC3 /* Config.h in Headers */,
 				5D445DE35E2DFC18B849081E24AF3505 /* ReleasebirdButton.h in Headers */,
 				59752C2A4F55DB7BEA430D81494CA18A /* ReleasebirdFrameViewController.h in Headers */,
+				E12454272C51310C002B7AC3 /* FullscreenImageViewController.h in Headers */,
 				0A80001420520A78C9877035EAECBC60 /* ReleasebirdUtils.h in Headers */,
 				21C751349C6789EB4D979C07900BFDE6 /* ReleasebirdOverlayUtils.h in Headers */,
 				E12454212C4FE5B8002B7AC3 /* ReleasebirdCore.h in Headers */,
@@ -508,6 +515,7 @@
 				E12454232C50F976002B7AC3 /* Config.m in Sources */,
 				191AC1D733B445537A0C7179A3C90C35 /* ReleasebirdWindowUtils.m in Sources */,
 				684627EFC22B3EF6900770E26EB9B6D1 /* relasebird-ios-sdk-dummy.m in Sources */,
+				E12454292C513127002B7AC3 /* FulscreenImageViewController.m in Sources */,
 				E124541F2C4FE59A002B7AC3 /* ReleasebirdCore.m in Sources */,
 				DF2510459BC00D268AD62383449DD1C6 /* Releasebird.m in Sources */,
 			);

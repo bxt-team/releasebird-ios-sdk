@@ -6,6 +6,8 @@
 #import "ReleasebirdOverlayUtils.h"
 #import "ReleasebirdCore.h"
 #import "Config.h"
+#import "FullscreenImageViewController.h"
+
 
 @interface ReleasebirdFrameViewController ()
 
@@ -281,11 +283,18 @@ static id ObjectOrNull(id object)
 -(void)userContentController:(WKUserContentController*)userContentController didReceiveScriptMessage:(WKScriptMessage*)message
 {
     if ([message.name isEqualToString:@"rbirdCallback"]) {
-        if ([message.body isEqualToString:@"close"]) {
-            [self dismissViewControllerAnimated:YES completion:nil];
-            [ReleasebirdOverlayUtils showFeedbackButton: true];
+        if ([message.body isKindOfClass:[NSString class]]) {
+            if ([message.body isEqualToString:@"close"]) {
+                [self dismissViewControllerAnimated:YES completion:nil];
+                [ReleasebirdOverlayUtils showFeedbackButton: true];
+            }
+        } else if ([((NSDictionary *) message.body)[@"key"] isEqualToString:@"showImage"]) {
+            NSDictionary *dictionary = (NSDictionary *)message.body;
+            NSString *urlString = dictionary[@"url"];
+            FullscreenImageViewController *fullscreenVC = [[FullscreenImageViewController alloc] initWithImageURL:[NSURL URLWithString:urlString]];
+            [self presentViewController:fullscreenVC animated:YES completion:nil];
+           }
         }
-    }
 }
 
 
