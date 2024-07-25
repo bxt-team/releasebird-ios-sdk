@@ -3,6 +3,7 @@
 #import "ReleasebirdFrameViewController.h"
 #import "ReleasebirdUtils.h"
 #import "ReleasebirdCore.h"
+#import "Config.h"
 
 @interface Releasebird ()
 
@@ -37,14 +38,51 @@ static id ObjectOrNull(id object)
 }
 
 - (void)showButton:(NSString *)key {
-   
     [ReleasebirdCore sharedInstance].apiKey = key;
-    [ReleasebirdOverlayUtils showFeedbackButton: true];
-    //[self showWidget];
+    [self fetchWidgetSettingsFromAPI:[Config baseURL] withApiKey:key];
 }
 
 - (void)identify:(NSObject *)identifyJson {
    
+}
+
+- (void)fetchWidgetSettingsFromAPI:(NSString *)API withApiKey:(NSString *)apiKey {
+    NSString *urlString = [NSString stringWithFormat:@"%@/ewidget", API];
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"GET"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:apiKey forHTTPHeaderField:@"apiKey"];
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error) {
+            NSLog(@"Error: %@", error.localizedDescription);
+            // Handle error
+            return;
+        }
+        
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        if (httpResponse.statusCode == 200 || httpResponse.statusCode == 201) {
+            @try {
+                NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                [ReleasebirdCore sharedInstance].widgetSettings = jsonResponse;
+                NSLog(@"Widget Settings4: %@", [ReleasebirdCore sharedInstance].widgetSettings);
+                if ([ReleasebirdCore sharedInstance].widgetSettings != nil) {
+                    [ReleasebirdOverlayUtils showFeedbackButton: true];
+                }
+                
+            } @catch (NSException *exception) {
+                // Handle parsing error
+                NSLog(@"Parsing exception: %@", exception.reason);
+            }
+        } else {
+            NSLog(@"HTTP Error: %ld", (long)httpResponse.statusCode);
+        }
+    }];
+    
+    [dataTask resume];
 }
 
 - (void)sendIdentifyCall:(NSString *)API withApiKey:(NSString *)apiKey anonymousIdentifier:(NSString *)anonymousIdentifier andStateIdentify:(NSDictionary *)stateIdentify hash:(NSString *)hash {

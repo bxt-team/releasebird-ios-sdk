@@ -16,7 +16,5 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSLayoutConstraint *edgeConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *safeAreaConstraint;
 
-@property (nonatomic, assign) NSString *apiKey;
-
 @end
 NS_ASSUME_NONNULL_END

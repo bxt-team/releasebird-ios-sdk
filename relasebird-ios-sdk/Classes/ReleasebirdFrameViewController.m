@@ -310,7 +310,6 @@ static id ObjectOrNull(id object)
 
 // WKNavigationDelegate method to inject the viewport meta tag
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
-    NSLog(@"Geladen");
     NSString *js = @"var meta = document.createElement('meta');"
     "meta.name = 'viewport';"
     "meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';"

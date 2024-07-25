@@ -1,6 +1,7 @@
 #import "ReleasebirdButton.h"
 #import "ReleasebirdOverlayUtils.h"
 #import "ReleasebirdUtils.h"
+#import "ReleasebirdCore.h"
 
 const double kButtonDimension = 56.0;
 const float kNotificationBadgeDimension = 22.0;
@@ -102,14 +103,8 @@ const float NOTIFICATION_BADGE_SIZE = 22.0;
     self.layer.masksToBounds = NO;
     self.clipsToBounds = NO;
     
-
     self.backgroundColor = [ReleasebirdUtils colorFromHexString: @"#485bff"];
-    NSLog(@"welche umgebung bin ich");
-    #if DEBUG
-    NSLog(@"DEBUG");
-    #elif RELEASE
-    NSLog(@"RELEASE");
-    #endif
+    
     [self createButton];
 }
 
@@ -158,7 +153,7 @@ const float NOTIFICATION_BADGE_SIZE = 22.0;
         } else {
             UIInterfaceOrientation orientation = [self reliableInterfaceOrientation];
             
-            if ([self.feedbackButtonPosition isEqualToString: @"BOTTOM_LEFT"]) {
+            if ([self.feedbackButtonPosition isEqualToString: @"left"]) {
                 if (orientation == UIDeviceOrientationLandscapeLeft) {
                     shouldActivateEdgeConstraint = NO;
                     shouldActivateSafeAreaConstraint = YES;
@@ -240,8 +235,9 @@ const float NOTIFICATION_BADGE_SIZE = 22.0;
    
     self.translatesAutoresizingMaskIntoConstraints = NO;
     self.layer.cornerRadius = kButtonDimension / 2.0;
-    
-    self.feedbackButtonPosition = @"BOTTOM_LEFT";
+    NSLog(@"bin hier");
+    NSLog(@"Widget Settings3: %@", [ReleasebirdCore sharedInstance].widgetSettings);
+    self.feedbackButtonPosition = [ReleasebirdCore sharedInstance].widgetSettings[@"launcherPosition"];
     
     NSString *buttonLogo = @"https://sdk.gleap.io/res/chatbubble.png";
 
@@ -263,8 +259,8 @@ const float NOTIFICATION_BADGE_SIZE = 22.0;
     }
     
     
-    float buttonX = 10;
-    float buttonY = 50;
+    float buttonX = [[ReleasebirdCore sharedInstance].widgetSettings[@"spaceLeftRight"] floatValue];
+    float buttonY = [[ReleasebirdCore sharedInstance].widgetSettings[@"spaceBottom"] floatValue];
     
     if (self.superview != nil) {
         NSLayoutConstraint *yConstraint;
@@ -274,7 +270,7 @@ const float NOTIFICATION_BADGE_SIZE = 22.0;
         if (@available(iOS 11, *)) {
             UILayoutGuide *guide = self.superview.safeAreaLayoutGuide;
             
-            if ([self.feedbackButtonPosition isEqualToString: @"BOTTOM_LEFT"]) {
+            if ([self.feedbackButtonPosition isEqualToString: @"left"]) {
                 _edgeConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem: self.superview attribute:NSLayoutAttributeLeading multiplier:1 constant: buttonX];
                 
                 if (@available(iOS 11, *)) {

@@ -2,6 +2,7 @@
 #import "ReleasebirdOverlayUtils.h"
 #import "ReleasebirdFrameViewController.h"
 #import "ReleasebirdUtils.h"
+#import "ReleasebirdCore.h"
 
 @interface ReleasebirdUIOverlayViewController ()
 
