@@ -103,7 +103,7 @@ const float NOTIFICATION_BADGE_SIZE = 22.0;
     self.layer.masksToBounds = NO;
     self.clipsToBounds = NO;
     
-    self.backgroundColor = [ReleasebirdUtils colorFromHexString: @"#485bff"];
+    self.backgroundColor = [ReleasebirdUtils colorFromHexString: [ReleasebirdCore sharedInstance].widgetSettings[@"backgroundColor"]];
     
     [self createButton];
 }
@@ -235,8 +235,6 @@ const float NOTIFICATION_BADGE_SIZE = 22.0;
    
     self.translatesAutoresizingMaskIntoConstraints = NO;
     self.layer.cornerRadius = kButtonDimension / 2.0;
-    NSLog(@"bin hier");
-    NSLog(@"Widget Settings3: %@", [ReleasebirdCore sharedInstance].widgetSettings);
     self.feedbackButtonPosition = [ReleasebirdCore sharedInstance].widgetSettings[@"launcherPosition"];
     
     NSString *buttonLogo = @"https://sdk.gleap.io/res/chatbubble.png";
