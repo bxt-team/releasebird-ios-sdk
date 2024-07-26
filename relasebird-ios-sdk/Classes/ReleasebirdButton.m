@@ -232,12 +232,12 @@ const float NOTIFICATION_BADGE_SIZE = 22.0;
 }
 
 - (void)createButton {
-   
+    
     self.translatesAutoresizingMaskIntoConstraints = NO;
     self.layer.cornerRadius = kButtonDimension / 2.0;
     self.feedbackButtonPosition = [ReleasebirdCore sharedInstance].widgetSettings[@"launcherPosition"];
-    
-    NSString *buttonLogo = @"https://sdk.gleap.io/res/chatbubble.png";
+    NSLog(@"%@", [ReleasebirdCore sharedInstance].widgetSettings[[NSString stringWithFormat:@"chatBubbleUrl%@", [ReleasebirdCore sharedInstance].widgetSettings[@"launcher"]]]);
+    NSString *buttonLogo = [ReleasebirdCore sharedInstance].widgetSettings[[NSString stringWithFormat:@"chatBubbleUrl%@", [ReleasebirdCore sharedInstance].widgetSettings[@"launcher"]]];
 
     if (![buttonLogo isEqualToString: self.currentButtonUrl]) {
         self.currentButtonUrl = buttonLogo;
