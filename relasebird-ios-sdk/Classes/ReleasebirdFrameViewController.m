@@ -93,9 +93,17 @@ static id ObjectOrNull(id object)
     }
 }
 
+- (NSDictionary *) wrapDictionaryWithProperties: (NSDictionary *) originalDictionary {
+    NSDictionary *newDictionary = @{
+        @"properties": originalDictionary
+        //@"hash": null
+    };
+    return newDictionary;
+}
+
 - (void)executeRepeatingTask {
     NSLog(@"executeRepeatingTask called");
-    //[self sendPingRequest:[Config baseURL] withApiKey: [ReleasebirdCore sharedInstance].apiKey andStateIdentify:[[NSDictionary alloc] init]];
+    [self sendPingRequest:[Config baseURL] withApiKey: [ReleasebirdCore sharedInstance].apiKey andStateIdentify:[[ReleasebirdCore sharedInstance] getIdentifyState]];
 }
 
 - (void)applicationWillEnterForeground {
@@ -124,9 +132,14 @@ static id ObjectOrNull(id object)
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:apiKey forHTTPHeaderField:@"apiKey"];
     
+    NSDictionary *identifyState = [[ReleasebirdCore sharedInstance] getIdentifyState];
+    
+    [request setValue:identifyState[@"people"] forHTTPHeaderField:@"peopleId"];
+    [request setValue:[[ReleasebirdCore sharedInstance] getAIValue] forHTTPHeaderField:@"ai"];
+    
     // Konvertiere stateIdentify in JSON-Daten
     NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:stateIdentify options:0 error:&error];
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject: [self wrapDictionaryWithProperties:stateIdentify] options:0 error:&error];
     if (!jsonData) {
         NSLog(@"Error serializing JSON: %@", error.localizedDescription);
         return;
@@ -232,7 +245,6 @@ static id ObjectOrNull(id object)
     [userController addScriptMessageHandler: self name: @"rbirdCallback"];
     webConfiguration.userContentController = userController;
     
-    
     self.webView = [[WKWebView alloc] initWithFrame:CGRectZero configuration:webConfiguration];
     self.webView.translatesAutoresizingMaskIntoConstraints = NO;
     self.webView.navigationDelegate = self;
@@ -252,12 +264,10 @@ static id ObjectOrNull(id object)
     NSString *aiString = [defaults objectForKey:@"releasebird_ai"];
     NSString *contentUrl = [Config contentUrl];
     
-    // URL laden
+    NSDictionary *identifyState = [[ReleasebirdCore sharedInstance] getIdentifyState];
+    
     NSString *urlWithParameters;
-    urlWithParameters = [NSString stringWithFormat:@"%@/widget?apiKey=%@&ai=%@&people=66294b84d8860667fa46431b&tab=HOME&hash=null", contentUrl, [ReleasebirdCore sharedInstance].apiKey, aiString];
-    
-    NSLog(urlWithParameters);
-    
+    urlWithParameters = [NSString stringWithFormat:@"%@/widget?apiKey=%@&ai=%@&people=%@&tab=HOME&hash=null", contentUrl, [ReleasebirdCore sharedInstance].apiKey, aiString, [identifyState objectForKey:@"people"]];
     
     NSURL *url = [NSURL URLWithString:urlWithParameters];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];

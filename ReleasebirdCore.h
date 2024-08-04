@@ -8,6 +8,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSString *) getAIValue;
 
+- (NSString *) getUnreadMessages;
+
+- (NSDictionary *) getIdentifyState;
+
 @property (nonatomic, retain) NSString *apiKey;
 
 @property (nonatomic, retain) NSDictionary *widgetSettings;

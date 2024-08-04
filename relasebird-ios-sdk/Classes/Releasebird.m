@@ -125,8 +125,8 @@ static id ObjectOrNull(id object)
 
 - (NSDictionary *) wrapDictionaryWithProperties: (NSDictionary *) originalDictionary {
     NSDictionary *newDictionary = @{
-        @"properties": originalDictionary,
-        @"hasn": @123 // NSNumber für Integer-Werte
+        @"properties": originalDictionary
+        //@"hash": null
     };
     return newDictionary;
 }
@@ -162,20 +162,21 @@ static id ObjectOrNull(id object)
         if (httpResponse.statusCode == 200 || httpResponse.statusCode == 201) {
             @try {
                 NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                NSLog(@"hab die response %@", responseDict);
+                
                 if ([responseDict[@"valid"] boolValue]) {
+                    NSLog(@"bin valid");
                     // Handle success
                     NSMutableDictionary *state = [stateIdentify mutableCopy];
                     state[@"people"] = responseDict[@"peopleId"];
                     if (hash) {
                         state[@"hash"] = hash;
                     }
-                    [[NSUserDefaults standardUserDefaults] setObject:[NSJSONSerialization dataWithJSONObject:state options:0 error:nil] forKey:@"rbird_state"];
+                    [[NSUserDefaults standardUserDefaults] setObject:state forKey:@"rbird_state"];
                     [[NSUserDefaults standardUserDefaults] synchronize];
                     
-                    // Update iframe
-                    NSString *CONTENT_URL = @"https://content.example.com"; // Ersetze dies durch deine CONTENT_URL
-                    NSString *iframeURL = [NSString stringWithFormat:@"%@/widget?apiKey=%@&tab=HOME&people=%@&hash=%@&ai=%@", CONTENT_URL, apiKey, responseDict[@"peopleId"], hash, anonymousIdentifier];
-                    [self updateIframeWithURL:iframeURL];
+                    NSLog(@"hab gesetzt");
+                    
                 }
             } @catch (NSException *exception) {
                 // Handle error
@@ -193,11 +194,6 @@ static id ObjectOrNull(id object)
 
 - (NSString *)getCurrentTimeZone {
     return [NSTimeZone localTimeZone].name;
-}
-
-- (void)updateIframeWithURL:(NSString *)urlString {
-    // Update iframe logic here
-    NSLog(@"Update iframe with URL: %@", urlString);
 }
 
 

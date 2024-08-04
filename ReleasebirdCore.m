@@ -33,6 +33,29 @@
     }
 }
 
+- (NSString *) getUnreadMessages {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *unread = [defaults stringForKey:@"unreadMessages"];
+    
+    if (unread) {
+        return unread;
+    } else {
+        return nil;
+    }
+}
+
+- (NSDictionary *) getIdentifyState; {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *storedState = [defaults dictionaryForKey:@"rbird_state"];
+    
+    if (storedState) {
+        NSLog(@"Rbird State ausgelesen: %@", storedState);
+        return storedState;
+    } else {
+        NSLog(@"Kein Rbird State gefunden.");
+        return nil;
+    }
+}
 
 - (id)init {
     self = [super init];

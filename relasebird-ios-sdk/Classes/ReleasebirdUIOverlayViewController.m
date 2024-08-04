@@ -27,7 +27,6 @@
         if (keyWindow != nil) {
             self.internalNotifications = [[NSMutableArray alloc] init];
             self.notificationViews = [[NSMutableArray alloc] init];
-            
             // Render feedback button.
             self.feedbackButton = [[ReleasebirdButton alloc] initWithFrame: CGRectMake(0, 0, 54.0, 54.0)];
             [keyWindow addSubview: self.feedbackButton];
