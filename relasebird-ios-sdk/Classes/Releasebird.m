@@ -39,11 +39,12 @@ static id ObjectOrNull(id object)
 
 - (void)showButton:(NSString *)key {
     [ReleasebirdCore sharedInstance].apiKey = key;
+    [self checkAndStoreAIValue];
     [self fetchWidgetSettingsFromAPI:[Config baseURL] withApiKey:key];
 }
 
-- (void)identify:(NSObject *)identifyJson {
-   
+- (void)identify:(NSDictionary *)identifyJson {
+    [self sendIdentifyCall:[Config baseURL] withApiKey:[ReleasebirdCore sharedInstance].apiKey anonymousIdentifier:[[ReleasebirdCore sharedInstance] getAIValue] andStateIdentify:identifyJson hash:nil];
 }
 
 - (void)fetchWidgetSettingsFromAPI:(NSString *)API withApiKey:(NSString *)apiKey {
@@ -85,6 +86,51 @@ static id ObjectOrNull(id object)
     [dataTask resume];
 }
 
+- (NSString *)generateRandomString {
+    NSString *characters = @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    NSUInteger length = 60;
+    NSMutableString *randomString = [NSMutableString stringWithCapacity:length];
+    
+    for (NSUInteger i = 0; i < length; i++) {
+        u_int32_t randomIndex = arc4random_uniform((u_int32_t)characters.length);
+        unichar randomChar = [characters characterAtIndex:randomIndex];
+        [randomString appendFormat:@"%C", randomChar];
+    }
+    
+    return randomString;
+}
+
+- (void)checkAndStoreAIValue {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *storedAIValue = [defaults stringForKey:@"ai"];
+    
+    if (storedAIValue == nil) {
+        NSString *newAIValue = [self generateRandomString];
+        [defaults setObject:newAIValue forKey:@"ai"];
+        [defaults synchronize];
+        
+        NSLog(@"Neuer AI-Wert generiert und gespeichert: %@", newAIValue);
+    } else {
+        // Wert vorhanden, nichts zu tun
+        NSLog(@"AI-Wert bereits vorhanden: %@", storedAIValue);
+    }
+}
+
+- (NSData *)jsonDataFromDictionary:(NSDictionary *) dictionary {
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary
+                                                       options:0
+                                                         error:nil];
+    return jsonData;
+}
+
+- (NSDictionary *) wrapDictionaryWithProperties: (NSDictionary *) originalDictionary {
+    NSDictionary *newDictionary = @{
+        @"properties": originalDictionary,
+        @"hasn": @123 // NSNumber für Integer-Werte
+    };
+    return newDictionary;
+}
+
 - (void)sendIdentifyCall:(NSString *)API withApiKey:(NSString *)apiKey anonymousIdentifier:(NSString *)anonymousIdentifier andStateIdentify:(NSDictionary *)stateIdentify hash:(NSString *)hash {
     // Erstelle die URL
     NSString *urlString = [NSString stringWithFormat:@"%@/ewidget/identify", API];
@@ -97,13 +143,8 @@ static id ObjectOrNull(id object)
     [request setValue:[self getCurrentTimeZone] forHTTPHeaderField:@"timezone"];
     [request setValue:apiKey forHTTPHeaderField:@"apiKey"];
     
-    // Konvertiere stateIdentify in JSON-Daten
-    NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:stateIdentify options:0 error:&error];
-    if (!jsonData) {
-        NSLog(@"Error serializing JSON: %@", error.localizedDescription);
-        return;
-    }
+    NSData *jsonData = [self jsonDataFromDictionary: [self wrapDictionaryWithProperties:stateIdentify]];
+    
     [request setHTTPBody:jsonData];
     
     // Erstelle die URLSession

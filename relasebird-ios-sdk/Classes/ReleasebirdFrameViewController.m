@@ -7,6 +7,7 @@
 #import "ReleasebirdCore.h"
 #import "Config.h"
 #import "FullscreenImageViewController.h"
+#import "ReleasebirdCore.h"
 
 
 @interface ReleasebirdFrameViewController ()
@@ -94,6 +95,7 @@ static id ObjectOrNull(id object)
 
 - (void)executeRepeatingTask {
     NSLog(@"executeRepeatingTask called");
+    //[self sendPingRequest:[Config baseURL] withApiKey: [ReleasebirdCore sharedInstance].apiKey andStateIdentify:[[NSDictionary alloc] init]];
 }
 
 - (void)applicationWillEnterForeground {
