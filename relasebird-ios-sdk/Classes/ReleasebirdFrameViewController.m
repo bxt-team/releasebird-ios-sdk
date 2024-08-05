@@ -64,6 +64,7 @@ static id ObjectOrNull(id object)
     
     // Timer starten, wenn die App im Vordergrund ist
     [self startTimer];
+    [[ReleasebirdCore sharedInstance] getUnreadCount];
     
 }
 
@@ -300,7 +301,11 @@ static id ObjectOrNull(id object)
                 [self dismissViewControllerAnimated:YES completion:nil];
                 [ReleasebirdOverlayUtils showFeedbackButton: true];
             }
-        } else if ([((NSDictionary *) message.body)[@"key"] isEqualToString:@"showImage"]) {
+            if ([message.body isEqualToString:@"newMessageArrived"]) {
+                [[ReleasebirdCore sharedInstance] getUnreadCount];
+            }
+        }
+        else if ([((NSDictionary *) message.body)[@"key"] isEqualToString:@"showImage"]) {
             NSDictionary *dictionary = (NSDictionary *)message.body;
             NSString *urlString = dictionary[@"url"];
             FullscreenImageViewController *fullscreenVC = [[FullscreenImageViewController alloc] initWithImageURL:[NSURL URLWithString:urlString]];

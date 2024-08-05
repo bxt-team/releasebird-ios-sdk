@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSDictionary *) getIdentifyState;
 
+- (void)getUnreadCount;
+
 @property (nonatomic, retain) NSString *apiKey;
 
 @property (nonatomic, retain) NSDictionary *widgetSettings;

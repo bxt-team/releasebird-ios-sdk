@@ -32,10 +32,29 @@ static id ObjectOrNull(id object)
 
 - (id)init {
     self = [super init];
+    [self startObserving];
     if (self) {
     }
     return self;
 }
+
+- (void)startObserving {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationWillEnterForeground)
+                                                 name:UIApplicationWillEnterForegroundNotification
+                                               object:nil];
+}
+
+- (void)applicationWillEnterForeground {
+    // Aktion ausführen, wenn die App in den Vordergrund kommt
+    [[ReleasebirdCore sharedInstance] getUnreadCount];
+}
+
+- (void)dealloc {
+    // Abmelden von Benachrichtigungen
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 
 - (void)showButton:(NSString *)key {
     [ReleasebirdCore sharedInstance].apiKey = key;
