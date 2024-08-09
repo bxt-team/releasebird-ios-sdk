@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:relasebird-ios-sdk.xcodeproj">
+      location = "self:releasebird-ios-sdk.xcodeproj">
    </FileRef>
 </Workspace>

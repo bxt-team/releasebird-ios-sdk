@@ -1,6 +1,0 @@
-framework module Pods_relasebird_ios_sdk_Tests {
-  umbrella header "Pods-relasebird-ios-sdk_Tests-umbrella.h"
-
-  export *
-  module * { export * }
-}

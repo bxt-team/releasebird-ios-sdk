@@ -1,6 +1,6 @@
 //
-//  relasebird-ios-sdkTests.m
-//  relasebird-ios-sdkTests
+//  releasebird-ios-sdkTests.m
+//  releasebird-ios-sdkTests
 //
 //  Created by czillmann on 07/01/2024.
 //  Copyright (c) 2024 czillmann. All rights reserved.

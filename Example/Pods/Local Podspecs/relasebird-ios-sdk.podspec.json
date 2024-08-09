@@ -1,9 +1,9 @@
 {
-  "name": "relasebird-ios-sdk",
+  "name": "releasebird-ios-sdk",
   "version": "0.1.0",
-  "summary": "A short description of relasebird-ios-sdk.",
+  "summary": "A short description of releasebird-ios-sdk.",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/czillmann/relasebird-ios-sdk",
+  "homepage": "https://github.com/czillmann/releasebird-ios-sdk",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,16 +12,16 @@
     "czillmann": "christian.zillmann"
   },
   "source": {
-    "git": "https://github.com/czillmann/relasebird-ios-sdk.git",
+    "git": "https://github.com/czillmann/releasebird-ios-sdk.git",
     "tag": "0.1.0"
   },
   "platforms": {
     "ios": "10.0"
   },
-  "source_files": "relasebird-ios-sdk/Classes/**/*",
+  "source_files": "releasebird-ios-sdk/Classes/**/*",
   "resource_bundles": {
-    "relasebird-ios-sdk": [
-      "relasebird-ios-sdk/Assets/*.png"
+    "releasebird-ios-sdk": [
+      "releasebird-ios-sdk/Assets/*.png"
     ]
   },
   "public_header_files": "Pod/Classes/**/*.h",

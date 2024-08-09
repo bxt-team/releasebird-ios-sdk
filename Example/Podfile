@@ -2,10 +2,10 @@ use_frameworks!
 
 platform :ios, '10.0'
 
-target 'relasebird-ios-sdk_Example' do
-  pod 'relasebird-ios-sdk', :path => '../'
+target 'releasebird-ios-sdk_Example' do
+  pod 'releasebird-ios-sdk', :path => '../'
 
-  target 'relasebird-ios-sdk_Tests' do
+  target 'releasebird-ios-sdk_Tests' do
     inherit! :search_paths
 
     
