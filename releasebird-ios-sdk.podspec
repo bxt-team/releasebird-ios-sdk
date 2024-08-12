@@ -1,38 +1,38 @@
-[!] Unknown command: `releasebird-ios-sdk,`
-Did you mean: deintegrate?
+#
+# Be sure to run `pod lib lint releasebird-ios-sdk.podspec' to ensure this is a
+# valid spec before submitting.
+#
+# Any lines starting with a # are optional, but their use is encouraged
+# To learn more about a Podspec see https://guides.cocoapods.org/syntax/podspec.html
+#
 
-Usage:
+Pod::Spec.new do |s|
+  s.name             = 'releasebird-ios-sdk'
+  s.version          = '1.0.1'
+  s.summary          = 'A short description of releasebird-ios-sdk.'
 
-    $ pod COMMAND
+# This description is used to generate tags and improve search results.
+#   * Think: What does it do? Why did you write it? What is the focus?
+#   * Try to keep it short, snappy and to the point.
+#   * Write the description between the DESC delimiters below.
+#   * Finally, don't worry about the indent, CocoaPods strips it!
 
-      CocoaPods, the Cocoa library package manager.
+  s.description      = <<-DESC
+TODO: Add long description of the pod here.
+                       DESC
 
-Commands:
+  s.homepage         = 'https://github.com/bxt-team/releasebird-ios-sdk'
+  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.license          = { :type => 'MIT', :file => 'LICENSE' }
+  s.author           = { 'czillmann' => 'christian.zillmann' }
+  s.source           = { :git => 'https://github.com/bxt-team/releasebird-ios-sdk.git', :tag => s.version.to_s }
+  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-    + cache         Manipulate the CocoaPods cache
-    + deintegrate   Deintegrate CocoaPods from your project
-    + env           Display pod environment
-    + init          Generate a Podfile for the current directory
-    + install       Install project dependencies according to versions from a
-                    Podfile.lock
-    + ipc           Inter-process communication
-    + lib           Develop pods
-    + list          List pods
-    + outdated      Show outdated project dependencies
-    + plugins       Show available CocoaPods plugins
-    + repo          Manage spec-repositories
-    + search        Search for pods
-    + setup         Set up the CocoaPods environment
-    + spec          Manage pod specs
-    + trunk         Interact with the CocoaPods API (e.g. publishing new specs)
-    + try           Try a Pod!
-    + update        Update outdated project dependencies and create new Podfile.lock
-
-Options:
-
-    --allow-root    Allows CocoaPods to run as root
-    --silent        Show nothing
-    --version       Show the version of the tool
-    --verbose       Show more debugging information
-    --no-ansi       Show output without ANSI codes
-    --help          Show help banner of specified command
+  s.ios.deployment_target = '12.0'
+  
+  s.source_files = 'releasebird-ios-sdk/**/*.{h,m,c}'
+  s.public_header_files = 'releasebird-ios-sdk/**/*.h'
+  
+  s.frameworks = 'UIKit'
+  # s.dependency 'AFNetworking', '~> 2.3'
+end
