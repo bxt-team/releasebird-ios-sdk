@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'releasebird-ios-sdk'
-  s.version          = '0.1.0'
+  s.version          = '1.0.0'
   s.summary          = 'A short description of releasebird-ios-sdk.'
 
 # This description is used to generate tags and improve search results.
@@ -21,22 +21,18 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/czillmann/releasebird-ios-sdk'
+  s.homepage         = 'https://github.com/bxt-team/releasebird-ios-sdk'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'czillmann' => 'christian.zillmann' }
-  s.source           = { :git => 'https://github.com/czillmann/releasebird-ios-sdk.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/bxt-team/releasebird-ios-sdk.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '10.0'
-
-  s.source_files = 'releasebird-ios-sdk/Classes/**/*'
+  s.ios.deployment_target = '12.0'
   
-  s.resource_bundles = {
-    'releasebird-ios-sdk' => ['releasebird-ios-sdk/Assets/*.png']
-  }
-
-  s.public_header_files = 'Pod/Classes/**/*.h'
+  s.source_files = 'releasebird-ios-sdk/**/*.{h,m,c}'
+  s.public_header_files = 'releasebird-ios-sdk/**/*.h'
+  
   s.frameworks = 'UIKit'
   # s.dependency 'AFNetworking', '~> 2.3'
 end
