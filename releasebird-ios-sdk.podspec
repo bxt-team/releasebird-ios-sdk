@@ -24,8 +24,8 @@ TODO: Add long description of the pod here.
   s.homepage         = 'https://github.com/bxt-team/releasebird-ios-sdk'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'czillmann' => 'christian.zillmann' }
-  s.source           = { :git => 'https://github.com/bxt-team/releasebird-ios-sdk.git', :tag => s.version.to_s }
+  s.author           = { 'buildnext GmbH' => 'christian.zillmann@buildnext.io' }
+  s.source           = { :git => 'https://github.com/bxt-team/releasebird-ios-sdk.git', :tag => '1.0.2' }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '12.0'
@@ -34,5 +34,5 @@ TODO: Add long description of the pod here.
   s.public_header_files = 'releasebird-ios-sdk/**/*.h'
   
   s.frameworks = 'UIKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency 'AFNetworking', '~> 2.3'
 end
