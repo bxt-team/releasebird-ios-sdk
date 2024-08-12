@@ -24,8 +24,8 @@ TODO: Add long description of the pod here.
   s.homepage         = 'https://github.com/bxt-team/releasebird-ios-sdk'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'czillmann' => 'christian.zillmann' }
-  s.source           = { :git => 'https://github.com/bxt-team/releasebird-ios-sdk.git', :tag => s.version.to_s }
+  s.author           = { 'buildnext GmbH' => 'christian.zillmann@buildnext.io' }
+  s.source           = { :git => 'https://github.com/bxt-team/releasebird-ios-sdk.git', :tag => '1.0.2' }
 
   s.ios.deployment_target = '9.0'
   
