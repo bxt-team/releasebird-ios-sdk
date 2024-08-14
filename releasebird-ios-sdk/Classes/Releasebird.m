@@ -149,10 +149,10 @@ static id ObjectOrNull(id object)
     }
 }
 
-- (void)initialize:(NSString *)key showButton:(BOOL *)show;{
+- (void)initialize:(NSString *)key showButton:(BOOL *)showButton {
     [ReleasebirdCore sharedInstance].apiKey = key;
     [self checkAndStoreAIValue];
-    [self fetchWidgetSettingsFromAPI:[Config baseURL] withApiKey:key showButton:show];
+    [self fetchWidgetSettingsFromAPI:[Config baseURL] withApiKey:key showButton:showButton];
     
 }
 
