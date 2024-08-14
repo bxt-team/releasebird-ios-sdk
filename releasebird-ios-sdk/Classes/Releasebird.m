@@ -58,6 +58,11 @@ static id ObjectOrNull(id object)
     }
 }
 
+- (void) logout {
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"rbird_state"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 - (void)executeRepeatingTask {
     NSLog(@"executeRepeatingTask called");
     [self sendPingRequest:[Config baseURL] withApiKey: [ReleasebirdCore sharedInstance].apiKey andStateIdentify:[[ReleasebirdCore sharedInstance] getIdentifyState]];
@@ -75,6 +80,10 @@ static id ObjectOrNull(id object)
     [request setValue:apiKey forHTTPHeaderField:@"apiKey"];
     
     NSDictionary *identifyState = [[ReleasebirdCore sharedInstance] getIdentifyState];
+    
+    if (identifyState == nil || identifyState[@"people"] == nil) {
+        return;
+    }
     
     [request setValue:identifyState[@"people"] forHTTPHeaderField:@"peopleId"];
     [request setValue:[[ReleasebirdCore sharedInstance] getAIValue] forHTTPHeaderField:@"ai"];

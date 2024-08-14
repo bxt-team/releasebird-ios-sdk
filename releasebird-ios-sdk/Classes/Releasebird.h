@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)identify:(NSObject *)identifyJson;
 
+- (void) logout;
+
 @property (strong, nonatomic) NSLayoutConstraint *edgeConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *safeAreaConstraint;
 
