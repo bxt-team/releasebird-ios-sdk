@@ -21,7 +21,8 @@
     //[[Releasebird sharedInstance] hello];
     // [[Releasebird sharedInstance] showButton];
     [super viewDidLoad];
-    [[Releasebird sharedInstance] showButton:[NSString stringWithFormat:@"1cad2c1b6d7842fd937469ce3ac42ba2"]];
+
+    [[Releasebird sharedInstance] initialize:[NSString stringWithFormat:@"1cad2c1b6d7842fd937469ce3ac42ba2"] showButton:YES];
     NSDictionary *userDictionary = @{
                 @"firstname": @"John",
                 @"lastname": @"Doe",
@@ -33,6 +34,7 @@
                 }
             };
     [[Releasebird sharedInstance] identify:userDictionary];
+    [[Releasebird sharedInstance] showButton];
 }
     
 - (void)didReceiveMemoryWarning

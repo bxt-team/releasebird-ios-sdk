@@ -9,12 +9,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)sharedInstance;
 
-- (void)showButton:(NSString *)key;
+- (void)showButton;
+
+- (void)hideButton;
+
+- (void)initialize:(NSString *)key showButton:(BOOL *)show;;
 
 - (void)identify:(NSObject *)identifyJson;
 
 @property (strong, nonatomic) NSLayoutConstraint *edgeConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *safeAreaConstraint;
+
+@property (nonatomic, weak) NSTimer *repeatingTimer;
+@property (nonatomic, retain, nullable) NSTimer* timeoutTimer;
 
 @end
 NS_ASSUME_NONNULL_END

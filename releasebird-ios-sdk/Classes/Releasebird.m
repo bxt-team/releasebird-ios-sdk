@@ -32,6 +32,7 @@ static id ObjectOrNull(id object)
 
 - (id)init {
     self = [super init];
+    [self startTimer];
     [self startObserving];
     if (self) {
     }
@@ -45,28 +46,133 @@ static id ObjectOrNull(id object)
                                                object:nil];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [self invalidateTimeout];
+}
+
+
+- (void)invalidateTimeout {
+    if (self.timeoutTimer) {
+        [self.timeoutTimer invalidate];
+        self.timeoutTimer = nil;
+    }
+}
+
+- (void)executeRepeatingTask {
+    NSLog(@"executeRepeatingTask called");
+    [self sendPingRequest:[Config baseURL] withApiKey: [ReleasebirdCore sharedInstance].apiKey andStateIdentify:[[ReleasebirdCore sharedInstance] getIdentifyState]];
+}
+
+- (void)sendPingRequest:(NSString *)API withApiKey:(NSString *)apiKey andStateIdentify:(NSDictionary *)stateIdentify {
+    // Erstelle die URL
+    NSString *urlString = [NSString stringWithFormat:@"%@/ewidget/ping", API];
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    // Erstelle die URLRequest
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:apiKey forHTTPHeaderField:@"apiKey"];
+    
+    NSDictionary *identifyState = [[ReleasebirdCore sharedInstance] getIdentifyState];
+    
+    [request setValue:identifyState[@"people"] forHTTPHeaderField:@"peopleId"];
+    [request setValue:[[ReleasebirdCore sharedInstance] getAIValue] forHTTPHeaderField:@"ai"];
+    
+    // Konvertiere stateIdentify in JSON-Daten
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject: [self wrapDictionaryWithProperties:stateIdentify] options:0 error:&error];
+    if (!jsonData) {
+        NSLog(@"Error serializing JSON: %@", error.localizedDescription);
+        return;
+    }
+    [request setHTTPBody:jsonData];
+    
+    // Erstelle die URLSession
+    NSURLSession *session = [NSURLSession sharedSession];
+    
+    // Erstelle den Daten-Task
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error) {
+            NSLog(@"Error: %@", error.localizedDescription);
+            return;
+        }
+        
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        if (httpResponse.statusCode == 200) {
+            NSLog(@"Request was successful.");
+            // Verarbeite die Antwortdaten hier
+            NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            NSLog(@"Response Data: %@", responseDict);
+        } else {
+            NSLog(@"HTTP Error: %ld", (long)httpResponse.statusCode);
+        }
+    }];
+    
+    // Starte den Task
+    [dataTask resume];
+}
+
 - (void)applicationWillEnterForeground {
     // Aktion ausführen, wenn die App in den Vordergrund kommt
     [[ReleasebirdCore sharedInstance] getUnreadCount];
+    [self startTimer];
+}
+
+- (void)applicationDidEnterBackground {
+    NSLog(@"App did enter background");
+    [self stopTimer];
 }
 
 - (void)dealloc {
     // Abmelden von Benachrichtigungen
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    // Timer invalidieren
+    [self.repeatingTimer invalidate];
+    self.repeatingTimer = nil;
 }
 
+- (void)startTimer {
+    if (!self.repeatingTimer) {
+        self.repeatingTimer = [NSTimer scheduledTimerWithTimeInterval:30.0
+                                                               target:self
+                                                             selector:@selector(executeRepeatingTask)
+                                                             userInfo:nil
+                                                              repeats:YES];
+    }
+}
 
-- (void)showButton:(NSString *)key {
+- (void)stopTimer {
+    if (self.repeatingTimer) {
+        [self.repeatingTimer invalidate];
+        self.repeatingTimer = nil;
+    }
+}
+
+- (void)initialize:(NSString *)key showButton:(BOOL *)show;{
     [ReleasebirdCore sharedInstance].apiKey = key;
     [self checkAndStoreAIValue];
-    [self fetchWidgetSettingsFromAPI:[Config baseURL] withApiKey:key];
+    [self fetchWidgetSettingsFromAPI:[Config baseURL] withApiKey:key showButton:show];
+    
+}
+
+- (void)showButton {
+    NSLog(@"PRobiere Zeige Button");
+    if ([ReleasebirdCore sharedInstance].widgetSettings != nil) {
+        NSLog(@"Zeige Button");
+        [ReleasebirdOverlayUtils showFeedbackButton: true];
+    }
+}
+
+- (void)hideButton {
+    [ReleasebirdOverlayUtils showFeedbackButton: false];
 }
 
 - (void)identify:(NSDictionary *)identifyJson {
     [self sendIdentifyCall:[Config baseURL] withApiKey:[ReleasebirdCore sharedInstance].apiKey anonymousIdentifier:[[ReleasebirdCore sharedInstance] getAIValue] andStateIdentify:identifyJson hash:nil];
 }
 
-- (void)fetchWidgetSettingsFromAPI:(NSString *)API withApiKey:(NSString *)apiKey {
+- (void)fetchWidgetSettingsFromAPI:(NSString *)API withApiKey:(NSString *)apiKey showButton:(BOOL *)showButton {
     NSString *urlString = [NSString stringWithFormat:@"%@/ewidget", API];
     NSURL *url = [NSURL URLWithString:urlString];
     
@@ -89,7 +195,7 @@ static id ObjectOrNull(id object)
                 NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
                 [ReleasebirdCore sharedInstance].widgetSettings = jsonResponse;
                 NSLog(@"Widget Settings4: %@", [ReleasebirdCore sharedInstance].widgetSettings);
-                if ([ReleasebirdCore sharedInstance].widgetSettings != nil) {
+                if (showButton) {
                     [ReleasebirdOverlayUtils showFeedbackButton: true];
                 }
                 
