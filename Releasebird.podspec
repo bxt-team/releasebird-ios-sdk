@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Releasebird'
-  s.version          = '1.0.13'
+  s.version          = '1.0.14'
   s.summary          = 'A short description of releasebird-ios-sdk.'
 
 # This description is used to generate tags and improve search results.
@@ -25,7 +25,7 @@ TODO: Add long description of the pod here.
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'buildnext GmbH' => 'christian.zillmann@buildnext.io' }
-  s.source           = { :git => 'https://github.com/bxt-team/releasebird-ios-sdk.git', :tag => '1.0.13' }
+  s.source           = { :git => 'https://github.com/bxt-team/releasebird-ios-sdk.git', :tag => '1.0.14' }
 
   s.ios.deployment_target = '9.0'
   
