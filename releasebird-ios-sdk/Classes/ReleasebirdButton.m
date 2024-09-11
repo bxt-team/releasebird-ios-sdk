@@ -43,15 +43,7 @@ const float NOTIFICATION_BADGE_SIZE = 22.0;
     [self addSubview:self.logoView];
     
     self.tag = INT_MAX;
-    
-    if (@available(iOS 11.0, *)) {
-        UILayoutGuide *layoutGuide = self.safeAreaLayoutGuide;
-        _safeAreaConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:layoutGuide attribute:NSLayoutAttributeLeft multiplier:1 constant:-12];
 
-        _edgeConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1 constant:-12];
-
-        [self adjustConstraintsForOrientation];
-    }
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *aiString = [defaults objectForKey:@"releasebird_ai"];
@@ -66,7 +58,6 @@ const float NOTIFICATION_BADGE_SIZE = 22.0;
 - (void)refreshVisibility {
     if (!self.initialized) {
         [self configure];
-    
     }
     
     [self displayButtonIfNeeded];
@@ -237,7 +228,7 @@ const float NOTIFICATION_BADGE_SIZE = 22.0;
     self.translatesAutoresizingMaskIntoConstraints = NO;
     self.layer.cornerRadius = kButtonDimension / 2.0;
     self.feedbackButtonPosition = [ReleasebirdCore sharedInstance].widgetSettings[@"launcherPosition"];
-    NSLog(@"%@", [ReleasebirdCore sharedInstance].widgetSettings[[NSString stringWithFormat:@"chatBubbleUrl%@", [ReleasebirdCore sharedInstance].widgetSettings[@"launcher"]]]);
+
     NSString *buttonLogo = [ReleasebirdCore sharedInstance].widgetSettings[[NSString stringWithFormat:@"chatBubbleUrl%@", [ReleasebirdCore sharedInstance].widgetSettings[@"launcher"]]];
 
     if (![buttonLogo isEqualToString: self.currentButtonUrl]) {

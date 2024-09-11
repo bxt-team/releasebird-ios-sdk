@@ -25,10 +25,8 @@
     NSString *storedAIValue = [defaults stringForKey:@"ai"];
     
     if (storedAIValue) {
-        NSLog(@"AI-Wert ausgelesen: %@", storedAIValue);
         return storedAIValue;
     } else {
-        NSLog(@"Kein AI-Wert gefunden.");
         return nil;
     }
 }
@@ -45,7 +43,6 @@
 }
 
 - (void)getUnreadCount {
-    NSLog(@"bin in unread");
     NSString *urlString = [NSString stringWithFormat:@"%@/ewidget/unread", [Config baseURL]];
     NSURL *url = [NSURL URLWithString:urlString];
     NSDictionary *identifyState = [[ReleasebirdCore sharedInstance] getIdentifyState];
@@ -57,8 +54,6 @@
     [request setValue:[[ReleasebirdCore sharedInstance] getAIValue] forHTTPHeaderField:@"ai"];
     
     NSURLSession *session = [NSURLSession sharedSession];
-    NSLog(@"Make call");
-    
     
     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error) {
@@ -71,16 +66,11 @@
         if (httpResponse.statusCode == 200 || httpResponse.statusCode == 201) {
             @try {
                 NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-                NSLog(@"Unred: %@", jsonResponse);
-                NSLog(@"Messages: %@", jsonResponse[@"messageCount"]);
                 NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                 NSNumber *count= jsonResponse[@"messageCount"];
-                NSLog(@"count %@", count);
                 if ([count intValue] > 0) {
-                    NSLog(@"setzr value");
                     [defaults setObject:jsonResponse[@"messageCount"] forKey:@"unreadMessages"];
                 } else {
-                    NSLog(@"Setze nil");
                     [defaults setObject:nil forKey:@"unreadMessages"];
                 }
                 
@@ -103,10 +93,8 @@
     NSDictionary *storedState = [defaults dictionaryForKey:@"rbird_state"];
     
     if (storedState) {
-        NSLog(@"Rbird State ausgelesen: %@", storedState);
         return storedState;
     } else {
-        NSLog(@"Kein Rbird State gefunden.");
         return nil;
     }
 }
@@ -118,4 +106,4 @@
     return self;
 }
 
-@end
+@end 

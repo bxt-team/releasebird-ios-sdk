@@ -83,11 +83,11 @@ static id ObjectOrNull(id object)
 }
 
 - (void)applicationWillEnterForeground {
-    NSLog(@"App will enter foreground");
+   
 }
 
 - (void)applicationDidEnterBackground {
-    NSLog(@"App did enter background");
+
 }
 
 
@@ -205,7 +205,7 @@ static id ObjectOrNull(id object)
 
 // Wird aufgerufen, wenn der Webinhalt-Prozess beendet wird
 - (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView {
-    NSLog(@"WKWebView Webinhalt-Prozess wurde beendet");
+   
 }
 
 -(void)userContentController:(WKUserContentController*)userContentController didReceiveScriptMessage:(WKScriptMessage*)message

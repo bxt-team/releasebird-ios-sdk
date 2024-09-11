@@ -10,6 +10,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)showFeedbackButton:(bool)show;
 + (void)clear;
 + (void)updateUI;
++ (void)showWidget;
 
 @property (nonatomic, assign) bool showButton;
 @property (nonatomic, assign) bool showButtonExternalOverwrite;

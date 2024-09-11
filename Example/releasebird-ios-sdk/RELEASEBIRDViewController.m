@@ -34,7 +34,28 @@
                 }
             };
     [[Releasebird sharedInstance] identify:userDictionary];
-    [[Releasebird sharedInstance] showButton];
+
+    // 1. Button erstellen
+    UIButton *myButton = [UIButton buttonWithType:UIButtonTypeSystem];
+
+    // 2. Eigenschaften des Buttons festlegen
+    [myButton setTitle:@"Klick mich!" forState:UIControlStateNormal];
+    myButton.backgroundColor = [UIColor lightGrayColor];
+
+    // 3. Position des Buttons festlegen (Rahmen)
+    myButton.frame = CGRectMake(100, 100, 150, 50);  // x, y, width, height
+
+    // 4. Button zur View hinzufügen
+    [self.view addSubview:myButton];
+
+    // 5. Optionale Aktion für den Button hinzufügen
+    [myButton addTarget:self
+                 action:@selector(buttonTapped:)
+       forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)buttonTapped:(UIButton *)sender {
+    [[Releasebird sharedInstance] showWidget];
 }
     
 - (void)didReceiveMemoryWarning

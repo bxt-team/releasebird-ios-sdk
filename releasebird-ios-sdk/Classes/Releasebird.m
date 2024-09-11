@@ -64,7 +64,6 @@ static id ObjectOrNull(id object)
 }
 
 - (void)executeRepeatingTask {
-    NSLog(@"executeRepeatingTask called");
     [self sendPingRequest:[Config baseURL] withApiKey: [ReleasebirdCore sharedInstance].apiKey andStateIdentify:[[ReleasebirdCore sharedInstance] getIdentifyState]];
 }
 
@@ -109,10 +108,8 @@ static id ObjectOrNull(id object)
         
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         if (httpResponse.statusCode == 200) {
-            NSLog(@"Request was successful.");
             // Verarbeite die Antwortdaten hier
             NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            NSLog(@"Response Data: %@", responseDict);
         } else {
             NSLog(@"HTTP Error: %ld", (long)httpResponse.statusCode);
         }
@@ -129,7 +126,6 @@ static id ObjectOrNull(id object)
 }
 
 - (void)applicationDidEnterBackground {
-    NSLog(@"App did enter background");
     [self stopTimer];
 }
 
@@ -166,11 +162,13 @@ static id ObjectOrNull(id object)
 }
 
 - (void)showButton {
-    NSLog(@"PRobiere Zeige Button");
     if ([ReleasebirdCore sharedInstance].widgetSettings != nil) {
-        NSLog(@"Zeige Button");
         [ReleasebirdOverlayUtils showFeedbackButton: true];
     }
+}
+
+- (void)showWidget {
+    [ReleasebirdOverlayUtils showWidget];
 }
 
 - (void)hideButton {
@@ -203,7 +201,6 @@ static id ObjectOrNull(id object)
             @try {
                 NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
                 [ReleasebirdCore sharedInstance].widgetSettings = jsonResponse;
-                NSLog(@"Widget Settings4: %@", [ReleasebirdCore sharedInstance].widgetSettings);
                 if (showButton) {
                     [ReleasebirdOverlayUtils showFeedbackButton: true];
                 }
@@ -242,11 +239,8 @@ static id ObjectOrNull(id object)
         NSString *newAIValue = [self generateRandomString];
         [defaults setObject:newAIValue forKey:@"ai"];
         [defaults synchronize];
-        
-        NSLog(@"Neuer AI-Wert generiert und gespeichert: %@", newAIValue);
     } else {
         // Wert vorhanden, nichts zu tun
-        NSLog(@"AI-Wert bereits vorhanden: %@", storedAIValue);
     }
 }
 
@@ -296,10 +290,8 @@ static id ObjectOrNull(id object)
         if (httpResponse.statusCode == 200 || httpResponse.statusCode == 201) {
             @try {
                 NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-                NSLog(@"hab die response %@", responseDict);
-                
+               
                 if ([responseDict[@"valid"] boolValue]) {
-                    NSLog(@"bin valid");
                     // Handle success
                     NSMutableDictionary *state = [stateIdentify mutableCopy];
                     state[@"people"] = responseDict[@"peopleId"];
@@ -308,9 +300,6 @@ static id ObjectOrNull(id object)
                     }
                     [[NSUserDefaults standardUserDefaults] setObject:state forKey:@"rbird_state"];
                     [[NSUserDefaults standardUserDefaults] synchronize];
-                    
-                    NSLog(@"hab gesetzt");
-                    
                 }
             } @catch (NSException *exception) {
                 // Handle error

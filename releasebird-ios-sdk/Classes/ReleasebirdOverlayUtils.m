@@ -42,6 +42,11 @@
     [ReleasebirdOverlayUtils updateUI];
 }
 
++ (void)showWidget {
+    ReleasebirdWindowUtils *windowChecker = [[ReleasebirdWindowUtils alloc] init];
+    [[ReleasebirdOverlayUtils sharedInstance].uiOverlayViewController showWidget];
+}
+
 - (void)initializeUI {
     self.showButton = NO;
     self.showButtonExternalOverwrite = NO;

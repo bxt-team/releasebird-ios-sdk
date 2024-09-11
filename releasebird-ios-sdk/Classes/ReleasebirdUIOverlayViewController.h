@@ -9,6 +9,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)updateUI;
 - (void)initializeUI;
 - (void)updateUIPositions;
+- (void)showWidget;
 
 @property (nonatomic, retain) NSMutableArray *internalNotifications;
 @property (nonatomic, retain) ReleasebirdButton *feedbackButton;

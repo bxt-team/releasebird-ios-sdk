@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void) logout;
 
+- (void)showWidget;
+
 @property (strong, nonatomic) NSLayoutConstraint *edgeConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *safeAreaConstraint;
 

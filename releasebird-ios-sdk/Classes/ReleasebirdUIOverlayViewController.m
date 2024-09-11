@@ -54,16 +54,12 @@
 
 - (void)showWidget {
     dispatch_async(dispatch_get_main_queue(), ^{
-        // Pre widget open hook.
-      
         self.rbirdWidget = [[ReleasebirdFrameViewController alloc] initWithFormat: @""];
         self.rbirdWidget.view.hidden = false;
         
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-            // App is running on iphone
             self.rbirdWidget.modalPresentationStyle = UIModalPresentationFullScreen;
         } else if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-            // App is running on ipad
             self.rbirdWidget.modalPresentationStyle = UIModalPresentationFormSheet;
         }
         
