@@ -39,7 +39,7 @@
     UIButton *myButton = [UIButton buttonWithType:UIButtonTypeSystem];
 
     // 2. Eigenschaften des Buttons festlegen
-    [myButton setTitle:@"Klick mich!" forState:UIControlStateNormal];
+    [myButton setTitle:@"Open Widget" forState:UIControlStateNormal];
     myButton.backgroundColor = [UIColor lightGrayColor];
 
     // 3. Position des Buttons festlegen (Rahmen)
