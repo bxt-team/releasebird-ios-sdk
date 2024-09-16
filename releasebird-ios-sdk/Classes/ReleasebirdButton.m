@@ -64,7 +64,7 @@ const float NOTIFICATION_BADGE_SIZE = 22.0;
 }
 
 - (void)displayButtonIfNeeded {
-    if (![ReleasebirdOverlayUtils sharedInstance].showButton) {
+    if (![ReleasebirdOverlayUtils sharedInstance].showButton || [ReleasebirdCore sharedInstance].noButton) {
         self.hidden = YES;
     } else {
         self.hidden = NO;
@@ -224,65 +224,118 @@ const float NOTIFICATION_BADGE_SIZE = 22.0;
 }
 
 - (void)createButton {
-    
     self.translatesAutoresizingMaskIntoConstraints = NO;
     self.layer.cornerRadius = kButtonDimension / 2.0;
     self.feedbackButtonPosition = [ReleasebirdCore sharedInstance].widgetSettings[@"launcherPosition"];
 
     NSString *buttonLogo = [ReleasebirdCore sharedInstance].widgetSettings[[NSString stringWithFormat:@"chatBubbleUrl%@", [ReleasebirdCore sharedInstance].widgetSettings[@"launcher"]]];
 
-    if (![buttonLogo isEqualToString: self.currentButtonUrl]) {
+    // Wenn das Logo noch nicht gesetzt ist, Bild laden
+    if (![buttonLogo isEqualToString:self.currentButtonUrl]) {
         self.currentButtonUrl = buttonLogo;
-        dispatch_async(dispatch_get_global_queue(0,0), ^{
-            NSData * data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: buttonLogo]];
-            if (data == nil) {
-                return;
+
+        // Bilddaten im Hintergrund mit niedriger Priorität laden
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), ^{
+            NSData *data = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:buttonLogo]];
+
+            // Falls die Bilddaten erfolgreich geladen wurden
+            if (data != nil) {
+                // UI-Aktualisierung auf dem Haupt-Thread
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (self.logoView != nil) {
+                        self.logoView.hidden = NO;
+                        self.logoView.image = [UIImage imageWithData:data];
+                        [self displayButtonIfNeeded]; // Der Button wird nur angezeigt, wenn das Bild geladen wurde
+
+                        // Nachdem das Bild geladen ist, rufe weitere Funktionen auf, wie z.B. Badge und Constraints
+                        [self setupConstraintsAndBadge];
+                    }
+                });
+            } else {
+                // Falls das Bild nicht geladen werden konnte, setze trotzdem das Button-UI
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self setupConstraintsAndBadge]; // Setup-Methoden auch ohne Bild laden
+                });
             }
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if (self.logoView != nil) {
-                    self.logoView.hidden = NO;
-                    self.logoView.image = [UIImage imageWithData: data];
-                    [self displayButtonIfNeeded];
-                }
-            });
         });
+    } else {
+        // Wenn das Logo bereits gesetzt ist, setze die UI sofort
+        [self setupConstraintsAndBadge];
     }
-    
-    
+}
+
+// Methode, um Constraints und Badge einzurichten
+- (void)setupConstraintsAndBadge {
     float buttonX = [[ReleasebirdCore sharedInstance].widgetSettings[@"spaceLeftRight"] floatValue];
     float buttonY = [[ReleasebirdCore sharedInstance].widgetSettings[@"spaceBottom"] floatValue];
-    
+
     if (self.superview != nil) {
         NSLayoutConstraint *yConstraint;
-        NSLayoutConstraint *widthConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:kButtonDimension];
-        NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:kButtonDimension];
-        
+        NSLayoutConstraint *widthConstraint = [NSLayoutConstraint constraintWithItem:self
+                                                                           attribute:NSLayoutAttributeWidth
+                                                                           relatedBy:NSLayoutRelationEqual
+                                                                              toItem:nil
+                                                                           attribute:NSLayoutAttributeNotAnAttribute
+                                                                          multiplier:1
+                                                                            constant:kButtonDimension];
+        NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:self
+                                                                            attribute:NSLayoutAttributeHeight
+                                                                            relatedBy:NSLayoutRelationEqual
+                                                                               toItem:nil
+                                                                            attribute:NSLayoutAttributeNotAnAttribute
+                                                                           multiplier:1
+                                                                             constant:kButtonDimension];
+
         if (@available(iOS 11, *)) {
             UILayoutGuide *guide = self.superview.safeAreaLayoutGuide;
-            
-            if ([self.feedbackButtonPosition isEqualToString: @"left"]) {
-                _edgeConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem: self.superview attribute:NSLayoutAttributeLeading multiplier:1 constant: buttonX];
-                
-                if (@available(iOS 11, *)) {
-                    UILayoutGuide *guide = self.superview.safeAreaLayoutGuide;
-                    _safeAreaConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:guide attribute:NSLayoutAttributeLeading multiplier:1 constant: buttonX];
-                }
+
+            if ([self.feedbackButtonPosition isEqualToString:@"left"]) {
+                _edgeConstraint = [NSLayoutConstraint constraintWithItem:self
+                                                               attribute:NSLayoutAttributeLeading
+                                                               relatedBy:NSLayoutRelationEqual
+                                                                  toItem:self.superview
+                                                               attribute:NSLayoutAttributeLeading
+                                                              multiplier:1
+                                                                constant:buttonX];
+
+                _safeAreaConstraint = [NSLayoutConstraint constraintWithItem:self
+                                                                   attribute:NSLayoutAttributeLeading
+                                                                   relatedBy:NSLayoutRelationEqual
+                                                                      toItem:guide
+                                                                   attribute:NSLayoutAttributeLeading
+                                                                  multiplier:1
+                                                                    constant:buttonX];
             } else {
-                _edgeConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem: self.superview attribute:NSLayoutAttributeTrailing multiplier:1 constant: -buttonX];
-                
-                if (@available(iOS 11, *)) {
-                    UILayoutGuide *guide = self.superview.safeAreaLayoutGuide;
-                    _safeAreaConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:guide attribute:NSLayoutAttributeTrailing multiplier:1 constant: -buttonX];
-                }
+                _edgeConstraint = [NSLayoutConstraint constraintWithItem:self
+                                                               attribute:NSLayoutAttributeTrailing
+                                                               relatedBy:NSLayoutRelationEqual
+                                                                  toItem:self.superview
+                                                               attribute:NSLayoutAttributeTrailing
+                                                              multiplier:1
+                                                                constant:-buttonX];
+
+                _safeAreaConstraint = [NSLayoutConstraint constraintWithItem:self
+                                                                   attribute:NSLayoutAttributeTrailing
+                                                                   relatedBy:NSLayoutRelationEqual
+                                                                      toItem:guide
+                                                                   attribute:NSLayoutAttributeTrailing
+                                                                  multiplier:1
+                                                                    constant:-buttonX];
             }
-            
-            yConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:guide attribute:NSLayoutAttributeBottom multiplier:1 constant: -buttonY];
+
+            yConstraint = [NSLayoutConstraint constraintWithItem:self
+                                                       attribute:NSLayoutAttributeBottom
+                                                       relatedBy:NSLayoutRelationEqual
+                                                          toItem:guide
+                                                       attribute:NSLayoutAttributeBottom
+                                                      multiplier:1
+                                                        constant:-buttonY];
         }
-        
+
         [NSLayoutConstraint activateConstraints:@[yConstraint, widthConstraint, heightConstraint]];
         
+        // Zusätzliche Einstellungen wie Badge etc.
         [self adjustConstraintsForOrientation];
-        
         [self addBadge];
     }
 }

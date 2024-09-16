@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, retain) NSString *apiKey;
 
+@property (nonatomic, assign) BOOL noButton;
+
 @property (nonatomic, retain) NSDictionary *widgetSettings;
 
 @end

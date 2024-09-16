@@ -4,6 +4,7 @@
 #import "ReleasebirdUtils.h"
 #import "ReleasebirdCore.h"
 
+
 @interface ReleasebirdUIOverlayViewController ()
 
 @end
@@ -22,7 +23,7 @@
 }
 
 - (void)initializeUI {
-    dispatch_async(dispatch_get_main_queue(), ^{
+    
         UIWindow *keyWindow = [self getKeyWindow];
         if (keyWindow != nil) {
             self.internalNotifications = [[NSMutableArray alloc] init];
@@ -37,7 +38,7 @@
             [self.feedbackButton addGestureRecognizer:tapGestureRecognizer];
     
         }
-    });
+
 }
 
 - (void)imageTapped:(UITapGestureRecognizer *)gestureRecognizer {

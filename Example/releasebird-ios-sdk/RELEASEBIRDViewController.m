@@ -22,7 +22,7 @@
     // [[Releasebird sharedInstance] showButton];
     [super viewDidLoad];
 
-    [[Releasebird sharedInstance] initialize:[NSString stringWithFormat:@"1cad2c1b6d7842fd937469ce3ac42ba2"] showButton:YES];
+    [[Releasebird sharedInstance] initialize:@"1cad2c1b6d7842fd937469ce3ac42ba2" showButton:true];
     NSDictionary *userDictionary = @{
                 @"firstname": @"John",
                 @"lastname": @"Doe",

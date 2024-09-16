@@ -154,8 +154,9 @@ static id ObjectOrNull(id object)
     }
 }
 
-- (void)initialize:(NSString *)key showButton:(BOOL *)showButton {
+- (void)initialize:(NSString *)key showButton:(BOOL)showButton {
     [ReleasebirdCore sharedInstance].apiKey = key;
+    [ReleasebirdCore sharedInstance].noButton = !showButton;
     [self checkAndStoreAIValue];
     [self fetchWidgetSettingsFromAPI:[Config baseURL] withApiKey:key showButton:showButton];
     
@@ -179,7 +180,7 @@ static id ObjectOrNull(id object)
     [self sendIdentifyCall:[Config baseURL] withApiKey:[ReleasebirdCore sharedInstance].apiKey anonymousIdentifier:[[ReleasebirdCore sharedInstance] getAIValue] andStateIdentify:identifyJson hash:nil];
 }
 
-- (void)fetchWidgetSettingsFromAPI:(NSString *)API withApiKey:(NSString *)apiKey showButton:(BOOL *)showButton {
+- (void)fetchWidgetSettingsFromAPI:(NSString *)API withApiKey:(NSString *)apiKey showButton:(BOOL)showButton {
     NSString *urlString = [NSString stringWithFormat:@"%@/ewidget", API];
     NSURL *url = [NSURL URLWithString:urlString];
     
@@ -201,9 +202,9 @@ static id ObjectOrNull(id object)
             @try {
                 NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
                 [ReleasebirdCore sharedInstance].widgetSettings = jsonResponse;
-                if (showButton) {
-                    [ReleasebirdOverlayUtils showFeedbackButton: true];
-                }
+                
+                    [ReleasebirdOverlayUtils showFeedbackButton: showButton];
+                
                 
             } @catch (NSException *exception) {
                 // Handle parsing error

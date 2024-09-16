@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)hideButton;
 
-- (void)initialize:(NSString *)key showButton:(BOOL *)show;;
+- (void)initialize:(NSString *)key showButton:(BOOL)show;;
 
 - (void)identify:(NSObject *)identifyJson;
 
@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSLayoutConstraint *safeAreaConstraint;
 
 @property (nonatomic, weak) NSTimer *repeatingTimer;
+
 @property (nonatomic, retain, nullable) NSTimer* timeoutTimer;
 
 @end

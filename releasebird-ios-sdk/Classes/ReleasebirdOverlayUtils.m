@@ -1,6 +1,7 @@
 #import "ReleasebirdOverlayUtils.h"
 #import "ReleasebirdWindowUtils.h"
 #import <UIKit/UIKit.h>
+#import "ReleasebirdCore.h"
 
 @implementation ReleasebirdOverlayUtils
 
@@ -37,8 +38,14 @@
 }
 
 + (void)showFeedbackButton:(bool)show {
-    [ReleasebirdOverlayUtils sharedInstance].showButtonExternalOverwrite = YES;
-    [ReleasebirdOverlayUtils sharedInstance].showButton = show;
+    if (show && ![ReleasebirdCore sharedInstance].noButton) {
+        [ReleasebirdOverlayUtils sharedInstance].showButtonExternalOverwrite = YES;
+        [ReleasebirdOverlayUtils sharedInstance].showButton = show;
+    } else {
+        [ReleasebirdOverlayUtils sharedInstance].showButtonExternalOverwrite = NO;
+        [ReleasebirdOverlayUtils sharedInstance].showButton = show;
+    }
+  
     [ReleasebirdOverlayUtils updateUI];
 }
 
