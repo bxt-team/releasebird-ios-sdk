@@ -5,7 +5,7 @@
 
 + (NSString *)baseURL {
     #if DEBUG
-    return @"http://localhost:8040/papi";
+    return @"https://api.releasebird.com/papi";
     #elif RELEASE
     return @"https://api.releasebird.com/papi";
     #else
@@ -15,7 +15,7 @@
 
 + (NSString *)contentUrl {
     #if DEBUG
-    return @"http://localhost:4001";
+    return @"https://wcontent.releasebird.com";
     #elif RELEASE
     return @"https://wcontent.releasebird.com";
     #else
