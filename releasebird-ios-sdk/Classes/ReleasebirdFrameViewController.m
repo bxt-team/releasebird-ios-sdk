@@ -183,7 +183,7 @@ static id ObjectOrNull(id object)
     NSDictionary *identifyState = [[ReleasebirdCore sharedInstance] getIdentifyState];
     
     NSString *urlWithParameters;
-    urlWithParameters = [NSString stringWithFormat:@"%@/widget?apiKey=%@&ai=%@&people=%@&tab=HOME&hash=null", contentUrl, [ReleasebirdCore sharedInstance].apiKey, aiString, [identifyState objectForKey:@"people"]];
+    urlWithParameters = [NSString stringWithFormat:@"%@/widget?apiKey=%@&ai=%@&people=%@&tab=HOME&hash=null&disableScreenCapture=true", contentUrl, [ReleasebirdCore sharedInstance].apiKey, aiString, [identifyState objectForKey:@"people"]];
     
     NSURL *url = [NSURL URLWithString:urlWithParameters];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
