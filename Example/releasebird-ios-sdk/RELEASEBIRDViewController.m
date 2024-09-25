@@ -52,10 +52,33 @@
     [myButton addTarget:self
                  action:@selector(buttonTapped:)
        forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    UIButton *logoutButton = [UIButton buttonWithType:UIButtonTypeSystem];
+
+    // 2. Eigenschaften des Buttons festlegen
+    [logoutButton setTitle:@"Logout" forState:UIControlStateNormal];
+    logoutButton.backgroundColor = [UIColor lightGrayColor];
+
+    // 3. Position des Buttons festlegen (Rahmen)
+    logoutButton.frame = CGRectMake(200, 200, 150, 50);  // x, y, width, height
+
+    // 4. Button zur View hinzufügen
+    [self.view addSubview:logoutButton];
+
+    // 5. Optionale Aktion für den Button hinzufügen
+    [logoutButton addTarget:self
+                 action:@selector(logoutTapped:)
+       forControlEvents:UIControlEventTouchUpInside];
+    
 }
 
 - (void)buttonTapped:(UIButton *)sender {
     [[Releasebird sharedInstance] showWidget];
+}
+
+- (void)logoutTapped:(UIButton *)sender {
+    [[Releasebird sharedInstance] logout];
 }
     
 - (void)didReceiveMemoryWarning
