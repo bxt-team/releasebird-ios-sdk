@@ -2,8 +2,8 @@
 //  releasebird-ios-sdkTests.m
 //  releasebird-ios-sdkTests
 //
-//  Created by czillmann on 07/01/2024.
-//  Copyright (c) 2024 czillmann. All rights reserved.
+//  Created by buildnext GmbH on 07/01/2024.
+//  Copyright (c) 2024 buildnext GmbH. All rights reserved.
 //
 
 @import XCTest;
