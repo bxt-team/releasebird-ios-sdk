@@ -180,6 +180,10 @@ static id ObjectOrNull(id object)
     [self sendIdentifyCall:[Config baseURL] withApiKey:[ReleasebirdCore sharedInstance].apiKey anonymousIdentifier:[[ReleasebirdCore sharedInstance] getAIValue] andStateIdentify:identifyJson hash:nil];
 }
 
+- (void)identify:(NSDictionary *)identifyJson andHash:(NSString *)hash {
+    [self sendIdentifyCall:[Config baseURL] withApiKey:[ReleasebirdCore sharedInstance].apiKey anonymousIdentifier:[[ReleasebirdCore sharedInstance] getAIValue] andStateIdentify:identifyJson hash:hash];
+}
+
 - (void)fetchWidgetSettingsFromAPI:(NSString *)API withApiKey:(NSString *)apiKey showButton:(BOOL)showButton {
     NSString *urlString = [NSString stringWithFormat:@"%@/ewidget", API];
     NSURL *url = [NSURL URLWithString:urlString];

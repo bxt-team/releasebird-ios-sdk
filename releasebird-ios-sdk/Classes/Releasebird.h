@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)identify:(NSObject *)identifyJson;
 
+- (void)identify:(NSObject *)identifyJson andHash:(NSString *)hash;
+
 - (void) logout;
 
 - (void)showWidget;
