@@ -180,7 +180,7 @@ static id ObjectOrNull(id object)
     [self sendIdentifyCall:[Config baseURL] withApiKey:[ReleasebirdCore sharedInstance].apiKey anonymousIdentifier:[[ReleasebirdCore sharedInstance] getAIValue] andStateIdentify:identifyJson hash:nil];
 }
 
-- (void)identifyWithHash:(NSDictionary *)identifyJson hash:(NSString *)hash {
+- (void)identify:(NSDictionary *)identifyJson hash:(NSString *)hash {
     [self sendIdentifyCall:[Config baseURL] withApiKey:[ReleasebirdCore sharedInstance].apiKey anonymousIdentifier:[[ReleasebirdCore sharedInstance] getAIValue] andStateIdentify:identifyJson hash:hash];
 }
 
