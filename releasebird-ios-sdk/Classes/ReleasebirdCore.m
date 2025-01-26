@@ -22,7 +22,7 @@
 
 - (NSString *) getAIValue {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *storedAIValue = [defaults stringForKey:@"ai"];
+    NSString *storedAIValue = [defaults stringForKey:@"releasebird_ai"];
     
     if (storedAIValue) {
         return storedAIValue;
