@@ -239,7 +239,6 @@ static id ObjectOrNull(id object)
 - (void)checkAndStoreAIValue {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *storedAIValue = [defaults stringForKey:@"releasebird_ai"];
-    
     if (storedAIValue == nil) {
         NSString *newAIValue = [self generateRandomString];
         [defaults setObject:newAIValue forKey:@"releasebird_ai"];

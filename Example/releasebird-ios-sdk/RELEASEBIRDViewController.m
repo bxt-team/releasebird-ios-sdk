@@ -22,19 +22,8 @@
     // [[Releasebird sharedInstance] showButton];
     [super viewDidLoad];
 
-    [[Releasebird sharedInstance] initialize:@"1cad2c1b6d7842fd937469ce3ac42ba2" showButton:false];
-    NSDictionary *userDictionary = @{
-                @"firstname": @"John",
-                @"lastname": @"Doe",
-                @"email": @"johndoe@example.com",
-                @"external_user_id": @"3456",
-                @"company": @{
-                    @"externalId": @"1234",
-                    @"company_name": @"Example company"
-                }
-            };
-    [[Releasebird sharedInstance] identify:userDictionary];
-
+    [[Releasebird sharedInstance] initialize:@"1cad2c1b6d7842fd937469ce3ac42ba2" showButton:true];
+   
     // 1. Button erstellen
     UIButton *myButton = [UIButton buttonWithType:UIButtonTypeSystem];
 
