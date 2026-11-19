@@ -14,6 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) bool showButton;
 @property (nonatomic, assign) bool showButtonExternalOverwrite;
+
+/// The host app hid the button – it stays hidden until the app shows it again.
+@property (nonatomic, assign) bool hiddenByApp;
 @property (nonatomic, retain) ReleasebirdUIOverlayViewController *uiOverlayViewController;
 @property (nonatomic, retain) NSMutableArray *notifications;
 

@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "Releasebird",
-    platforms: [.iOS(.v12)],
+    platforms: [.iOS(.v15)],
     products: [
         .library(
             name: "Releasebird",
@@ -25,8 +25,5 @@ let package = Package(
               .headerSearchPath("Internal"),
            ]
         ),
-        .testTarget(
-            name: "ReleasebirdTests",
-            dependencies: ["Releasebird"]),
     ]
 )

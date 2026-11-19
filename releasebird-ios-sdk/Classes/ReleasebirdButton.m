@@ -95,7 +95,7 @@ const float NOTIFICATION_BADGE_SIZE = 22.0;
     self.layer.masksToBounds = NO;
     self.clipsToBounds = NO;
     
-    self.backgroundColor = [ReleasebirdUtils colorFromHexString: [ReleasebirdCore sharedInstance].widgetSettings[@"backgroundColor"]];
+    self.backgroundColor = [ReleasebirdUtils colorFromHexString: [[ReleasebirdCore sharedInstance] stringSetting:@"backgroundColor"]];
     
     [self createButton];
 }
@@ -226,17 +226,18 @@ const float NOTIFICATION_BADGE_SIZE = 22.0;
 - (void)createButton {
     self.translatesAutoresizingMaskIntoConstraints = NO;
     self.layer.cornerRadius = kButtonDimension / 2.0;
-    self.feedbackButtonPosition = [ReleasebirdCore sharedInstance].widgetSettings[@"launcherPosition"];
+    self.feedbackButtonPosition = [[ReleasebirdCore sharedInstance] stringSetting:@"launcherPosition"] ?: @"right";
 
-    NSString *buttonLogo = [ReleasebirdCore sharedInstance].widgetSettings[[NSString stringWithFormat:@"chatBubbleUrl%@", [ReleasebirdCore sharedInstance].widgetSettings[@"launcher"]]];
+    NSString *buttonLogo = [[ReleasebirdCore sharedInstance] stringSetting:[NSString stringWithFormat:@"chatBubbleUrl%@", [[ReleasebirdCore sharedInstance] stringSetting:@"launcher"] ?: @"0"]];
 
     // Wenn das Logo noch nicht gesetzt ist, Bild laden
-    if (![buttonLogo isEqualToString:self.currentButtonUrl]) {
+    NSURL *buttonLogoUrl = buttonLogo ? [NSURL URLWithString:buttonLogo] : nil;
+    if (buttonLogoUrl != nil && ![buttonLogo isEqualToString:self.currentButtonUrl]) {
         self.currentButtonUrl = buttonLogo;
 
         // Bilddaten im Hintergrund mit niedriger Priorität laden
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), ^{
-            NSData *data = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:buttonLogo]];
+            NSData *data = [[NSData alloc] initWithContentsOfURL:buttonLogoUrl];
 
             // Falls die Bilddaten erfolgreich geladen wurden
             if (data != nil) {
@@ -266,8 +267,8 @@ const float NOTIFICATION_BADGE_SIZE = 22.0;
 
 // Methode, um Constraints und Badge einzurichten
 - (void)setupConstraintsAndBadge {
-    float buttonX = [[ReleasebirdCore sharedInstance].widgetSettings[@"spaceLeftRight"] floatValue];
-    float buttonY = [[ReleasebirdCore sharedInstance].widgetSettings[@"spaceBottom"] floatValue];
+    float buttonX = [[ReleasebirdCore sharedInstance] floatSetting:@"spaceLeftRight" fallback:20];
+    float buttonY = [[ReleasebirdCore sharedInstance] floatSetting:@"spaceBottom" fallback:20];
 
     if (self.superview != nil) {
         NSLayoutConstraint *yConstraint;

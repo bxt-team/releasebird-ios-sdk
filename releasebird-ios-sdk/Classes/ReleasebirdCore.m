@@ -46,7 +46,11 @@
     NSString *urlString = [NSString stringWithFormat:@"%@/ewidget/unread", [Config baseURL]];
     NSURL *url = [NSURL URLWithString:urlString];
     NSDictionary *identifyState = [[ReleasebirdCore sharedInstance] getIdentifyState];
+    if ([ReleasebirdCore sharedInstance].apiKey == nil) {
+        return;
+    }
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    request.timeoutInterval = 15;
     [request setHTTPMethod:@"GET"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:[ReleasebirdCore sharedInstance].apiKey forHTTPHeaderField:@"apiKey"];
@@ -65,13 +69,16 @@
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         if (httpResponse.statusCode == 200 || httpResponse.statusCode == 201) {
             @try {
-                NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                NSDictionary *jsonResponse = data ? [NSJSONSerialization JSONObjectWithData:data options:0 error:nil] : nil;
+                if (![jsonResponse isKindOfClass:[NSDictionary class]]) {
+                    return;
+                }
                 NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                NSNumber *count= jsonResponse[@"messageCount"];
+                NSNumber *count = [jsonResponse[@"messageCount"] isKindOfClass:[NSNumber class]] ? jsonResponse[@"messageCount"] : @0;
                 if ([count intValue] > 0) {
-                    [defaults setObject:jsonResponse[@"messageCount"] forKey:@"unreadMessages"];
+                    [defaults setObject:count forKey:@"unreadMessages"];
                 } else {
-                    [defaults setObject:nil forKey:@"unreadMessages"];
+                    [defaults removeObjectForKey:@"unreadMessages"];
                 }
                 
                 [defaults synchronize];
@@ -97,6 +104,19 @@
     } else {
         return nil;
     }
+}
+
+- (NSString *)stringSetting:(NSString *)key {
+    id value = [self.widgetSettings isKindOfClass:[NSDictionary class]] ? self.widgetSettings[key] : nil;
+    if ([value isKindOfClass:[NSNumber class]]) {
+        return [value stringValue];
+    }
+    return [value isKindOfClass:[NSString class]] && [value length] > 0 ? value : nil;
+}
+
+- (float)floatSetting:(NSString *)key fallback:(float)fallback {
+    id value = [self.widgetSettings isKindOfClass:[NSDictionary class]] ? self.widgetSettings[key] : nil;
+    return [value respondsToSelector:@selector(floatValue)] ? [value floatValue] : fallback;
 }
 
 - (id)init {

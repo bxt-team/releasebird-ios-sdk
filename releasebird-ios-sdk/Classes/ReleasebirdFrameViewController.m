@@ -10,6 +10,18 @@
 #import "ReleasebirdCore.h"
 
 
+/// The web view's content controller retains its message handler. Passing the view controller
+/// directly creates a retain cycle (it would never be released) – this proxy only holds it weakly.
+@interface ReleasebirdWeakScriptHandler : NSObject <WKScriptMessageHandler>
+@property (nonatomic, weak) id<WKScriptMessageHandler> target;
+@end
+
+@implementation ReleasebirdWeakScriptHandler
+- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
+    [self.target userContentController:userContentController didReceiveScriptMessage:message];
+}
+@end
+
 @interface ReleasebirdFrameViewController ()
 
 @property (retain, nonatomic) WKWebView *webView;
@@ -68,9 +80,10 @@ static id ObjectOrNull(id object)
 }
 
 - (void)dealloc {
-    // Benachrichtigungen abmelden
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-
+    [self.webView.configuration.userContentController removeScriptMessageHandlerForName:@"rbirdCallback"];
+    self.webView.navigationDelegate = nil;
+    self.webView.UIDelegate = nil;
 }
 
 
@@ -101,6 +114,13 @@ static id ObjectOrNull(id object)
 
 - (void)closeWidget: (void (^)(void))completion {
     self.connected = NO;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (self.presentingViewController != nil) {
+            [self dismissViewControllerAnimated:YES completion:completion];
+        } else if (completion) {
+            completion();
+        }
+    });
 }
 
 
@@ -158,7 +178,9 @@ static id ObjectOrNull(id object)
     }
     WKWebViewConfiguration *webConfiguration = [[WKWebViewConfiguration alloc] init];
     WKUserContentController* userController = [[WKUserContentController alloc] init];
-    [userController addScriptMessageHandler: self name: @"rbirdCallback"];
+    ReleasebirdWeakScriptHandler *handler = [[ReleasebirdWeakScriptHandler alloc] init];
+    handler.target = self;
+    [userController addScriptMessageHandler: handler name: @"rbirdCallback"];
     webConfiguration.userContentController = userController;
     
     self.webView = [[WKWebView alloc] initWithFrame:CGRectZero configuration:webConfiguration];
@@ -176,26 +198,25 @@ static id ObjectOrNull(id object)
     self.webView.translatesAutoresizingMaskIntoConstraints = NO;
     self.webView.backgroundColor = [UIColor colorWithRed: 0.0 green: 0.0 blue: 0.0 alpha: 0.0];
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *aiString = [defaults objectForKey:@"releasebird_ai"];
-    NSString *contentUrl = [Config contentUrl];
-    
     NSDictionary *identifyState = [[ReleasebirdCore sharedInstance] getIdentifyState];
+    NSString *peopleId = [identifyState[@"people"] isKindOfClass:[NSString class]] ? identifyState[@"people"] : @"null";
+    // The hash of a verified identity travels along – without it the widget treats the user as unverified
+    NSString *hash = [identifyState[@"hash"] isKindOfClass:[NSString class]] && [identifyState[@"hash"] length] > 0 ? identifyState[@"hash"] : @"null";
 
-    
-    NSString *peopleId = nil;
-    
-    if (identifyState != nil && [identifyState objectForKey:@"people"] != nil) {
-        peopleId = [identifyState objectForKey:@"people"];
-    } else {
-        peopleId = @"null";
+    NSURLComponents *components = [NSURLComponents componentsWithString:[NSString stringWithFormat:@"%@/widget", [Config contentUrl]]];
+    components.queryItems = @[
+        [NSURLQueryItem queryItemWithName:@"apiKey" value:[ReleasebirdCore sharedInstance].apiKey],
+        [NSURLQueryItem queryItemWithName:@"ai" value:[[ReleasebirdCore sharedInstance] getAIValue] ?: @""],
+        [NSURLQueryItem queryItemWithName:@"people" value:peopleId],
+        [NSURLQueryItem queryItemWithName:@"tab" value:@"HOME"],
+        [NSURLQueryItem queryItemWithName:@"hash" value:hash],
+        [NSURLQueryItem queryItemWithName:@"disableScreenCapture" value:@"true"],
+    ];
+    NSURL *url = components.URL;
+    if (url == nil) {
+        return;
     }
-    
-    NSString *urlWithParameters;
-    urlWithParameters = [NSString stringWithFormat:@"%@/widget?apiKey=%@&ai=%@&people=%@&tab=HOME&hash=null&disableScreenCapture=true", contentUrl, [ReleasebirdCore sharedInstance].apiKey, aiString, peopleId];
-    
-    NSURL *url = [NSURL URLWithString:urlWithParameters];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:20];
     
     [ReleasebirdOverlayUtils showFeedbackButton: false];
     if (@available(iOS 11.0, *)) {
@@ -214,28 +235,34 @@ static id ObjectOrNull(id object)
 
 // Wird aufgerufen, wenn der Webinhalt-Prozess beendet wird
 - (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView {
-   
+    // iOS ended the web process (memory pressure) – reload instead of leaving a blank screen
+    [webView reload];
 }
 
 -(void)userContentController:(WKUserContentController*)userContentController didReceiveScriptMessage:(WKScriptMessage*)message
 {
-    if ([message.name isEqualToString:@"rbirdCallback"]) {
-        if ([message.body isKindOfClass:[NSString class]]) {
-            if ([message.body isEqualToString:@"close"]) {
-                [self dismissViewControllerAnimated:YES completion:nil];
-                [ReleasebirdOverlayUtils showFeedbackButton: true];
-            }
-            if ([message.body isEqualToString:@"newMessageArrived"]) {
-                [[ReleasebirdCore sharedInstance] getUnreadCount];
+    if (![message.name isEqualToString:@"rbirdCallback"]) {
+        return;
+    }
+    if ([message.body isKindOfClass:[NSString class]]) {
+        if ([message.body isEqualToString:@"close"]) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+            [ReleasebirdOverlayUtils showFeedbackButton: true];
+        } else if ([message.body isEqualToString:@"newMessageArrived"]) {
+            [[ReleasebirdCore sharedInstance] getUnreadCount];
+        }
+    } else if ([message.body isKindOfClass:[NSDictionary class]]) {
+        NSDictionary *dictionary = (NSDictionary *)message.body;
+        if ([dictionary[@"key"] isKindOfClass:[NSString class]] && [dictionary[@"key"] isEqualToString:@"showImage"]
+            && [dictionary[@"url"] isKindOfClass:[NSString class]]) {
+            NSURL *imageUrl = [NSURL URLWithString:dictionary[@"url"]];
+            // only real web addresses – the value comes from the page
+            if (imageUrl != nil && ([imageUrl.scheme isEqualToString:@"https"] || [imageUrl.scheme isEqualToString:@"http"])) {
+                FullscreenImageViewController *fullscreenVC = [[FullscreenImageViewController alloc] initWithImageURL:imageUrl];
+                [self presentViewController:fullscreenVC animated:YES completion:nil];
             }
         }
-        else if ([((NSDictionary *) message.body)[@"key"] isEqualToString:@"showImage"]) {
-            NSDictionary *dictionary = (NSDictionary *)message.body;
-            NSString *urlString = dictionary[@"url"];
-            FullscreenImageViewController *fullscreenVC = [[FullscreenImageViewController alloc] initWithImageURL:[NSURL URLWithString:urlString]];
-            [self presentViewController:fullscreenVC animated:YES completion:nil];
-           }
-        }
+    }
 }
 
 
@@ -259,7 +286,7 @@ static id ObjectOrNull(id object)
 }
 
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error {
-    NSLog(@"WebView navigation failed with error: %@", error.localizedDescription);
+    [self loadingFailed: error];
 }
 
 - (void)addFullConstraintsFrom:(UIView *)view toOtherView:(UIView *)otherView {
@@ -282,6 +309,16 @@ static id ObjectOrNull(id object)
 }
 
 - (void)loadingFailed:(NSError *)error {
+    // A cancelled load (e.g. a link opened outside the widget) is not a failure
+    if ([error.domain isEqualToString:NSURLErrorDomain] && error.code == NSURLErrorCancelled) {
+        return;
+    }
+    if ([error.domain isEqualToString:@"WebKitErrorDomain"] && error.code == 102) {
+        return;
+    }
+    if (self.presentedViewController != nil) {
+        return;
+    }
     self.view.userInteractionEnabled = YES;
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle: error.localizedDescription
                                                                              message: nil
@@ -295,39 +332,25 @@ static id ObjectOrNull(id object)
 }
 
 - (void)openURLExternally:(NSURL *)url fromViewController:(UIViewController *)presentingViewController {
-    @try {
-        if ([SFSafariViewController class]) {
-            SFSafariViewController *viewController = [[SFSafariViewController alloc] initWithURL: url];
-            viewController.modalPresentationStyle = UIModalPresentationFormSheet;
-            viewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-            [presentingViewController presentViewController:viewController animated:YES completion:nil];
-        } else {
-            if ([[UIApplication sharedApplication] canOpenURL: url]) {
-                if (@available(iOS 10.0, *)) {
-                    [[UIApplication sharedApplication] openURL: url options:@{} completionHandler:nil];
-                }
-            }
-        }
-    } @catch (id exp) {
-        
+    if (url == nil) {
+        return;
+    }
+    NSString *scheme = url.scheme.lowercaseString;
+    if ([scheme isEqualToString:@"http"] || [scheme isEqualToString:@"https"]) {
+        SFSafariViewController *viewController = [[SFSafariViewController alloc] initWithURL: url];
+        viewController.modalPresentationStyle = UIModalPresentationFormSheet;
+        viewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        [presentingViewController presentViewController:viewController animated:YES completion:nil];
+    } else {
+        [[UIApplication sharedApplication] openURL: url options:@{} completionHandler:nil];
     }
 }
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
     if (navigationAction.navigationType == WKNavigationTypeLinkActivated) {
-        NSURL *url = navigationAction.request.URL;
-        if ([url.absoluteString hasPrefix: @"mailto:"]) {
-            if ([[UIApplication sharedApplication] canOpenURL: url]) {
-                if (@available(iOS 10.0, *)) {
-                    [[UIApplication sharedApplication] openURL: url options:@{} completionHandler:nil];
-                }
-            }
-        } else {
-            [self openURLExternally: url fromViewController: self];
-        }
+        [self openURLExternally: navigationAction.request.URL fromViewController: self];
         return decisionHandler(WKNavigationActionPolicyCancel);
     }
-    
     return decisionHandler(WKNavigationActionPolicyAllow);
 }
 

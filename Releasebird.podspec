@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Releasebird'
-  s.version          = '1.0.23'
+  s.version          = '1.0.24'
   s.summary          = 'In-APP Customer Support. Learn more at https://www.releasebird.com'
 
 # This description is used to generate tags and improve search results.
@@ -25,13 +25,14 @@ In-APP Customer Support. Learn more at https://www.releasebird.com
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'buildnext GmbH' => 'christian.zillmann@buildnext.io' }
-  s.source           = { :git => 'https://github.com/bxt-team/releasebird-ios-sdk.git', :tag => '1.0.23' }
+  s.source           = { :git => 'https://github.com/bxt-team/releasebird-ios-sdk.git', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '15.0'
   
   s.source_files = 'releasebird-ios-sdk/Classes/**/*.{h,m,c}'
   s.public_header_files = 'releasebird-ios-sdk/Classes/**/*.h'
 
-  s.frameworks = 'UIKit'
-  s.dependency 'AFNetworking', '~> 4.0.1'
+  s.frameworks = 'UIKit', 'WebKit', 'SafariServices'
+  # Privacy manifest for apps that integrate via CocoaPods (also React Native and Capacitor)
+  s.resource_bundles = { 'Releasebird' => ['releasebird-ios-sdk/PrivacyInfo.xcprivacy'] }
 end

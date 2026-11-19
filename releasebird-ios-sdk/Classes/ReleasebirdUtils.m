@@ -16,9 +16,15 @@
 }
 
 + (UIColor *)colorFromHexString:(NSString *)hexString {
+    // The value comes from the server: missing, null or malformed must not crash the host app
+    if (![hexString isKindOfClass:[NSString class]] || hexString.length < 6) {
+        return [UIColor colorWithRed:0.40 green:0.49 blue:0.92 alpha:1.0];
+    }
     unsigned rgbValue = 0;
     NSScanner *scanner = [NSScanner scannerWithString:hexString];
-    [scanner setScanLocation:1]; // bypass '#' character
+    if ([hexString hasPrefix:@"#"]) {
+        [scanner setScanLocation:1]; // bypass '#' character
+    }
     [scanner scanHexInt:&rgbValue];
     return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
 }

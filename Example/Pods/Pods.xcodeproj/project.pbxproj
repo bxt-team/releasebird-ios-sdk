@@ -7,414 +7,428 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A80001420520A78C9877035EAECBC60 /* ReleasebirdUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = B37C5DB19C52E79213E4B569D906E6FB /* ReleasebirdUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		12C3E4057647A6E2818F41F6E9B28841 /* ReleasebirdOverlayUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC9BE8E2AC8419C4B467520B5D6B980 /* ReleasebirdOverlayUtils.m */; };
-		191AC1D733B445537A0C7179A3C90C35 /* ReleasebirdWindowUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B5072D96F306F3C74C2892582C264698 /* ReleasebirdWindowUtils.m */; };
-		1A88E33CCDA8C82CF09E72E960B23D9D /* ReleasebirdButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D7F0176F2696D214177D7FB4E19610 /* ReleasebirdButton.m */; };
-		21C751349C6789EB4D979C07900BFDE6 /* ReleasebirdOverlayUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B6C5D4A18B2A1090A0BDF5CC7A16BC4 /* ReleasebirdOverlayUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27E135A61D195C918680E85964094C27 /* releasebird-ios-sdk.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EF534EBF985E562E483B5760AC0B7E1D /* releasebird-ios-sdk.bundle */; };
-		2BBE485951F8BF22AB600C216819860F /* ReleasebirdUIOverlayViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EDFD8D118C116D5926DCEF596AF788E /* ReleasebirdUIOverlayViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3C6FFDD73AF9A7AD06F03B08C7D26E59 /* releasebird-ios-sdk-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E02130EC4ACE8D031F2E5C8C04CF036 /* releasebird-ios-sdk-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		509A95611D198ABC8EE8D95BE24A9A58 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D245E0514AAC1A2B9A6D5EA2F383E90F /* UIKit.framework */; };
-		51AD2B04305CAB418DB3F91A817DC314 /* Pods-releasebird-ios-sdk_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 570DCEBF3C81F53461DC02F7F2331F60 /* Pods-releasebird-ios-sdk_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		544862477A6A4C0857E7B052918333A0 /* Pods-releasebird-ios-sdk_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A1B6EAE73FCDE7B7E2E29BFD9D66013 /* Pods-releasebird-ios-sdk_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		59752C2A4F55DB7BEA430D81494CA18A /* ReleasebirdFrameViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B1FACDEA88BDACF7C927291232A37426 /* ReleasebirdFrameViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5D445DE35E2DFC18B849081E24AF3505 /* ReleasebirdButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D8321B8C02AE4491736794708DE55C4 /* ReleasebirdButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		684627EFC22B3EF6900770E26EB9B6D1 /* releasebird-ios-sdk-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBD40978041B97B6BF62EAB73CA2D91 /* releasebird-ios-sdk-dummy.m */; };
-		837B288DAFB5AE99FE81E7FD6035372C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
-		91ACCDC5664A398FF2705CB1174692F0 /* Pods-releasebird-ios-sdk_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EA421937B0993EA14E2800938F7B73 /* Pods-releasebird-ios-sdk_Example-dummy.m */; };
-		9C55FFCD45EA1C6CD15A927D86141E64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
-		AAD92A608A02E1D0C7BF7A196A01501E /* ReleasebirdUIOverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 554016CC65965FE24100DAEA2A871C02 /* ReleasebirdUIOverlayViewController.m */; };
-		ABDA9A7DA375008BBAE94A5084A8E24D /* ReleasebirdUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E50599B9F0D65C9F4586B60E1A0C6 /* ReleasebirdUtils.m */; };
-		C563F9B0F2133E89EA28FF7AEDA47106 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
-		DF2510459BC00D268AD62383449DD1C6 /* Releasebird.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F9B605F6C928E5526E84DF83C7CC7F6 /* Releasebird.m */; };
-		E124541F2C4FE59A002B7AC3 /* ReleasebirdCore.m in Sources */ = {isa = PBXBuildFile; fileRef = E124541E2C4FE59A002B7AC3 /* ReleasebirdCore.m */; };
-		E12454212C4FE5B8002B7AC3 /* ReleasebirdCore.h in Headers */ = {isa = PBXBuildFile; fileRef = E12454202C4FE5B8002B7AC3 /* ReleasebirdCore.h */; };
-		E12454232C50F976002B7AC3 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = E12454222C50F976002B7AC3 /* Config.m */; };
-		E12454252C50FB3C002B7AC3 /* Config.h in Headers */ = {isa = PBXBuildFile; fileRef = E12454242C50FB3C002B7AC3 /* Config.h */; };
-		E12454272C51310C002B7AC3 /* FullscreenImageViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E12454262C51310B002B7AC3 /* FullscreenImageViewController.h */; };
-		E12454292C513127002B7AC3 /* FullscreenImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E12454282C513127002B7AC3 /* FullscreenImageViewController.m */; };
-		E4C084E540E869B1919C16990FA7D90D /* ReleasebirdFrameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2A2F5E55D879921AE7528FDBD90F69E /* ReleasebirdFrameViewController.m */; };
-		E99B9DB48DACCF1E3083FE8122AE6672 /* ReleasebirdWindowUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C64C115B4BBBEE8FE2414700D46077C /* ReleasebirdWindowUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F538BD0495A7A35A0A6C9F381E7E7D3E /* Releasebird.h in Headers */ = {isa = PBXBuildFile; fileRef = FFBF9F47DD906B9679C9D03D2CA06FF5 /* Releasebird.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FCB1ED444A5262149B75033F34460FDA /* Pods-releasebird-ios-sdk_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFB3CEF23AF2E724559CBC67144EF73 /* Pods-releasebird-ios-sdk_Tests-dummy.m */; };
+		05C348C28E450A2CC1CFF668B3078BDE /* Releasebird.m in Sources */ = {isa = PBXBuildFile; fileRef = D09717780324791B8BA34DBBBDB0A89F /* Releasebird.m */; };
+		0ACEF4DE7E5B7E3EDD3ECBCBB1747FCB /* Pods-releasebird-ios-sdk_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 039894FCF9E27EA72BB0062E9E518469 /* Pods-releasebird-ios-sdk_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0C10A4B660DA372A85E1A3D2977AA8AC /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 60E1F4BE982ACCDB10441E6EEA6A7463 /* Config.m */; };
+		13C9BF2FCA4FB8BC59901992A0AE9F45 /* Releasebird.h in Headers */ = {isa = PBXBuildFile; fileRef = ECDFA31D3D93F395DA3B812DA1EDE426 /* Releasebird.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		13FA60219AD32CD3CCB1E54E2C81650C /* ReleasebirdWindowUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BC85719AFA0A3586B20C23803300A5 /* ReleasebirdWindowUtils.m */; };
+		1CD9D6D9E5434D455FBC0FC504FC3BE3 /* Config.h in Headers */ = {isa = PBXBuildFile; fileRef = FA1279523D013F103650622E82616A9C /* Config.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		30E07B4F559DD972C6156EF3E6CB32BA /* ReleasebirdUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = B3CFC556035F73371F0AB05A4D8495BB /* ReleasebirdUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3439BCEFB80BBE95C975AA3418966835 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5178B8493E04BEC96A994DCA264E5C8 /* WebKit.framework */; };
+		3E99F0CD0A6AB8C5AFE92AEB46A4891A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED68E0E2CA3E0018BA7B9081F57F99A /* Foundation.framework */; };
+		4094E85CCBC28299D3E8B65C0F839883 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F72A8FE967B793559CB5517846BE61E5 /* UIKit.framework */; };
+		429E63167D20C54967B64666AC3FE263 /* Pods-releasebird-ios-sdk_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58EDA72661E4FD67353FABC1E1AF2707 /* Pods-releasebird-ios-sdk_Example-dummy.m */; };
+		457645C5603E531CCD169FF35EE9F2C9 /* Pods-releasebird-ios-sdk_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5A5A7C91F7124CE5162882F87458FE /* Pods-releasebird-ios-sdk_Tests-dummy.m */; };
+		46C857F15673EB79224EA408A2C0B2A9 /* ReleasebirdUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9A5A5E066F877B97CC0F08BE12402C /* ReleasebirdUtils.m */; };
+		4C7BF2ECB93E138B4AEDCCD6F1D0F461 /* Releasebird-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BAC349D9DFC006A560C2C46134848A1 /* Releasebird-dummy.m */; };
+		4EF2D74809887ADFFE3A853AF342326E /* ReleasebirdButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D577D7D3334BEE55E64857FB40A121C /* ReleasebirdButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		50F6F2E6B9B46D919839C3AF808630C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED68E0E2CA3E0018BA7B9081F57F99A /* Foundation.framework */; };
+		74424FCEFCC44E242CA0480C9A9DEA49 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED68E0E2CA3E0018BA7B9081F57F99A /* Foundation.framework */; };
+		7A5B5AC0C620C0DBDA966108C1D3F6E3 /* ReleasebirdOverlayUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E36A442BC292FE8B5C212C0AF6AFBC4A /* ReleasebirdOverlayUtils.m */; };
+		7E27B477FA30A1F203C72D4B6D261117 /* ReleasebirdWindowUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FC782CFC3D0DC0811D34B9C6E5AC3AB /* ReleasebirdWindowUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		868083535D31BCD08E7E7F3AB71C9A4A /* ReleasebirdCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 4702FA84347F971ED500E6C3E5809074 /* ReleasebirdCore.m */; };
+		8BF58BB728F0C340601027CAEE770E98 /* Releasebird-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8960C6E3CA7A3AE6E1A69252D0B7FA37 /* Releasebird-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8DA85F9CA384C727E45BFB5ADA768DAF /* Releasebird-Releasebird in Resources */ = {isa = PBXBuildFile; fileRef = E99CBDE69C7F1E69EEE2397522CD52EF /* Releasebird-Releasebird */; };
+		9286363BE00D73D247A07A7F42C2E913 /* ReleasebirdOverlayUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 93DDF4A4C8CC89BB305D0178236F580A /* ReleasebirdOverlayUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B06E89AAEC728ED51CB2CD658AD5D904 /* Pods-releasebird-ios-sdk_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 03D0D9F47455B801C7CAA39FB2E9B8A8 /* Pods-releasebird-ios-sdk_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BB590209E3A048970A15411971C61207 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C4701BE314C6E7EE17DCEE32898DDCE /* SafariServices.framework */; };
+		C1A31FFF82390E033337769F0BE642F6 /* FullscreenImageViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BD0A19035EB8052AF77522879A326A3 /* FullscreenImageViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C98D82E01D07FCAB5379296AF78A74C3 /* ReleasebirdFrameViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C21296833837D5D28A2CF7A037580215 /* ReleasebirdFrameViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D395209BA9B02A7C707AEC6714936CD7 /* FullscreenImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78715F516D5435C835C7C3433B529C05 /* FullscreenImageViewController.m */; };
+		D8C4B2E39A92EF9D29C19E65D7EF925B /* ReleasebirdUIOverlayViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 217B11FEA1B4A49EFFBE9491EE1DA09C /* ReleasebirdUIOverlayViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DF1E3D63F1846D5C7BB48E69A3D0FA29 /* ReleasebirdFrameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D2433A596F217CECA07315255A40B2D /* ReleasebirdFrameViewController.m */; };
+		E3561B6C13A71A1BD55BED48C69F59D5 /* ReleasebirdUIOverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 710D33A2ACFB8ECE5256D9C74F6AB0DF /* ReleasebirdUIOverlayViewController.m */; };
+		EFAA34FB3E14AEB4F185F03D6460D4DA /* ReleasebirdCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DBC4468CA0CEFBF12048822E4103A89 /* ReleasebirdCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F3CE039BF0E0C274103698424ABCFCA8 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 5F08D45C181A65B5776E199AD934C165 /* PrivacyInfo.xcprivacy */; };
+		F56F6DE5263F33CD065A47F1527D2DCE /* ReleasebirdButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E904359A283FB94E2E2DE0E845995DE8 /* ReleasebirdButton.m */; };
+		F6AE9DD18507B4F2CAA0477635EFB21B /* ReleasebirdSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C351D17A6F76E57AEA3AEA6B79D87DA /* ReleasebirdSession.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		521B14423A66DAFD6A51E276FB32C58B /* PBXContainerItemProxy */ = {
+		55EFA697E67D1A4EA9BA805315686E40 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 28805AC836B37F3418598C59CF66EFA6;
+			remoteGlobalIDString = F9D77821F59A81159026D2ADEC1A0471;
 			remoteInfo = "Pods-releasebird-ios-sdk_Example";
 		};
-		6AAF1D940FC27508F5101AE84A3B6C92 /* PBXContainerItemProxy */ = {
+		65FEDFE119D56EEBA6E4B666C32E7EB8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 955EAB49CB16C7B716C0B1EB3EE62E39;
-			remoteInfo = "releasebird-ios-sdk";
+			remoteGlobalIDString = F264CB7D7E36D909173AE80BDE6E8347;
+			remoteInfo = Releasebird;
 		};
-		AA19BB7F32B6A33D0DFB7C6360340B88 /* PBXContainerItemProxy */ = {
+		DF4BB2F5848619FA13EDFAFC65F7C51F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 974B597A04F2FBD862808BA7F96BE5DD;
-			remoteInfo = "releasebird-ios-sdk-releasebird-ios-sdk";
+			remoteGlobalIDString = 6B5E0279D5128B41C60ADB3211404AC6;
+			remoteInfo = "Releasebird-Releasebird";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00DB9D6659538D1814E50134011BC71A /* releasebird-ios-sdk-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "releasebird-ios-sdk-prefix.pch"; sourceTree = "<group>"; };
-		0C64C115B4BBBEE8FE2414700D46077C /* ReleasebirdWindowUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ReleasebirdWindowUtils.h; path = "releasebird-ios-sdk/Classes/ReleasebirdWindowUtils.h"; sourceTree = "<group>"; };
-		120A58309032757C31F55674ECCD4790 /* ResourceBundle-releasebird-ios-sdk-releasebird-ios-sdk-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-releasebird-ios-sdk-releasebird-ios-sdk-Info.plist"; sourceTree = "<group>"; };
-		130DF523FAD40F97E3553D50395CE0E4 /* releasebird-ios-sdk.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "releasebird-ios-sdk.modulemap"; sourceTree = "<group>"; };
-		194351957DA1BD7F5DAA32B8BBBCD57C /* releasebird-ios-sdk-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "releasebird-ios-sdk-Info.plist"; sourceTree = "<group>"; };
-		1A1B6EAE73FCDE7B7E2E29BFD9D66013 /* Pods-releasebird-ios-sdk_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-releasebird-ios-sdk_Example-umbrella.h"; sourceTree = "<group>"; };
-		1FB963F4B622845243F2874458312C0D /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		24EB4217E117E1C41A002DF61A70B577 /* releasebird-ios-sdk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "releasebird-ios-sdk.debug.xcconfig"; sourceTree = "<group>"; };
-		27A1225169901C5B14C7EB55B3D10D7B /* Pods-releasebird-ios-sdk_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-releasebird-ios-sdk_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		2E1B8559BD98E1DC0671DC2062BB1AEC /* Pods-releasebird-ios-sdk_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-releasebird-ios-sdk_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		3B6C5D4A18B2A1090A0BDF5CC7A16BC4 /* ReleasebirdOverlayUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ReleasebirdOverlayUtils.h; path = "releasebird-ios-sdk/Classes/ReleasebirdOverlayUtils.h"; sourceTree = "<group>"; };
-		3BBD40978041B97B6BF62EAB73CA2D91 /* releasebird-ios-sdk-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "releasebird-ios-sdk-dummy.m"; sourceTree = "<group>"; };
-		3BC9BE8E2AC8419C4B467520B5D6B980 /* ReleasebirdOverlayUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ReleasebirdOverlayUtils.m; path = "releasebird-ios-sdk/Classes/ReleasebirdOverlayUtils.m"; sourceTree = "<group>"; };
-		422BBD577764F4AB67787B6BE7D0BDA1 /* Pods-releasebird-ios-sdk_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-releasebird-ios-sdk_Example.modulemap"; sourceTree = "<group>"; };
-		4C1D0A7E125A70812DC7B426FE78AB9D /* Pods-releasebird-ios-sdk_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-releasebird-ios-sdk_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		526DCA71DC129FC2462F1D7F6579C427 /* Pods-releasebird-ios-sdk_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-releasebird-ios-sdk_Example.release.xcconfig"; sourceTree = "<group>"; };
-		554016CC65965FE24100DAEA2A871C02 /* ReleasebirdUIOverlayViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ReleasebirdUIOverlayViewController.m; path = "releasebird-ios-sdk/Classes/ReleasebirdUIOverlayViewController.m"; sourceTree = "<group>"; };
-		570DCEBF3C81F53461DC02F7F2331F60 /* Pods-releasebird-ios-sdk_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-releasebird-ios-sdk_Tests-umbrella.h"; sourceTree = "<group>"; };
-		5C95A58DF5533DBFE518DA6AD7383C22 /* Pods_releasebird_ios_sdk_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_releasebird_ios_sdk_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5D8321B8C02AE4491736794708DE55C4 /* ReleasebirdButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ReleasebirdButton.h; path = "releasebird-ios-sdk/Classes/ReleasebirdButton.h"; sourceTree = "<group>"; };
-		62599AEEA7DE9E5A582DD4AAE1E564CD /* Pods-releasebird-ios-sdk_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-releasebird-ios-sdk_Tests"; path = Pods_releasebird_ios_sdk_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6E02130EC4ACE8D031F2E5C8C04CF036 /* releasebird-ios-sdk-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "releasebird-ios-sdk-umbrella.h"; sourceTree = "<group>"; };
-		6FFB3CEF23AF2E724559CBC67144EF73 /* Pods-releasebird-ios-sdk_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-releasebird-ios-sdk_Tests-dummy.m"; sourceTree = "<group>"; };
-		75DABFDABCAD5051D3EF3CD4024BAE3D /* Pods-releasebird-ios-sdk_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-releasebird-ios-sdk_Example-Info.plist"; sourceTree = "<group>"; };
-		77D7F0176F2696D214177D7FB4E19610 /* ReleasebirdButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ReleasebirdButton.m; path = "releasebird-ios-sdk/Classes/ReleasebirdButton.m"; sourceTree = "<group>"; };
-		7911A48C016C6E568F6BDFEB59E00004 /* releasebird_ios_sdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = releasebird_ios_sdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8A5E50599B9F0D65C9F4586B60E1A0C6 /* ReleasebirdUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ReleasebirdUtils.m; path = "releasebird-ios-sdk/Classes/ReleasebirdUtils.m"; sourceTree = "<group>"; };
-		8EDFD8D118C116D5926DCEF596AF788E /* ReleasebirdUIOverlayViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ReleasebirdUIOverlayViewController.h; path = "releasebird-ios-sdk/Classes/ReleasebirdUIOverlayViewController.h"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9F9B605F6C928E5526E84DF83C7CC7F6 /* Releasebird.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = Releasebird.m; path = "releasebird-ios-sdk/Classes/Releasebird.m"; sourceTree = "<group>"; };
-		AAFF2B0B9330F500DCAC454252481A76 /* releasebird-ios-sdk.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = "releasebird-ios-sdk.podspec"; sourceTree = "<group>"; tabWidth = 2; };
-		B1FACDEA88BDACF7C927291232A37426 /* ReleasebirdFrameViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ReleasebirdFrameViewController.h; path = "releasebird-ios-sdk/Classes/ReleasebirdFrameViewController.h"; sourceTree = "<group>"; };
-		B21050723E1870136D92A15EBC689DF2 /* Pods-releasebird-ios-sdk_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-releasebird-ios-sdk_Tests-Info.plist"; sourceTree = "<group>"; };
-		B2A2F5E55D879921AE7528FDBD90F69E /* ReleasebirdFrameViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ReleasebirdFrameViewController.m; path = "releasebird-ios-sdk/Classes/ReleasebirdFrameViewController.m"; sourceTree = "<group>"; };
-		B37C5DB19C52E79213E4B569D906E6FB /* ReleasebirdUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ReleasebirdUtils.h; path = "releasebird-ios-sdk/Classes/ReleasebirdUtils.h"; sourceTree = "<group>"; };
-		B42FCE65504E35C463C2ECAE92ED3C5B /* Pods-releasebird-ios-sdk_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-releasebird-ios-sdk_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		B5072D96F306F3C74C2892582C264698 /* ReleasebirdWindowUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ReleasebirdWindowUtils.m; path = "releasebird-ios-sdk/Classes/ReleasebirdWindowUtils.m"; sourceTree = "<group>"; };
-		BB3D2A977ACDC8AC4C7782BEF8B29351 /* Pods-releasebird-ios-sdk_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-releasebird-ios-sdk_Example-frameworks.sh"; sourceTree = "<group>"; };
-		BE2CE16DD873B3CC41CFDC903A419457 /* Pods-releasebird-ios-sdk_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-releasebird-ios-sdk_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		CB0F7AF768DE16D47256A576D034A566 /* Pods-releasebird-ios-sdk_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-releasebird-ios-sdk_Tests.modulemap"; sourceTree = "<group>"; };
-		D245E0514AAC1A2B9A6D5EA2F383E90F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		D75F4DBE4FBEBCD67B5DFA4FDA2DA9E7 /* Pods-releasebird-ios-sdk_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-releasebird-ios-sdk_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		D9B4484EF9ACCCFA10545B9CB07CE50E /* Pods-releasebird-ios-sdk_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-releasebird-ios-sdk_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		E124541E2C4FE59A002B7AC3 /* ReleasebirdCore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ReleasebirdCore.m; path = "releasebird-ios-sdk/Classes/ReleasebirdCore.m"; sourceTree = "<group>"; };
-		E12454202C4FE5B8002B7AC3 /* ReleasebirdCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ReleasebirdCore.h; path = "releasebird-ios-sdk/Classes/ReleasebirdCore.h"; sourceTree = "<group>"; };
-		E12454222C50F976002B7AC3 /* Config.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Config.m; path = "releasebird-ios-sdk/Classes/Config.m"; sourceTree = "<group>"; };
-		E12454242C50FB3C002B7AC3 /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Config.h; path = "releasebird-ios-sdk/Classes/Config.h"; sourceTree = "<group>"; };
-		E12454262C51310B002B7AC3 /* FullscreenImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FullscreenImageViewController.h; path = "releasebird-ios-sdk/Classes/FullscreenImageViewController.h"; sourceTree = "<group>"; };
-		E12454282C513127002B7AC3 /* FullscreenImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FullscreenImageViewController.m; path = "releasebird-ios-sdk/Classes/FullscreenImageViewController.m"; sourceTree = "<group>"; };
-		E5EA421937B0993EA14E2800938F7B73 /* Pods-releasebird-ios-sdk_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-releasebird-ios-sdk_Example-dummy.m"; sourceTree = "<group>"; };
-		EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		EF534EBF985E562E483B5760AC0B7E1D /* releasebird-ios-sdk.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "releasebird-ios-sdk.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F4E1664AC4D5666B89AEF2A48013DBA5 /* releasebird-ios-sdk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "releasebird-ios-sdk.release.xcconfig"; sourceTree = "<group>"; };
-		FB1DF32F6312036FAE030F93C9E4FD66 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		FFBF9F47DD906B9679C9D03D2CA06FF5 /* Releasebird.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Releasebird.h; path = "releasebird-ios-sdk/Classes/Releasebird.h"; sourceTree = "<group>"; };
+		039894FCF9E27EA72BB0062E9E518469 /* Pods-releasebird-ios-sdk_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-releasebird-ios-sdk_Example-umbrella.h"; sourceTree = "<group>"; };
+		03D0D9F47455B801C7CAA39FB2E9B8A8 /* Pods-releasebird-ios-sdk_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-releasebird-ios-sdk_Tests-umbrella.h"; sourceTree = "<group>"; };
+		0BD0A19035EB8052AF77522879A326A3 /* FullscreenImageViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FullscreenImageViewController.h; path = "releasebird-ios-sdk/Classes/FullscreenImageViewController.h"; sourceTree = "<group>"; };
+		17910F1C2E3A9B9C6FFCBA5CABF9C521 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		1BBFD11B5C3EB15DB82704985FFC7540 /* Pods-releasebird-ios-sdk_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-releasebird-ios-sdk_Tests"; path = Pods_releasebird_ios_sdk_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D577D7D3334BEE55E64857FB40A121C /* ReleasebirdButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ReleasebirdButton.h; path = "releasebird-ios-sdk/Classes/ReleasebirdButton.h"; sourceTree = "<group>"; };
+		217B11FEA1B4A49EFFBE9491EE1DA09C /* ReleasebirdUIOverlayViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ReleasebirdUIOverlayViewController.h; path = "releasebird-ios-sdk/Classes/ReleasebirdUIOverlayViewController.h"; sourceTree = "<group>"; };
+		2D63C94A501903EB6CD3A0F45A741755 /* Releasebird.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Releasebird.modulemap; sourceTree = "<group>"; };
+		3C9A5A5E066F877B97CC0F08BE12402C /* ReleasebirdUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ReleasebirdUtils.m; path = "releasebird-ios-sdk/Classes/ReleasebirdUtils.m"; sourceTree = "<group>"; };
+		3DBC4468CA0CEFBF12048822E4103A89 /* ReleasebirdCore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ReleasebirdCore.h; path = "releasebird-ios-sdk/Classes/ReleasebirdCore.h"; sourceTree = "<group>"; };
+		4702FA84347F971ED500E6C3E5809074 /* ReleasebirdCore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ReleasebirdCore.m; path = "releasebird-ios-sdk/Classes/ReleasebirdCore.m"; sourceTree = "<group>"; };
+		480DCA4A5F50F5224FA7DFC7186AB7B0 /* Releasebird-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Releasebird-prefix.pch"; sourceTree = "<group>"; };
+		4BAC349D9DFC006A560C2C46134848A1 /* Releasebird-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Releasebird-dummy.m"; sourceTree = "<group>"; };
+		4C351D17A6F76E57AEA3AEA6B79D87DA /* ReleasebirdSession.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ReleasebirdSession.m; path = "releasebird-ios-sdk/Classes/ReleasebirdSession.m"; sourceTree = "<group>"; };
+		4D8E47B97A6ACDA952DB1496A0669BC4 /* Pods-releasebird-ios-sdk_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-releasebird-ios-sdk_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		5381F3181CE22CEBEB00EF1E9E7FAF99 /* Pods-releasebird-ios-sdk_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-releasebird-ios-sdk_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		585FEECC34038CE220B10416426CC603 /* Pods-releasebird-ios-sdk_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-releasebird-ios-sdk_Example-frameworks.sh"; sourceTree = "<group>"; };
+		58EDA72661E4FD67353FABC1E1AF2707 /* Pods-releasebird-ios-sdk_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-releasebird-ios-sdk_Example-dummy.m"; sourceTree = "<group>"; };
+		5F08D45C181A65B5776E199AD934C165 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = "releasebird-ios-sdk/PrivacyInfo.xcprivacy"; sourceTree = "<group>"; };
+		6033BE5DE61DC2106012B1B189B8C107 /* Pods-releasebird-ios-sdk_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-releasebird-ios-sdk_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		6092F0AE861AB23244751F2D57881D08 /* Pods-releasebird-ios-sdk_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-releasebird-ios-sdk_Example.modulemap"; sourceTree = "<group>"; };
+		60E1F4BE982ACCDB10441E6EEA6A7463 /* Config.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = Config.m; path = "releasebird-ios-sdk/Classes/Config.m"; sourceTree = "<group>"; };
+		63EF3550D77F701DDEF6D4C219852FA0 /* Pods-releasebird-ios-sdk_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-releasebird-ios-sdk_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		6B240E4535515F0D21C762F4E9965E7C /* Pods-releasebird-ios-sdk_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-releasebird-ios-sdk_Tests-Info.plist"; sourceTree = "<group>"; };
+		6C4701BE314C6E7EE17DCEE32898DDCE /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/SafariServices.framework; sourceTree = DEVELOPER_DIR; };
+		6C57453AE94BF3461E6CF3D70A9C84BB /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		6DE2BBE4F723281306F290F84D1C7778 /* Releasebird */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Releasebird; path = Releasebird.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		710D33A2ACFB8ECE5256D9C74F6AB0DF /* ReleasebirdUIOverlayViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ReleasebirdUIOverlayViewController.m; path = "releasebird-ios-sdk/Classes/ReleasebirdUIOverlayViewController.m"; sourceTree = "<group>"; };
+		75F019CACB875740D90D549DBB90011B /* Pods-releasebird-ios-sdk_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-releasebird-ios-sdk_Example-Info.plist"; sourceTree = "<group>"; };
+		78715F516D5435C835C7C3433B529C05 /* FullscreenImageViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FullscreenImageViewController.m; path = "releasebird-ios-sdk/Classes/FullscreenImageViewController.m"; sourceTree = "<group>"; };
+		7A68034AB0015219BCD30A79DA14E425 /* Pods-releasebird-ios-sdk_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-releasebird-ios-sdk_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		837F03D68C1BDB2982F6C6B354A85197 /* Pods-releasebird-ios-sdk_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-releasebird-ios-sdk_Tests.modulemap"; sourceTree = "<group>"; };
+		8960C6E3CA7A3AE6E1A69252D0B7FA37 /* Releasebird-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Releasebird-umbrella.h"; sourceTree = "<group>"; };
+		8D2433A596F217CECA07315255A40B2D /* ReleasebirdFrameViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ReleasebirdFrameViewController.m; path = "releasebird-ios-sdk/Classes/ReleasebirdFrameViewController.m"; sourceTree = "<group>"; };
+		93DDF4A4C8CC89BB305D0178236F580A /* ReleasebirdOverlayUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ReleasebirdOverlayUtils.h; path = "releasebird-ios-sdk/Classes/ReleasebirdOverlayUtils.h"; sourceTree = "<group>"; };
+		9A2838126E1272BF596E311B26099578 /* Pods-releasebird-ios-sdk_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-releasebird-ios-sdk_Example.release.xcconfig"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9FC782CFC3D0DC0811D34B9C6E5AC3AB /* ReleasebirdWindowUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ReleasebirdWindowUtils.h; path = "releasebird-ios-sdk/Classes/ReleasebirdWindowUtils.h"; sourceTree = "<group>"; };
+		A85133294C4F68C1837C2BE920B2F2CB /* Releasebird-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Releasebird-Info.plist"; sourceTree = "<group>"; };
+		ACF42116C0F29E2B40742DE42B779B0A /* Releasebird.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Releasebird.debug.xcconfig; sourceTree = "<group>"; };
+		B2E2E05B5891527DDD6C39E4DDBEA197 /* Releasebird.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Releasebird.release.xcconfig; sourceTree = "<group>"; };
+		B3CFC556035F73371F0AB05A4D8495BB /* ReleasebirdUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ReleasebirdUtils.h; path = "releasebird-ios-sdk/Classes/ReleasebirdUtils.h"; sourceTree = "<group>"; };
+		B7B23FBF8CF4EE957768392B6D0C935E /* Pods-releasebird-ios-sdk_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-releasebird-ios-sdk_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		BE5A5A7C91F7124CE5162882F87458FE /* Pods-releasebird-ios-sdk_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-releasebird-ios-sdk_Tests-dummy.m"; sourceTree = "<group>"; };
+		C21296833837D5D28A2CF7A037580215 /* ReleasebirdFrameViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ReleasebirdFrameViewController.h; path = "releasebird-ios-sdk/Classes/ReleasebirdFrameViewController.h"; sourceTree = "<group>"; };
+		C9BC85719AFA0A3586B20C23803300A5 /* ReleasebirdWindowUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ReleasebirdWindowUtils.m; path = "releasebird-ios-sdk/Classes/ReleasebirdWindowUtils.m"; sourceTree = "<group>"; };
+		CB6A25A26D764F3C854119CEF2AF21D1 /* Pods-releasebird-ios-sdk_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-releasebird-ios-sdk_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		CDDD165EE5674E1C3EF6469750488095 /* Pods-releasebird-ios-sdk_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-releasebird-ios-sdk_Example"; path = Pods_releasebird_ios_sdk_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CED68E0E2CA3E0018BA7B9081F57F99A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		D09717780324791B8BA34DBBBDB0A89F /* Releasebird.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = Releasebird.m; path = "releasebird-ios-sdk/Classes/Releasebird.m"; sourceTree = "<group>"; };
+		E36A442BC292FE8B5C212C0AF6AFBC4A /* ReleasebirdOverlayUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ReleasebirdOverlayUtils.m; path = "releasebird-ios-sdk/Classes/ReleasebirdOverlayUtils.m"; sourceTree = "<group>"; };
+		E904359A283FB94E2E2DE0E845995DE8 /* ReleasebirdButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ReleasebirdButton.m; path = "releasebird-ios-sdk/Classes/ReleasebirdButton.m"; sourceTree = "<group>"; };
+		E99CBDE69C7F1E69EEE2397522CD52EF /* Releasebird-Releasebird */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "Releasebird-Releasebird"; path = Releasebird.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECDFA31D3D93F395DA3B812DA1EDE426 /* Releasebird.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Releasebird.h; path = "releasebird-ios-sdk/Classes/Releasebird.h"; sourceTree = "<group>"; };
+		F1BAD427054C03C530167C322676F59F /* ResourceBundle-Releasebird-Releasebird-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-Releasebird-Releasebird-Info.plist"; sourceTree = "<group>"; };
+		F5178B8493E04BEC96A994DCA264E5C8 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
+		F72A8FE967B793559CB5517846BE61E5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		FA1279523D013F103650622E82616A9C /* Config.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Config.h; path = "releasebird-ios-sdk/Classes/Config.h"; sourceTree = "<group>"; };
+		FCE76FAC0EF40B38DDB501569F1C99ED /* Releasebird.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = Releasebird.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		41CCE3899DF528F6E5231CF6C9794ED9 /* Frameworks */ = {
+		3193DA18954DB55B221B850B4D479BAE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		652B2D9EBA0796B59B9351A51CF4EC5C /* Frameworks */ = {
+		6AF6BB05210715B3DF1F53837D47EF11 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C563F9B0F2133E89EA28FF7AEDA47106 /* Foundation.framework in Frameworks */,
+				3E99F0CD0A6AB8C5AFE92AEB46A4891A /* Foundation.framework in Frameworks */,
+				BB590209E3A048970A15411971C61207 /* SafariServices.framework in Frameworks */,
+				4094E85CCBC28299D3E8B65C0F839883 /* UIKit.framework in Frameworks */,
+				3439BCEFB80BBE95C975AA3418966835 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		808693ACF69668AACB12D5F3C77433F1 /* Frameworks */ = {
+		A7F232B4A94F3E71544363553AD373CC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C55FFCD45EA1C6CD15A927D86141E64 /* Foundation.framework in Frameworks */,
-				509A95611D198ABC8EE8D95BE24A9A58 /* UIKit.framework in Frameworks */,
+				74424FCEFCC44E242CA0480C9A9DEA49 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F22922C18D1698A1D9D994FEAA9DE750 /* Frameworks */ = {
+		B1E0C25C07448F7F315CD2E61829C566 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				837B288DAFB5AE99FE81E7FD6035372C /* Foundation.framework in Frameworks */,
+				50F6F2E6B9B46D919839C3AF808630C2 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0A1B1E1CF33872E441B546BB782EE622 /* Products */ = {
+		0380D45FFCE299E8DA30CE00C2A2CA2E /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				5C95A58DF5533DBFE518DA6AD7383C22 /* Pods_releasebird_ios_sdk_Example.framework */,
-				62599AEEA7DE9E5A582DD4AAE1E564CD /* Pods-releasebird-ios-sdk_Tests */,
-				7911A48C016C6E568F6BDFEB59E00004 /* releasebird_ios_sdk.framework */,
-				EF534EBF985E562E483B5760AC0B7E1D /* releasebird-ios-sdk.bundle */,
+				2D63C94A501903EB6CD3A0F45A741755 /* Releasebird.modulemap */,
+				4BAC349D9DFC006A560C2C46134848A1 /* Releasebird-dummy.m */,
+				A85133294C4F68C1837C2BE920B2F2CB /* Releasebird-Info.plist */,
+				480DCA4A5F50F5224FA7DFC7186AB7B0 /* Releasebird-prefix.pch */,
+				8960C6E3CA7A3AE6E1A69252D0B7FA37 /* Releasebird-umbrella.h */,
+				ACF42116C0F29E2B40742DE42B779B0A /* Releasebird.debug.xcconfig */,
+				B2E2E05B5891527DDD6C39E4DDBEA197 /* Releasebird.release.xcconfig */,
+				F1BAD427054C03C530167C322676F59F /* ResourceBundle-Releasebird-Releasebird-Info.plist */,
 			);
-			name = Products;
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/Releasebird";
 			sourceTree = "<group>";
 		};
-		1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */ = {
+		1AF83A160697480C7D239C4261E3EB5E /* Releasebird */ = {
 			isa = PBXGroup;
 			children = (
-				59DA5C1F72E1D5BABC43EACBA672C3BA /* iOS */,
+				FA1279523D013F103650622E82616A9C /* Config.h */,
+				60E1F4BE982ACCDB10441E6EEA6A7463 /* Config.m */,
+				0BD0A19035EB8052AF77522879A326A3 /* FullscreenImageViewController.h */,
+				78715F516D5435C835C7C3433B529C05 /* FullscreenImageViewController.m */,
+				5F08D45C181A65B5776E199AD934C165 /* PrivacyInfo.xcprivacy */,
+				ECDFA31D3D93F395DA3B812DA1EDE426 /* Releasebird.h */,
+				D09717780324791B8BA34DBBBDB0A89F /* Releasebird.m */,
+				1D577D7D3334BEE55E64857FB40A121C /* ReleasebirdButton.h */,
+				E904359A283FB94E2E2DE0E845995DE8 /* ReleasebirdButton.m */,
+				3DBC4468CA0CEFBF12048822E4103A89 /* ReleasebirdCore.h */,
+				4702FA84347F971ED500E6C3E5809074 /* ReleasebirdCore.m */,
+				C21296833837D5D28A2CF7A037580215 /* ReleasebirdFrameViewController.h */,
+				8D2433A596F217CECA07315255A40B2D /* ReleasebirdFrameViewController.m */,
+				93DDF4A4C8CC89BB305D0178236F580A /* ReleasebirdOverlayUtils.h */,
+				E36A442BC292FE8B5C212C0AF6AFBC4A /* ReleasebirdOverlayUtils.m */,
+				4C351D17A6F76E57AEA3AEA6B79D87DA /* ReleasebirdSession.m */,
+				217B11FEA1B4A49EFFBE9491EE1DA09C /* ReleasebirdUIOverlayViewController.h */,
+				710D33A2ACFB8ECE5256D9C74F6AB0DF /* ReleasebirdUIOverlayViewController.m */,
+				B3CFC556035F73371F0AB05A4D8495BB /* ReleasebirdUtils.h */,
+				3C9A5A5E066F877B97CC0F08BE12402C /* ReleasebirdUtils.m */,
+				9FC782CFC3D0DC0811D34B9C6E5AC3AB /* ReleasebirdWindowUtils.h */,
+				C9BC85719AFA0A3586B20C23803300A5 /* ReleasebirdWindowUtils.m */,
+				D642D67DB44344A7B32DF785AC74801E /* Pod */,
+				0380D45FFCE299E8DA30CE00C2A2CA2E /* Support Files */,
 			);
-			name = Frameworks;
+			name = Releasebird;
+			path = ../..;
 			sourceTree = "<group>";
 		};
-		1F8CE009CDF7FCE53C9C830E70D84948 /* Targets Support Files */ = {
+		2D557443FAE6E445646C3313CBA8BBA2 /* Pods-releasebird-ios-sdk_Tests */ = {
 			isa = PBXGroup;
 			children = (
-				41AE456A11D10D098B355028589A8D82 /* Pods-releasebird-ios-sdk_Example */,
-				2DB78B40B666A06CCACB3E31829B499A /* Pods-releasebird-ios-sdk_Tests */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		2DB78B40B666A06CCACB3E31829B499A /* Pods-releasebird-ios-sdk_Tests */ = {
-			isa = PBXGroup;
-			children = (
-				CB0F7AF768DE16D47256A576D034A566 /* Pods-releasebird-ios-sdk_Tests.modulemap */,
-				D9B4484EF9ACCCFA10545B9CB07CE50E /* Pods-releasebird-ios-sdk_Tests-acknowledgements.markdown */,
-				27A1225169901C5B14C7EB55B3D10D7B /* Pods-releasebird-ios-sdk_Tests-acknowledgements.plist */,
-				6FFB3CEF23AF2E724559CBC67144EF73 /* Pods-releasebird-ios-sdk_Tests-dummy.m */,
-				B21050723E1870136D92A15EBC689DF2 /* Pods-releasebird-ios-sdk_Tests-Info.plist */,
-				570DCEBF3C81F53461DC02F7F2331F60 /* Pods-releasebird-ios-sdk_Tests-umbrella.h */,
-				BE2CE16DD873B3CC41CFDC903A419457 /* Pods-releasebird-ios-sdk_Tests.debug.xcconfig */,
-				D75F4DBE4FBEBCD67B5DFA4FDA2DA9E7 /* Pods-releasebird-ios-sdk_Tests.release.xcconfig */,
+				837F03D68C1BDB2982F6C6B354A85197 /* Pods-releasebird-ios-sdk_Tests.modulemap */,
+				CB6A25A26D764F3C854119CEF2AF21D1 /* Pods-releasebird-ios-sdk_Tests-acknowledgements.markdown */,
+				6033BE5DE61DC2106012B1B189B8C107 /* Pods-releasebird-ios-sdk_Tests-acknowledgements.plist */,
+				BE5A5A7C91F7124CE5162882F87458FE /* Pods-releasebird-ios-sdk_Tests-dummy.m */,
+				6B240E4535515F0D21C762F4E9965E7C /* Pods-releasebird-ios-sdk_Tests-Info.plist */,
+				03D0D9F47455B801C7CAA39FB2E9B8A8 /* Pods-releasebird-ios-sdk_Tests-umbrella.h */,
+				63EF3550D77F701DDEF6D4C219852FA0 /* Pods-releasebird-ios-sdk_Tests.debug.xcconfig */,
+				B7B23FBF8CF4EE957768392B6D0C935E /* Pods-releasebird-ios-sdk_Tests.release.xcconfig */,
 			);
 			name = "Pods-releasebird-ios-sdk_Tests";
 			path = "Target Support Files/Pods-releasebird-ios-sdk_Tests";
 			sourceTree = "<group>";
 		};
-		41AE456A11D10D098B355028589A8D82 /* Pods-releasebird-ios-sdk_Example */ = {
+		40E2EFB888FEF5F60C8E7A7E26D68E4F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				422BBD577764F4AB67787B6BE7D0BDA1 /* Pods-releasebird-ios-sdk_Example.modulemap */,
-				B42FCE65504E35C463C2ECAE92ED3C5B /* Pods-releasebird-ios-sdk_Example-acknowledgements.markdown */,
-				4C1D0A7E125A70812DC7B426FE78AB9D /* Pods-releasebird-ios-sdk_Example-acknowledgements.plist */,
-				E5EA421937B0993EA14E2800938F7B73 /* Pods-releasebird-ios-sdk_Example-dummy.m */,
-				BB3D2A977ACDC8AC4C7782BEF8B29351 /* Pods-releasebird-ios-sdk_Example-frameworks.sh */,
-				75DABFDABCAD5051D3EF3CD4024BAE3D /* Pods-releasebird-ios-sdk_Example-Info.plist */,
-				1A1B6EAE73FCDE7B7E2E29BFD9D66013 /* Pods-releasebird-ios-sdk_Example-umbrella.h */,
-				2E1B8559BD98E1DC0671DC2062BB1AEC /* Pods-releasebird-ios-sdk_Example.debug.xcconfig */,
-				526DCA71DC129FC2462F1D7F6579C427 /* Pods-releasebird-ios-sdk_Example.release.xcconfig */,
+				CDDD165EE5674E1C3EF6469750488095 /* Pods-releasebird-ios-sdk_Example */,
+				1BBFD11B5C3EB15DB82704985FFC7540 /* Pods-releasebird-ios-sdk_Tests */,
+				6DE2BBE4F723281306F290F84D1C7778 /* Releasebird */,
+				E99CBDE69C7F1E69EEE2397522CD52EF /* Releasebird-Releasebird */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		55040C75493BD451F81B772DF5868F80 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CED68E0E2CA3E0018BA7B9081F57F99A /* Foundation.framework */,
+				6C4701BE314C6E7EE17DCEE32898DDCE /* SafariServices.framework */,
+				F72A8FE967B793559CB5517846BE61E5 /* UIKit.framework */,
+				F5178B8493E04BEC96A994DCA264E5C8 /* WebKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		6AC2E49AD699043AD7C276B35E0AA63D /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				849B307E30CB754736B1D411D7A6C9AB /* Pods-releasebird-ios-sdk_Example */,
+				2D557443FAE6E445646C3313CBA8BBA2 /* Pods-releasebird-ios-sdk_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		849B307E30CB754736B1D411D7A6C9AB /* Pods-releasebird-ios-sdk_Example */ = {
+			isa = PBXGroup;
+			children = (
+				6092F0AE861AB23244751F2D57881D08 /* Pods-releasebird-ios-sdk_Example.modulemap */,
+				5381F3181CE22CEBEB00EF1E9E7FAF99 /* Pods-releasebird-ios-sdk_Example-acknowledgements.markdown */,
+				4D8E47B97A6ACDA952DB1496A0669BC4 /* Pods-releasebird-ios-sdk_Example-acknowledgements.plist */,
+				58EDA72661E4FD67353FABC1E1AF2707 /* Pods-releasebird-ios-sdk_Example-dummy.m */,
+				585FEECC34038CE220B10416426CC603 /* Pods-releasebird-ios-sdk_Example-frameworks.sh */,
+				75F019CACB875740D90D549DBB90011B /* Pods-releasebird-ios-sdk_Example-Info.plist */,
+				039894FCF9E27EA72BB0062E9E518469 /* Pods-releasebird-ios-sdk_Example-umbrella.h */,
+				7A68034AB0015219BCD30A79DA14E425 /* Pods-releasebird-ios-sdk_Example.debug.xcconfig */,
+				9A2838126E1272BF596E311B26099578 /* Pods-releasebird-ios-sdk_Example.release.xcconfig */,
 			);
 			name = "Pods-releasebird-ios-sdk_Example";
 			path = "Target Support Files/Pods-releasebird-ios-sdk_Example";
 			sourceTree = "<group>";
 		};
-		59DA5C1F72E1D5BABC43EACBA672C3BA /* iOS */ = {
+		8C2DDBF84B46BAE964376E1A59BB08EB /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */,
-				D245E0514AAC1A2B9A6D5EA2F383E90F /* UIKit.framework */,
+				1AF83A160697480C7D239C4261E3EB5E /* Releasebird */,
 			);
-			name = iOS;
+			name = "Development Pods";
 			sourceTree = "<group>";
 		};
-		C6A8FB8DC9AFD74C9312BDFA01D2780B /* releasebird-ios-sdk */ = {
+		BA4F31F07263C99FC76E66D632A59F09 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5D8321B8C02AE4491736794708DE55C4 /* ReleasebirdButton.h */,
-				77D7F0176F2696D214177D7FB4E19610 /* ReleasebirdButton.m */,
-				B1FACDEA88BDACF7C927291232A37426 /* ReleasebirdFrameViewController.h */,
-				B2A2F5E55D879921AE7528FDBD90F69E /* ReleasebirdFrameViewController.m */,
-				B37C5DB19C52E79213E4B569D906E6FB /* ReleasebirdUtils.h */,
-				8A5E50599B9F0D65C9F4586B60E1A0C6 /* ReleasebirdUtils.m */,
-				3B6C5D4A18B2A1090A0BDF5CC7A16BC4 /* ReleasebirdOverlayUtils.h */,
-				3BC9BE8E2AC8419C4B467520B5D6B980 /* ReleasebirdOverlayUtils.m */,
-				8EDFD8D118C116D5926DCEF596AF788E /* ReleasebirdUIOverlayViewController.h */,
-				554016CC65965FE24100DAEA2A871C02 /* ReleasebirdUIOverlayViewController.m */,
-				0C64C115B4BBBEE8FE2414700D46077C /* ReleasebirdWindowUtils.h */,
-				B5072D96F306F3C74C2892582C264698 /* ReleasebirdWindowUtils.m */,
-				FFBF9F47DD906B9679C9D03D2CA06FF5 /* Releasebird.h */,
-				9F9B605F6C928E5526E84DF83C7CC7F6 /* Releasebird.m */,
-				DC7B4CA894190E0D8A313E3D836D80A7 /* Pod */,
-				FC932C2D7F4DD4D0B785BA07563B5B23 /* Support Files */,
-				E124541E2C4FE59A002B7AC3 /* ReleasebirdCore.m */,
-				E12454202C4FE5B8002B7AC3 /* ReleasebirdCore.h */,
-				E12454222C50F976002B7AC3 /* Config.m */,
-				E12454242C50FB3C002B7AC3 /* Config.h */,
-				E12454262C51310B002B7AC3 /* FullscreenImageViewController.h */,
-				E12454282C513127002B7AC3 /* FullscreenImageViewController.m */,
+				55040C75493BD451F81B772DF5868F80 /* iOS */,
 			);
-			name = "releasebird-ios-sdk";
-			path = ../..;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				D68FF65DF2B403CFB3AF8DA7180E1DB5 /* Development Pods */,
-				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
-				0A1B1E1CF33872E441B546BB782EE622 /* Products */,
-				1F8CE009CDF7FCE53C9C830E70D84948 /* Targets Support Files */,
+				8C2DDBF84B46BAE964376E1A59BB08EB /* Development Pods */,
+				BA4F31F07263C99FC76E66D632A59F09 /* Frameworks */,
+				40E2EFB888FEF5F60C8E7A7E26D68E4F /* Products */,
+				6AC2E49AD699043AD7C276B35E0AA63D /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		D68FF65DF2B403CFB3AF8DA7180E1DB5 /* Development Pods */ = {
+		D642D67DB44344A7B32DF785AC74801E /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				C6A8FB8DC9AFD74C9312BDFA01D2780B /* releasebird-ios-sdk */,
-			);
-			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		DC7B4CA894190E0D8A313E3D836D80A7 /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				1FB963F4B622845243F2874458312C0D /* LICENSE */,
-				FB1DF32F6312036FAE030F93C9E4FD66 /* README.md */,
-				AAFF2B0B9330F500DCAC454252481A76 /* releasebird-ios-sdk.podspec */,
+				17910F1C2E3A9B9C6FFCBA5CABF9C521 /* LICENSE */,
+				6C57453AE94BF3461E6CF3D70A9C84BB /* README.md */,
+				FCE76FAC0EF40B38DDB501569F1C99ED /* Releasebird.podspec */,
 			);
 			name = Pod;
-			sourceTree = "<group>";
-		};
-		FC932C2D7F4DD4D0B785BA07563B5B23 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				130DF523FAD40F97E3553D50395CE0E4 /* releasebird-ios-sdk.modulemap */,
-				3BBD40978041B97B6BF62EAB73CA2D91 /* releasebird-ios-sdk-dummy.m */,
-				194351957DA1BD7F5DAA32B8BBBCD57C /* releasebird-ios-sdk-Info.plist */,
-				00DB9D6659538D1814E50134011BC71A /* releasebird-ios-sdk-prefix.pch */,
-				6E02130EC4ACE8D031F2E5C8C04CF036 /* releasebird-ios-sdk-umbrella.h */,
-				24EB4217E117E1C41A002DF61A70B577 /* releasebird-ios-sdk.debug.xcconfig */,
-				F4E1664AC4D5666B89AEF2A48013DBA5 /* releasebird-ios-sdk.release.xcconfig */,
-				120A58309032757C31F55674ECCD4790 /* ResourceBundle-releasebird-ios-sdk-releasebird-ios-sdk-Info.plist */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/releasebird-ios-sdk";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		11E142E066D5095C8335E4CDACE5A651 /* Headers */ = {
+		667380FBB2DB5DCC51784A13BC6974D5 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E12454252C50FB3C002B7AC3 /* Config.h in Headers */,
-				5D445DE35E2DFC18B849081E24AF3505 /* ReleasebirdButton.h in Headers */,
-				59752C2A4F55DB7BEA430D81494CA18A /* ReleasebirdFrameViewController.h in Headers */,
-				E12454272C51310C002B7AC3 /* FullscreenImageViewController.h in Headers */,
-				0A80001420520A78C9877035EAECBC60 /* ReleasebirdUtils.h in Headers */,
-				21C751349C6789EB4D979C07900BFDE6 /* ReleasebirdOverlayUtils.h in Headers */,
-				E12454212C4FE5B8002B7AC3 /* ReleasebirdCore.h in Headers */,
-				2BBE485951F8BF22AB600C216819860F /* ReleasebirdUIOverlayViewController.h in Headers */,
-				E99B9DB48DACCF1E3083FE8122AE6672 /* ReleasebirdWindowUtils.h in Headers */,
-				3C6FFDD73AF9A7AD06F03B08C7D26E59 /* releasebird-ios-sdk-umbrella.h in Headers */,
-				F538BD0495A7A35A0A6C9F381E7E7D3E /* Releasebird.h in Headers */,
+				B06E89AAEC728ED51CB2CD658AD5D904 /* Pods-releasebird-ios-sdk_Tests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		914E5E66548FC242AB128D2DB08E217D /* Headers */ = {
+		677D5AA470E7EA1417892962C7AAF86A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				544862477A6A4C0857E7B052918333A0 /* Pods-releasebird-ios-sdk_Example-umbrella.h in Headers */,
+				1CD9D6D9E5434D455FBC0FC504FC3BE3 /* Config.h in Headers */,
+				C1A31FFF82390E033337769F0BE642F6 /* FullscreenImageViewController.h in Headers */,
+				13C9BF2FCA4FB8BC59901992A0AE9F45 /* Releasebird.h in Headers */,
+				8BF58BB728F0C340601027CAEE770E98 /* Releasebird-umbrella.h in Headers */,
+				4EF2D74809887ADFFE3A853AF342326E /* ReleasebirdButton.h in Headers */,
+				EFAA34FB3E14AEB4F185F03D6460D4DA /* ReleasebirdCore.h in Headers */,
+				C98D82E01D07FCAB5379296AF78A74C3 /* ReleasebirdFrameViewController.h in Headers */,
+				9286363BE00D73D247A07A7F42C2E913 /* ReleasebirdOverlayUtils.h in Headers */,
+				D8C4B2E39A92EF9D29C19E65D7EF925B /* ReleasebirdUIOverlayViewController.h in Headers */,
+				30E07B4F559DD972C6156EF3E6CB32BA /* ReleasebirdUtils.h in Headers */,
+				7E27B477FA30A1F203C72D4B6D261117 /* ReleasebirdWindowUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A214E84B1EC2352F073CA6BD4771FE19 /* Headers */ = {
+		A246227490BD140941BBB31FAAD39B64 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51AD2B04305CAB418DB3F91A817DC314 /* Pods-releasebird-ios-sdk_Tests-umbrella.h in Headers */,
+				0ACEF4DE7E5B7E3EDD3ECBCBB1747FCB /* Pods-releasebird-ios-sdk_Example-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		28805AC836B37F3418598C59CF66EFA6 /* Pods-releasebird-ios-sdk_Example */ = {
+		59FEA3AA22A58BF4C83CE0AF8EFDCB9A /* Pods-releasebird-ios-sdk_Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 570F8B5655F1CD9037D48F772F7E9E71 /* Build configuration list for PBXNativeTarget "Pods-releasebird-ios-sdk_Example" */;
+			buildConfigurationList = DF8CB5C7AB1C129C64D6177EA5FDB4D5 /* Build configuration list for PBXNativeTarget "Pods-releasebird-ios-sdk_Tests" */;
 			buildPhases = (
-				914E5E66548FC242AB128D2DB08E217D /* Headers */,
-				A7D5988216631E3FA3869ED7506E9506 /* Sources */,
-				652B2D9EBA0796B59B9351A51CF4EC5C /* Frameworks */,
-				E1E49BC0112BAFA8B1AE7DF8723E8C19 /* Resources */,
+				667380FBB2DB5DCC51784A13BC6974D5 /* Headers */,
+				57FF64AF83404FB2A87DAF40953B0A57 /* Sources */,
+				A7F232B4A94F3E71544363553AD373CC /* Frameworks */,
+				232DB05E0E9BB6A04676F712EB5AA8DD /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				D7BE041CABD54AFDDA2426DCFBB10BE1 /* PBXTargetDependency */,
-			);
-			name = "Pods-releasebird-ios-sdk_Example";
-			productName = Pods_releasebird_ios_sdk_Example;
-			productReference = 5C95A58DF5533DBFE518DA6AD7383C22 /* Pods_releasebird_ios_sdk_Example.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		955EAB49CB16C7B716C0B1EB3EE62E39 /* releasebird-ios-sdk */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DDD625D92F7948AD29D8E756275AF2EC /* Build configuration list for PBXNativeTarget "releasebird-ios-sdk" */;
-			buildPhases = (
-				11E142E066D5095C8335E4CDACE5A651 /* Headers */,
-				FD7C71B6309E26DA6FBC0A752E44C43D /* Sources */,
-				808693ACF69668AACB12D5F3C77433F1 /* Frameworks */,
-				6E763C11DF3752D016FE5B890F8DC8D5 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A26C7F511373120E861289613788175E /* PBXTargetDependency */,
-			);
-			name = "releasebird-ios-sdk";
-			productName = releasebird_ios_sdk;
-			productReference = 7911A48C016C6E568F6BDFEB59E00004 /* releasebird_ios_sdk.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		974B597A04F2FBD862808BA7F96BE5DD /* releasebird-ios-sdk-releasebird-ios-sdk */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9F6414D27F5237968DCF3D06807AC01C /* Build configuration list for PBXNativeTarget "releasebird-ios-sdk-releasebird-ios-sdk" */;
-			buildPhases = (
-				1BDA7B98CED5B9827CD300A9C46E4998 /* Sources */,
-				41CCE3899DF528F6E5231CF6C9794ED9 /* Frameworks */,
-				284CD8ED62DC3313B7AAA82254B6D543 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "releasebird-ios-sdk-releasebird-ios-sdk";
-			productName = "releasebird-ios-sdk";
-			productReference = EF534EBF985E562E483B5760AC0B7E1D /* releasebird-ios-sdk.bundle */;
-			productType = "com.apple.product-type.bundle";
-		};
-		F62A21AB70CF970221050BA027BAAD3D /* Pods-releasebird-ios-sdk_Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DCAA6195C63990C8E0BD1A156E25CBF3 /* Build configuration list for PBXNativeTarget "Pods-releasebird-ios-sdk_Tests" */;
-			buildPhases = (
-				A214E84B1EC2352F073CA6BD4771FE19 /* Headers */,
-				A2B0708CFAB0E37CE4B24BAC1DEF1AC4 /* Sources */,
-				F22922C18D1698A1D9D994FEAA9DE750 /* Frameworks */,
-				36125C2A1D62D14BC4A836FA3501E798 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D779EB883599B269B0301011AE39E3DD /* PBXTargetDependency */,
+				78276E4CC08332DC0EF79E66B659BB54 /* PBXTargetDependency */,
 			);
 			name = "Pods-releasebird-ios-sdk_Tests";
 			productName = Pods_releasebird_ios_sdk_Tests;
-			productReference = 62599AEEA7DE9E5A582DD4AAE1E564CD /* Pods-releasebird-ios-sdk_Tests */;
+			productReference = 1BBFD11B5C3EB15DB82704985FFC7540 /* Pods-releasebird-ios-sdk_Tests */;
+			productType = "com.apple.product-type.framework";
+		};
+		6B5E0279D5128B41C60ADB3211404AC6 /* Releasebird-Releasebird */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3D2E9387A73A8FD63005E03647C1CAB8 /* Build configuration list for PBXNativeTarget "Releasebird-Releasebird" */;
+			buildPhases = (
+				BF62E5D1C736CDD3F7B29B01635910B2 /* Sources */,
+				3193DA18954DB55B221B850B4D479BAE /* Frameworks */,
+				B56F9D907E0D43A033B85FCDB63751CB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Releasebird-Releasebird";
+			productName = Releasebird;
+			productReference = E99CBDE69C7F1E69EEE2397522CD52EF /* Releasebird-Releasebird */;
+			productType = "com.apple.product-type.bundle";
+		};
+		F264CB7D7E36D909173AE80BDE6E8347 /* Releasebird */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 12A407A6A6AE94F1F5C37067283BAAD9 /* Build configuration list for PBXNativeTarget "Releasebird" */;
+			buildPhases = (
+				677D5AA470E7EA1417892962C7AAF86A /* Headers */,
+				91E6149AC368E43F03146D34464B04DF /* Sources */,
+				6AF6BB05210715B3DF1F53837D47EF11 /* Frameworks */,
+				5E3B8C2BC5F82FF10E9193EDA7C8F41C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				72034AEFD995B85D2D980434CC3DA62A /* PBXTargetDependency */,
+			);
+			name = Releasebird;
+			productName = Releasebird;
+			productReference = 6DE2BBE4F723281306F290F84D1C7778 /* Releasebird */;
+			productType = "com.apple.product-type.framework";
+		};
+		F9D77821F59A81159026D2ADEC1A0471 /* Pods-releasebird-ios-sdk_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 23A496F15F6140020CBD35237841FCB2 /* Build configuration list for PBXNativeTarget "Pods-releasebird-ios-sdk_Example" */;
+			buildPhases = (
+				A246227490BD140941BBB31FAAD39B64 /* Headers */,
+				B8C42099707B81B49D5EAD3AA965BBD8 /* Sources */,
+				B1E0C25C07448F7F315CD2E61829C566 /* Frameworks */,
+				E1C19AEF123A828BD0EB12CDFDD85490 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0A4F38A194398E2261150E254A384944 /* PBXTargetDependency */,
+			);
+			name = "Pods-releasebird-ios-sdk_Example";
+			productName = Pods_releasebird_ios_sdk_Example;
+			productReference = CDDD165EE5674E1C3EF6469750488095 /* Pods-releasebird-ios-sdk_Example */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -423,8 +437,8 @@
 		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1500;
-				LastUpgradeCheck = 1500;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -435,42 +449,45 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 0A1B1E1CF33872E441B546BB782EE622 /* Products */;
+			minimizedProjectReferenceProxies = 0;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 40E2EFB888FEF5F60C8E7A7E26D68E4F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				28805AC836B37F3418598C59CF66EFA6 /* Pods-releasebird-ios-sdk_Example */,
-				F62A21AB70CF970221050BA027BAAD3D /* Pods-releasebird-ios-sdk_Tests */,
-				955EAB49CB16C7B716C0B1EB3EE62E39 /* releasebird-ios-sdk */,
-				974B597A04F2FBD862808BA7F96BE5DD /* releasebird-ios-sdk-releasebird-ios-sdk */,
+				F9D77821F59A81159026D2ADEC1A0471 /* Pods-releasebird-ios-sdk_Example */,
+				59FEA3AA22A58BF4C83CE0AF8EFDCB9A /* Pods-releasebird-ios-sdk_Tests */,
+				F264CB7D7E36D909173AE80BDE6E8347 /* Releasebird */,
+				6B5E0279D5128B41C60ADB3211404AC6 /* Releasebird-Releasebird */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		284CD8ED62DC3313B7AAA82254B6D543 /* Resources */ = {
+		232DB05E0E9BB6A04676F712EB5AA8DD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		36125C2A1D62D14BC4A836FA3501E798 /* Resources */ = {
+		5E3B8C2BC5F82FF10E9193EDA7C8F41C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DA85F9CA384C727E45BFB5ADA768DAF /* Releasebird-Releasebird in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6E763C11DF3752D016FE5B890F8DC8D5 /* Resources */ = {
+		B56F9D907E0D43A033B85FCDB63751CB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27E135A61D195C918680E85964094C27 /* releasebird-ios-sdk.bundle in Resources */,
+				F3CE039BF0E0C274103698424ABCFCA8 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E1E49BC0112BAFA8B1AE7DF8723E8C19 /* Resources */ = {
+		E1C19AEF123A828BD0EB12CDFDD85490 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -480,76 +497,77 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1BDA7B98CED5B9827CD300A9C46E4998 /* Sources */ = {
+		57FF64AF83404FB2A87DAF40953B0A57 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				457645C5603E531CCD169FF35EE9F2C9 /* Pods-releasebird-ios-sdk_Tests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A2B0708CFAB0E37CE4B24BAC1DEF1AC4 /* Sources */ = {
+		91E6149AC368E43F03146D34464B04DF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCB1ED444A5262149B75033F34460FDA /* Pods-releasebird-ios-sdk_Tests-dummy.m in Sources */,
+				0C10A4B660DA372A85E1A3D2977AA8AC /* Config.m in Sources */,
+				D395209BA9B02A7C707AEC6714936CD7 /* FullscreenImageViewController.m in Sources */,
+				05C348C28E450A2CC1CFF668B3078BDE /* Releasebird.m in Sources */,
+				4C7BF2ECB93E138B4AEDCCD6F1D0F461 /* Releasebird-dummy.m in Sources */,
+				F56F6DE5263F33CD065A47F1527D2DCE /* ReleasebirdButton.m in Sources */,
+				868083535D31BCD08E7E7F3AB71C9A4A /* ReleasebirdCore.m in Sources */,
+				DF1E3D63F1846D5C7BB48E69A3D0FA29 /* ReleasebirdFrameViewController.m in Sources */,
+				7A5B5AC0C620C0DBDA966108C1D3F6E3 /* ReleasebirdOverlayUtils.m in Sources */,
+				F6AE9DD18507B4F2CAA0477635EFB21B /* ReleasebirdSession.m in Sources */,
+				E3561B6C13A71A1BD55BED48C69F59D5 /* ReleasebirdUIOverlayViewController.m in Sources */,
+				46C857F15673EB79224EA408A2C0B2A9 /* ReleasebirdUtils.m in Sources */,
+				13FA60219AD32CD3CCB1E54E2C81650C /* ReleasebirdWindowUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A7D5988216631E3FA3869ED7506E9506 /* Sources */ = {
+		B8C42099707B81B49D5EAD3AA965BBD8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				91ACCDC5664A398FF2705CB1174692F0 /* Pods-releasebird-ios-sdk_Example-dummy.m in Sources */,
+				429E63167D20C54967B64666AC3FE263 /* Pods-releasebird-ios-sdk_Example-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FD7C71B6309E26DA6FBC0A752E44C43D /* Sources */ = {
+		BF62E5D1C736CDD3F7B29B01635910B2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A88E33CCDA8C82CF09E72E960B23D9D /* ReleasebirdButton.m in Sources */,
-				E4C084E540E869B1919C16990FA7D90D /* ReleasebirdFrameViewController.m in Sources */,
-				ABDA9A7DA375008BBAE94A5084A8E24D /* ReleasebirdUtils.m in Sources */,
-				12C3E4057647A6E2818F41F6E9B28841 /* ReleasebirdOverlayUtils.m in Sources */,
-				AAD92A608A02E1D0C7BF7A196A01501E /* ReleasebirdUIOverlayViewController.m in Sources */,
-				E12454232C50F976002B7AC3 /* Config.m in Sources */,
-				191AC1D733B445537A0C7179A3C90C35 /* ReleasebirdWindowUtils.m in Sources */,
-				684627EFC22B3EF6900770E26EB9B6D1 /* releasebird-ios-sdk-dummy.m in Sources */,
-				E12454292C513127002B7AC3 /* FullscreenImageViewController.m in Sources */,
-				E124541F2C4FE59A002B7AC3 /* ReleasebirdCore.m in Sources */,
-				DF2510459BC00D268AD62383449DD1C6 /* Releasebird.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		A26C7F511373120E861289613788175E /* PBXTargetDependency */ = {
+		0A4F38A194398E2261150E254A384944 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = "releasebird-ios-sdk-releasebird-ios-sdk";
-			target = 974B597A04F2FBD862808BA7F96BE5DD /* releasebird-ios-sdk-releasebird-ios-sdk */;
-			targetProxy = AA19BB7F32B6A33D0DFB7C6360340B88 /* PBXContainerItemProxy */;
+			name = Releasebird;
+			target = F264CB7D7E36D909173AE80BDE6E8347 /* Releasebird */;
+			targetProxy = 65FEDFE119D56EEBA6E4B666C32E7EB8 /* PBXContainerItemProxy */;
 		};
-		D779EB883599B269B0301011AE39E3DD /* PBXTargetDependency */ = {
+		72034AEFD995B85D2D980434CC3DA62A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Releasebird-Releasebird";
+			target = 6B5E0279D5128B41C60ADB3211404AC6 /* Releasebird-Releasebird */;
+			targetProxy = DF4BB2F5848619FA13EDFAFC65F7C51F /* PBXContainerItemProxy */;
+		};
+		78276E4CC08332DC0EF79E66B659BB54 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-releasebird-ios-sdk_Example";
-			target = 28805AC836B37F3418598C59CF66EFA6 /* Pods-releasebird-ios-sdk_Example */;
-			targetProxy = 521B14423A66DAFD6A51E276FB32C58B /* PBXContainerItemProxy */;
-		};
-		D7BE041CABD54AFDDA2426DCFBB10BE1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "releasebird-ios-sdk";
-			target = 955EAB49CB16C7B716C0B1EB3EE62E39 /* releasebird-ios-sdk */;
-			targetProxy = 6AAF1D940FC27508F5101AE84A3B6C92 /* PBXContainerItemProxy */;
+			target = F9D77821F59A81159026D2ADEC1A0471 /* Pods-releasebird-ios-sdk_Example */;
+			targetProxy = 55EFA697E67D1A4EA9BA805315686E40 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		5CE1DFD84D863E080217DE835E456AAA /* Release */ = {
+		472997A528D12AED86D8E9653C43EA41 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D75F4DBE4FBEBCD67B5DFA4FDA2DA9E7 /* Pods-releasebird-ios-sdk_Tests.release.xcconfig */;
+			baseConfigurationReference = ACF42116C0F29E2B40742DE42B779B0A /* Releasebird.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -559,162 +577,21 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-releasebird-ios-sdk_Tests/Pods-releasebird-ios-sdk_Tests-Info.plist";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_PREFIX_HEADER = "Target Support Files/Releasebird/Releasebird-prefix.pch";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Target Support Files/Releasebird/Releasebird-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-releasebird-ios-sdk_Tests/Pods-releasebird-ios-sdk_Tests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		78006162854E37FB0E784A357EC8B590 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F4E1664AC4D5666B89AEF2A48013DBA5 /* releasebird-ios-sdk.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGNING_ALLOWED = NO;
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/releasebird-ios-sdk";
-				IBSC_MODULE = releasebird_ios_sdk;
-				INFOPLIST_FILE = "Target Support Files/releasebird-ios-sdk/ResourceBundle-releasebird-ios-sdk-releasebird-ios-sdk-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				PRODUCT_NAME = "releasebird-ios-sdk";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
-		7EE7A78859F657F6BEFC651185B43192 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 5.0;
-				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Release;
-		};
-		B37FFF2935BDFBFE3942C7ADB7B584CD /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 526DCA71DC129FC2462F1D7F6579C427 /* Pods-releasebird-ios-sdk_Example.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-releasebird-ios-sdk_Example/Pods-releasebird-ios-sdk_Example-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-releasebird-ios-sdk_Example/Pods-releasebird-ios-sdk_Example.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		B5022CD7C9E4472F4A4F6258C8582DEA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 24EB4217E117E1C41A002DF61A70B577 /* releasebird-ios-sdk.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/releasebird-ios-sdk/releasebird-ios-sdk-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/releasebird-ios-sdk/releasebird-ios-sdk-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/releasebird-ios-sdk/releasebird-ios-sdk.modulemap";
-				PRODUCT_MODULE_NAME = releasebird_ios_sdk;
-				PRODUCT_NAME = releasebird_ios_sdk;
+				MODULEMAP_FILE = "Target Support Files/Releasebird/Releasebird.modulemap";
+				PRODUCT_MODULE_NAME = Releasebird;
+				PRODUCT_NAME = Releasebird;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -722,11 +599,11 @@
 			};
 			name = Debug;
 		};
-		B6778C1E3E208ABB5891632245312CC6 /* Debug */ = {
+		5D0D47814109EBFAA464E0A6EF1B7967 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2E1B8559BD98E1DC0671DC2062BB1AEC /* Pods-releasebird-ios-sdk_Example.debug.xcconfig */;
+			baseConfigurationReference = B2E2E05B5891527DDD6C39E4DDBEA197 /* Releasebird.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -736,49 +613,21 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-releasebird-ios-sdk_Example/Pods-releasebird-ios-sdk_Example-Info.plist";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_PREFIX_HEADER = "Target Support Files/Releasebird/Releasebird-prefix.pch";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Target Support Files/Releasebird/Releasebird-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-releasebird-ios-sdk_Example/Pods-releasebird-ios-sdk_Example.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		C0F922808D18F689EB6A527A11ABD3CE /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F4E1664AC4D5666B89AEF2A48013DBA5 /* releasebird-ios-sdk.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/releasebird-ios-sdk/releasebird-ios-sdk-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/releasebird-ios-sdk/releasebird-ios-sdk-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/releasebird-ios-sdk/releasebird-ios-sdk.modulemap";
-				PRODUCT_MODULE_NAME = releasebird_ios_sdk;
-				PRODUCT_NAME = releasebird_ios_sdk;
+				MODULEMAP_FILE = "Target Support Files/Releasebird/Releasebird.modulemap";
+				PRODUCT_MODULE_NAME = Releasebird;
+				PRODUCT_NAME = Releasebird;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -787,24 +636,24 @@
 			};
 			name = Release;
 		};
-		C75C13D39449E76EE3BCA8157A671F65 /* Debug */ = {
+		60865CFA85A74EAF4EFF6CD3247C294F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 24EB4217E117E1C41A002DF61A70B577 /* releasebird-ios-sdk.debug.xcconfig */;
+			baseConfigurationReference = B2E2E05B5891527DDD6C39E4DDBEA197 /* Releasebird.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGNING_ALLOWED = NO;
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/releasebird-ios-sdk";
-				IBSC_MODULE = releasebird_ios_sdk;
-				INFOPLIST_FILE = "Target Support Files/releasebird-ios-sdk/ResourceBundle-releasebird-ios-sdk-releasebird-ios-sdk-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				PRODUCT_NAME = "releasebird-ios-sdk";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Releasebird";
+				IBSC_MODULE = Releasebird;
+				INFOPLIST_FILE = "Target Support Files/Releasebird/ResourceBundle-Releasebird-Releasebird-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				PRODUCT_NAME = Releasebird;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = bundle;
 			};
-			name = Debug;
+			name = Release;
 		};
-		D299434AB35E7FD6F7921C8EF24742FF /* Debug */ = {
+		90D4D09BCB6A4660E43ACBE9ECB6FE9A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -857,7 +706,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -870,11 +719,74 @@
 			};
 			name = Debug;
 		};
-		DEEB0571D3251379336CBF5E1EDB07E5 /* Debug */ = {
+		9553C89E183877A5CB2F3C6801BEC129 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BE2CE16DD873B3CC41CFDC903A419457 /* Pods-releasebird-ios-sdk_Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		9E754145309A941D68B0C3DC86864B7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7A68034AB0015219BCD30A79DA14E425 /* Pods-releasebird-ios-sdk_Example.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -884,9 +796,84 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "Target Support Files/Pods-releasebird-ios-sdk_Example/Pods-releasebird-ios-sdk_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-releasebird-ios-sdk_Example/Pods-releasebird-ios-sdk_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C65B7B61F61CBA935923C0B48924E8D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A2838126E1272BF596E311B26099578 /* Pods-releasebird-ios-sdk_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "Target Support Files/Pods-releasebird-ios-sdk_Example/Pods-releasebird-ios-sdk_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-releasebird-ios-sdk_Example/Pods-releasebird-ios-sdk_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C865F135A94EA3161EA8F85046DFCD72 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63EF3550D77F701DDEF6D4C219852FA0 /* Pods-releasebird-ios-sdk_Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "Target Support Files/Pods-releasebird-ios-sdk_Tests/Pods-releasebird-ios-sdk_Tests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-releasebird-ios-sdk_Tests/Pods-releasebird-ios-sdk_Tests.modulemap";
@@ -903,50 +890,104 @@
 			};
 			name = Debug;
 		};
+		C97C345114B2F8F9C5C8C05C379325F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ACF42116C0F29E2B40742DE42B779B0A /* Releasebird.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGNING_ALLOWED = NO;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Releasebird";
+				IBSC_MODULE = Releasebird;
+				INFOPLIST_FILE = "Target Support Files/Releasebird/ResourceBundle-Releasebird-Releasebird-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				PRODUCT_NAME = Releasebird;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		CEA5C660CF4A462AD8835251F20E59F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7B23FBF8CF4EE957768392B6D0C935E /* Pods-releasebird-ios-sdk_Tests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "Target Support Files/Pods-releasebird-ios-sdk_Tests/Pods-releasebird-ios-sdk_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-releasebird-ios-sdk_Tests/Pods-releasebird-ios-sdk_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		12A407A6A6AE94F1F5C37067283BAAD9 /* Build configuration list for PBXNativeTarget "Releasebird" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				472997A528D12AED86D8E9653C43EA41 /* Debug */,
+				5D0D47814109EBFAA464E0A6EF1B7967 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		23A496F15F6140020CBD35237841FCB2 /* Build configuration list for PBXNativeTarget "Pods-releasebird-ios-sdk_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9E754145309A941D68B0C3DC86864B7E /* Debug */,
+				C65B7B61F61CBA935923C0B48924E8D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3D2E9387A73A8FD63005E03647C1CAB8 /* Build configuration list for PBXNativeTarget "Releasebird-Releasebird" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C97C345114B2F8F9C5C8C05C379325F6 /* Debug */,
+				60865CFA85A74EAF4EFF6CD3247C294F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D299434AB35E7FD6F7921C8EF24742FF /* Debug */,
-				7EE7A78859F657F6BEFC651185B43192 /* Release */,
+				90D4D09BCB6A4660E43ACBE9ECB6FE9A /* Debug */,
+				9553C89E183877A5CB2F3C6801BEC129 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		570F8B5655F1CD9037D48F772F7E9E71 /* Build configuration list for PBXNativeTarget "Pods-releasebird-ios-sdk_Example" */ = {
+		DF8CB5C7AB1C129C64D6177EA5FDB4D5 /* Build configuration list for PBXNativeTarget "Pods-releasebird-ios-sdk_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B6778C1E3E208ABB5891632245312CC6 /* Debug */,
-				B37FFF2935BDFBFE3942C7ADB7B584CD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9F6414D27F5237968DCF3D06807AC01C /* Build configuration list for PBXNativeTarget "releasebird-ios-sdk-releasebird-ios-sdk" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C75C13D39449E76EE3BCA8157A671F65 /* Debug */,
-				78006162854E37FB0E784A357EC8B590 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DCAA6195C63990C8E0BD1A156E25CBF3 /* Build configuration list for PBXNativeTarget "Pods-releasebird-ios-sdk_Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DEEB0571D3251379336CBF5E1EDB07E5 /* Debug */,
-				5CE1DFD84D863E080217DE835E456AAA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DDD625D92F7948AD29D8E756275AF2EC /* Build configuration list for PBXNativeTarget "releasebird-ios-sdk" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B5022CD7C9E4472F4A4F6258C8582DEA /* Debug */,
-				C0F922808D18F689EB6A527A11ABD3CE /* Release */,
+				C865F135A94EA3161EA8F85046DFCD72 /* Debug */,
+				CEA5C660CF4A462AD8835251F20E59F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

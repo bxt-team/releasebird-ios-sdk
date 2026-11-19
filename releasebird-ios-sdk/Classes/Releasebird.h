@@ -15,9 +15,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)initialize:(NSString *)key showButton:(BOOL)show;;
 
-- (void)identify:(NSObject *)identifyJson ;
+- (void)identify:(NSDictionary *)identifyJson;
 
-- (void)identify:(NSObject *)identifyJson hash:(NSString *)hash;
+/// For verified identities pass the HMAC-SHA256 of the external_user_id, computed on your server.
+- (void)identify:(NSDictionary *)identifyJson hash:(nullable NSString *)hash;
 
 - (void) logout;
 

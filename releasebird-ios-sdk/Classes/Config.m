@@ -1,26 +1,25 @@
 #import <Foundation/Foundation.h>
 #import "Config.h"
 
+static NSString *rbBaseURL = nil;
+static NSString *rbContentUrl = nil;
+
 @implementation Config
 
 + (NSString *)baseURL {
-    #if DEBUG
-    return @"https://api.releasebird.com/papi";
-    #elif RELEASE
-    return @"https://api.releasebird.com/papi";
-    #else
-    return @"https://api.releasebird.com/papi";
-    #endif
+    return rbBaseURL ?: @"https://api.releasebird.com/papi";
 }
 
 + (NSString *)contentUrl {
-    #if DEBUG
-    return @"https://wcontent.releasebird.com";
-    #elif RELEASE
-    return @"https://wcontent.releasebird.com";
-    #else
-    return @"https://wcontent.releasebird.com";
-    #endif
+    return rbContentUrl ?: @"https://wcontent.releasebird.com";
+}
+
++ (void)setBaseURL:(NSString *)baseURL {
+    rbBaseURL = [baseURL copy];
+}
+
++ (void)setContentUrl:(NSString *)contentUrl {
+    rbContentUrl = [contentUrl copy];
 }
 
 @end

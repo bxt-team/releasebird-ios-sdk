@@ -38,6 +38,9 @@
 }
 
 + (void)showFeedbackButton:(bool)show {
+    if (show && [ReleasebirdOverlayUtils sharedInstance].hiddenByApp) {
+        show = false;
+    }
     if (show && ![ReleasebirdCore sharedInstance].noButton) {
         [ReleasebirdOverlayUtils sharedInstance].showButtonExternalOverwrite = YES;
         [ReleasebirdOverlayUtils sharedInstance].showButton = show;
@@ -50,8 +53,13 @@
 }
 
 + (void)showWidget {
+    // The overlay is created once the app's window is ready – wait for it instead of silently doing nothing
     ReleasebirdWindowUtils *windowChecker = [[ReleasebirdWindowUtils alloc] init];
-    [[ReleasebirdOverlayUtils sharedInstance].uiOverlayViewController showWidget];
+    [windowChecker waitForKeyWindowToBeReadyWithCompletion:^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[ReleasebirdOverlayUtils sharedInstance].uiOverlayViewController showWidget];
+        });
+    }];
 }
 
 - (void)initializeUI {

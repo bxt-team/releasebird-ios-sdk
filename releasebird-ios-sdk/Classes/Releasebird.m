@@ -9,11 +9,10 @@
 
 @end
 
-
-static id ObjectOrNull(id object)
-{
-  return object ?: [NSNull null];
-}
+static NSString *const kRbirdStateKey = @"rbird_state";
+static NSString *const kRbirdAnonymousKey = @"releasebird_ai";
+static NSString *const kRbirdUnreadKey = @"unreadMessages";
+static const NSTimeInterval kRbirdTimeout = 15.0;
 
 @implementation Releasebird
 
@@ -32,9 +31,12 @@ static id ObjectOrNull(id object)
 
 - (id)init {
     self = [super init];
-    [self startTimer];
-    [self startObserving];
     if (self) {
+        [self startObserving];
+        // Timers need the main run loop – the SDK may be created from any thread
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self startTimer];
+        });
     }
     return self;
 }
@@ -44,12 +46,11 @@ static id ObjectOrNull(id object)
                                              selector:@selector(applicationWillEnterForeground)
                                                  name:UIApplicationWillEnterForegroundNotification
                                                object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationDidEnterBackground)
+                                                 name:UIApplicationDidEnterBackgroundNotification
+                                               object:nil];
 }
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [self invalidateTimeout];
-}
-
 
 - (void)invalidateTimeout {
     if (self.timeoutTimer) {
@@ -58,9 +59,15 @@ static id ObjectOrNull(id object)
     }
 }
 
+/// Forgets the identified user and starts a fresh anonymous session.
 - (void) logout {
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"rbird_state"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:kRbirdStateKey];
+    [defaults removeObjectForKey:kRbirdUnreadKey];
+    // A new anonymous id: the next person on this device must not see the previous one's conversations
+    [defaults setObject:[self generateRandomString] forKey:kRbirdAnonymousKey];
+    [defaults synchronize];
+    [ReleasebirdOverlayUtils updateUI];
 }
 
 - (void)executeRepeatingTask {
@@ -68,59 +75,35 @@ static id ObjectOrNull(id object)
 }
 
 - (void)sendPingRequest:(NSString *)API withApiKey:(NSString *)apiKey andStateIdentify:(NSDictionary *)stateIdentify {
-    // Erstelle die URL
-    NSString *urlString = [NSString stringWithFormat:@"%@/ewidget/ping", API];
-    NSURL *url = [NSURL URLWithString:urlString];
-    
-    // Erstelle die URLRequest
+    NSDictionary *identifyState = [[ReleasebirdCore sharedInstance] getIdentifyState];
+    // Nothing to report before init or for anonymous visitors
+    if (apiKey == nil || ![identifyState isKindOfClass:[NSDictionary class]] || ![identifyState[@"people"] isKindOfClass:[NSString class]]) {
+        return;
+    }
+
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/ewidget/ping", API]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    request.timeoutInterval = kRbirdTimeout;
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:apiKey forHTTPHeaderField:@"apiKey"];
-    
-    NSDictionary *identifyState = [[ReleasebirdCore sharedInstance] getIdentifyState];
-    
-    if (identifyState == nil || identifyState[@"people"] == nil) {
-        return;
-    }
-    
     [request setValue:identifyState[@"people"] forHTTPHeaderField:@"peopleId"];
     [request setValue:[[ReleasebirdCore sharedInstance] getAIValue] forHTTPHeaderField:@"ai"];
-    
-    // Konvertiere stateIdentify in JSON-Daten
-    NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject: [self wrapDictionaryWithProperties:stateIdentify] options:0 error:&error];
+
+    NSData *jsonData = [self jsonDataFromDictionary:[self wrapDictionaryWithProperties:identifyState]];
     if (!jsonData) {
-        NSLog(@"Error serializing JSON: %@", error.localizedDescription);
         return;
     }
     [request setHTTPBody:jsonData];
-    
-    // Erstelle die URLSession
-    NSURLSession *session = [NSURLSession sharedSession];
-    
-    // Erstelle den Daten-Task
-    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+
+    [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error) {
-            NSLog(@"Error: %@", error.localizedDescription);
-            return;
+            NSLog(@"[Releasebird] Ping failed: %@", error.localizedDescription);
         }
-        
-        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-        if (httpResponse.statusCode == 200) {
-            // Verarbeite die Antwortdaten hier
-            NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        } else {
-            NSLog(@"HTTP Error: %ld", (long)httpResponse.statusCode);
-        }
-    }];
-    
-    // Starte den Task
-    [dataTask resume];
+    }] resume];
 }
 
 - (void)applicationWillEnterForeground {
-    // Aktion ausführen, wenn die App in den Vordergrund kommt
     [[ReleasebirdCore sharedInstance] getUnreadCount];
     [self startTimer];
 }
@@ -130,9 +113,7 @@ static id ObjectOrNull(id object)
 }
 
 - (void)dealloc {
-    // Abmelden von Benachrichtigungen
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    // Timer invalidieren
     [self.repeatingTimer invalidate];
     self.repeatingTimer = nil;
 }
@@ -155,173 +136,167 @@ static id ObjectOrNull(id object)
 }
 
 - (void)initialize:(NSString *)key showButton:(BOOL)showButton {
+    if (![key isKindOfClass:[NSString class]] || key.length == 0) {
+        NSLog(@"[Releasebird] initialize ignored: an API key is required");
+        return;
+    }
     [ReleasebirdCore sharedInstance].apiKey = key;
     [ReleasebirdCore sharedInstance].noButton = !showButton;
     [self checkAndStoreAIValue];
     [self fetchWidgetSettingsFromAPI:[Config baseURL] withApiKey:key showButton:showButton];
-    
 }
 
 - (void)showButton {
+    [ReleasebirdOverlayUtils sharedInstance].hiddenByApp = NO;
+    [ReleasebirdCore sharedInstance].noButton = NO;
     if ([ReleasebirdCore sharedInstance].widgetSettings != nil) {
         [ReleasebirdOverlayUtils showFeedbackButton: true];
     }
 }
 
 - (void)showWidget {
+    if ([ReleasebirdCore sharedInstance].apiKey == nil) {
+        NSLog(@"[Releasebird] showWidget ignored: call initialize first");
+        return;
+    }
     [ReleasebirdOverlayUtils showWidget];
 }
 
 - (void)hideButton {
+    [ReleasebirdOverlayUtils sharedInstance].hiddenByApp = YES;
     [ReleasebirdOverlayUtils showFeedbackButton: false];
 }
 
 - (void)identify:(NSDictionary *)identifyJson {
-    [self sendIdentifyCall:[Config baseURL] withApiKey:[ReleasebirdCore sharedInstance].apiKey anonymousIdentifier:[[ReleasebirdCore sharedInstance] getAIValue] andStateIdentify:identifyJson hash:nil];
+    [self identify:identifyJson hash:nil];
 }
 
+/// For verified identities pass the HMAC-SHA256 of the external_user_id, computed on your server with the workspace's secret hash key.
 - (void)identify:(NSDictionary *)identifyJson hash:(NSString *)hash {
-    [self sendIdentifyCall:[Config baseURL] withApiKey:[ReleasebirdCore sharedInstance].apiKey anonymousIdentifier:[[ReleasebirdCore sharedInstance] getAIValue] andStateIdentify:identifyJson hash:hash];
+    if ([ReleasebirdCore sharedInstance].apiKey == nil) {
+        NSLog(@"[Releasebird] identify ignored: call initialize first");
+        return;
+    }
+    // The values come from the host app: anything that cannot be sent as JSON must not crash it
+    if (![identifyJson isKindOfClass:[NSDictionary class]] || ![NSJSONSerialization isValidJSONObject:identifyJson]) {
+        NSLog(@"[Releasebird] identify ignored: the user properties must be a dictionary of strings, numbers, arrays and dictionaries");
+        return;
+    }
+    NSString *cleanHash = [hash isKindOfClass:[NSString class]] && hash.length > 0 ? hash : nil;
+    [self sendIdentifyCall:[Config baseURL] withApiKey:[ReleasebirdCore sharedInstance].apiKey anonymousIdentifier:[[ReleasebirdCore sharedInstance] getAIValue] andStateIdentify:identifyJson hash:cleanHash];
 }
 
 - (void)fetchWidgetSettingsFromAPI:(NSString *)API withApiKey:(NSString *)apiKey showButton:(BOOL)showButton {
-    NSString *urlString = [NSString stringWithFormat:@"%@/ewidget", API];
-    NSURL *url = [NSURL URLWithString:urlString];
-    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/ewidget", API]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    request.timeoutInterval = kRbirdTimeout;
     [request setHTTPMethod:@"GET"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:apiKey forHTTPHeaderField:@"apiKey"];
-    
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+
+    [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error) {
-            NSLog(@"Error: %@", error.localizedDescription);
-            // Handle error
+            NSLog(@"[Releasebird] Widget settings could not be loaded: %@", error.localizedDescription);
             return;
         }
-        
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-        if (httpResponse.statusCode == 200 || httpResponse.statusCode == 201) {
-            @try {
-                NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-                [ReleasebirdCore sharedInstance].widgetSettings = jsonResponse;
-                
-                    [ReleasebirdOverlayUtils showFeedbackButton: showButton];
-                
-                
-            } @catch (NSException *exception) {
-                // Handle parsing error
-                NSLog(@"Parsing exception: %@", exception.reason);
-            }
-        } else {
-            NSLog(@"HTTP Error: %ld", (long)httpResponse.statusCode);
+        if (httpResponse.statusCode != 200 && httpResponse.statusCode != 201) {
+            NSLog(@"[Releasebird] Widget settings: HTTP %ld", (long)httpResponse.statusCode);
+            return;
         }
-    }];
-    
-    [dataTask resume];
+        id jsonResponse = data ? [NSJSONSerialization JSONObjectWithData:data options:0 error:nil] : nil;
+        if (![jsonResponse isKindOfClass:[NSDictionary class]]) {
+            return;
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [ReleasebirdCore sharedInstance].widgetSettings = jsonResponse;
+            [ReleasebirdOverlayUtils showFeedbackButton: showButton];
+        });
+    }] resume];
 }
 
 - (NSString *)generateRandomString {
     NSString *characters = @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     NSUInteger length = 60;
     NSMutableString *randomString = [NSMutableString stringWithCapacity:length];
-    
     for (NSUInteger i = 0; i < length; i++) {
         u_int32_t randomIndex = arc4random_uniform((u_int32_t)characters.length);
-        unichar randomChar = [characters characterAtIndex:randomIndex];
-        [randomString appendFormat:@"%C", randomChar];
+        [randomString appendFormat:@"%C", [characters characterAtIndex:randomIndex]];
     }
-    
     return randomString;
 }
 
 - (void)checkAndStoreAIValue {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *storedAIValue = [defaults stringForKey:@"releasebird_ai"];
-    if (storedAIValue == nil) {
-        NSString *newAIValue = [self generateRandomString];
-        [defaults setObject:newAIValue forKey:@"releasebird_ai"];
+    if ([defaults stringForKey:kRbirdAnonymousKey] == nil) {
+        [defaults setObject:[self generateRandomString] forKey:kRbirdAnonymousKey];
         [defaults synchronize];
-    } else {
-        // Wert vorhanden, nichts zu tun
     }
 }
 
 - (NSData *)jsonDataFromDictionary:(NSDictionary *) dictionary {
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary
-                                                       options:0
-                                                         error:nil];
-    return jsonData;
+    if (![NSJSONSerialization isValidJSONObject:dictionary]) {
+        return nil;
+    }
+    return [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:nil];
 }
 
 - (NSDictionary *) wrapDictionaryWithProperties: (NSDictionary *) originalDictionary {
-    NSDictionary *newDictionary = @{
-        @"properties": originalDictionary
-        //@"hash": null
-    };
-    return newDictionary;
+    return @{ @"properties": originalDictionary ?: @{} };
 }
 
 - (void)sendIdentifyCall:(NSString *)API withApiKey:(NSString *)apiKey anonymousIdentifier:(NSString *)anonymousIdentifier andStateIdentify:(NSDictionary *)stateIdentify hash:(NSString *)hash {
-    // Erstelle die URL
-    NSString *urlString = [NSString stringWithFormat:@"%@/ewidget/identify", API];
-    NSURL *url = [NSURL URLWithString:urlString];
-    
-    // Erstelle die URLRequest
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/ewidget/identify", API]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    request.timeoutInterval = kRbirdTimeout;
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:[self getCurrentTimeZone] forHTTPHeaderField:@"timezone"];
     [request setValue:apiKey forHTTPHeaderField:@"apiKey"];
-    
-    NSData *jsonData = [self jsonDataFromDictionary: [self wrapDictionaryWithProperties:stateIdentify]];
-    
+
+    NSMutableDictionary *body = [[self wrapDictionaryWithProperties:stateIdentify] mutableCopy];
+    if (hash) {
+        body[@"hash"] = hash;
+    }
+    NSData *jsonData = [self jsonDataFromDictionary:body];
+    if (!jsonData) {
+        return;
+    }
     [request setHTTPBody:jsonData];
-    
-    // Erstelle die URLSession
-    NSURLSession *session = [NSURLSession sharedSession];
-    
-    // Erstelle den Daten-Task
-    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+
+    [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error) {
-            NSLog(@"Error: %@", error.localizedDescription);
-            // Handle error
+            NSLog(@"[Releasebird] identify failed: %@", error.localizedDescription);
             return;
         }
-        
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-        if (httpResponse.statusCode == 200 || httpResponse.statusCode == 201) {
-            @try {
-                NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-               
-                if ([responseDict[@"valid"] boolValue]) {
-                    // Handle success
-                    NSMutableDictionary *state = [stateIdentify mutableCopy];
-                    state[@"people"] = responseDict[@"peopleId"];
-                    if (hash) {
-                        state[@"hash"] = hash;
-                    }
-                    [[NSUserDefaults standardUserDefaults] setObject:state forKey:@"rbird_state"];
-                    [[NSUserDefaults standardUserDefaults] synchronize];
-                }
-            } @catch (NSException *exception) {
-                // Handle error
-                NSLog(@"Exception: %@", exception.reason);
-            }
-        } else {
-            // Handle HTTP error
-            NSLog(@"HTTP Error: %ld", (long)httpResponse.statusCode);
+        if (httpResponse.statusCode != 200 && httpResponse.statusCode != 201) {
+            NSLog(@"[Releasebird] identify: HTTP %ld", (long)httpResponse.statusCode);
+            return;
         }
-    }];
-    
-    // Starte den Task
-    [dataTask resume];
+        NSDictionary *responseDict = data ? [NSJSONSerialization JSONObjectWithData:data options:0 error:nil] : nil;
+        if (![responseDict isKindOfClass:[NSDictionary class]] || ![responseDict[@"valid"] respondsToSelector:@selector(boolValue)]
+            || ![responseDict[@"valid"] boolValue] || ![responseDict[@"peopleId"] isKindOfClass:[NSString class]]) {
+            return;
+        }
+        NSMutableDictionary *state = [stateIdentify mutableCopy];
+        state[@"people"] = responseDict[@"peopleId"];
+        if (hash) {
+            state[@"hash"] = hash;
+        }
+        @try {
+            // NSUserDefaults only takes property-list values (no NSNull)
+            [[NSUserDefaults standardUserDefaults] setObject:state forKey:kRbirdStateKey];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        } @catch (NSException *exception) {
+            [[NSUserDefaults standardUserDefaults] setObject:@{ @"people": responseDict[@"peopleId"], @"hash": hash ?: @"" } forKey:kRbirdStateKey];
+        }
+        [[ReleasebirdCore sharedInstance] getUnreadCount];
+    }] resume];
 }
 
 - (NSString *)getCurrentTimeZone {
     return [NSTimeZone localTimeZone].name;
 }
-
 
 @end

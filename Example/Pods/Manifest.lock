@@ -1,16 +1,16 @@
 PODS:
-  - releasebird-ios-sdk (0.1.0)
+  - Releasebird (1.0.24)
 
 DEPENDENCIES:
-  - releasebird-ios-sdk (from `../`)
+  - Releasebird (from `../`)
 
 EXTERNAL SOURCES:
-  releasebird-ios-sdk:
+  Releasebird:
     :path: "../"
 
 SPEC CHECKSUMS:
-  releasebird-ios-sdk: 97535cf5bd50bfcbf5d4df3265a5b20a9fca3fe7
+  Releasebird: 2e793d205ff54167d8a7282b12cd5b118093f090
 
-PODFILE CHECKSUM: 10c0ba046972635e5a3d23802aeba78f74bdb051
+PODFILE CHECKSUM: 3ee7cf57041dde13491bb9490da94c7eb6c0cb9f
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.2
